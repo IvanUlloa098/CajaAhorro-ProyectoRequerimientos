@@ -26,6 +26,15 @@ public class RegistroPagoCuotas implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public RegistroPagoCuotas(int id, float montoPag, Date fecha, Credito credito) {
+		super();
+		this.id = id;
+		this.montoPag = montoPag;
+		this.fecha = fecha;
+		this.credito = credito;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -44,6 +53,15 @@ public class RegistroPagoCuotas implements Serializable {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	
+	public Credito getCredito() {
+		return credito;
+	}
+
+	public void setCredito(Credito credito) {
+		this.credito = credito;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

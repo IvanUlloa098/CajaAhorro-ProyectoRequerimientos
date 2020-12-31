@@ -40,6 +40,16 @@ public class Usuario extends Persona implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Usuario(int id, String username, String password, Rol rol, Caja caja) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.rol = rol;
+		this.caja = caja;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -58,6 +68,23 @@ public class Usuario extends Persona implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	public Caja getCaja() {
+		return caja;
+	}
+
+	public void setCaja(Caja caja) {
+		this.caja = caja;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

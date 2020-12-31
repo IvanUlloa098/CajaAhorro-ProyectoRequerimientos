@@ -32,6 +32,14 @@ public class Rol implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Rol(int id, String rol, Usuario user) {
+		super();
+		this.id = id;
+		this.rol = rol;
+		this.user = user;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -44,6 +52,15 @@ public class Rol implements Serializable{
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

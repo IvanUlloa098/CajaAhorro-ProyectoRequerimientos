@@ -27,6 +27,13 @@ public class Socio extends Persona implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Socio(int id, char estado) {
+		super();
+		this.id = id;
+		this.estado = estado;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -39,6 +46,15 @@ public class Socio extends Persona implements Serializable{
 	public void setEstado(char estado) {
 		this.estado = estado;
 	}
+	
+	public Set<CuentaAhorros> getCuentaAhorros() {
+		return cuentaAhorros;
+	}
+
+	public void setCuentaAhorros(Set<CuentaAhorros> cuentaAhorros) {
+		this.cuentaAhorros = cuentaAhorros;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

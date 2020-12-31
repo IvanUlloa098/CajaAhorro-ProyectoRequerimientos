@@ -30,13 +30,19 @@ public class Caja implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "caja")
 	private Set<DiarioCaja> diarioCaja = new HashSet<DiarioCaja>();
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "caja")
-	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
 	
 	public Caja() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Caja(int id, String direccion, float saldo) {
+		super();
+		this.id = id;
+		this.direccion = direccion;
+		this.saldo = saldo;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -55,6 +61,23 @@ public class Caja implements Serializable {
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
+	
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public Set<DiarioCaja> getDiarioCaja() {
+		return diarioCaja;
+	}
+
+	public void setDiarioCaja(Set<DiarioCaja> diarioCaja) {
+		this.diarioCaja = diarioCaja;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

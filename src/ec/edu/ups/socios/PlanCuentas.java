@@ -25,6 +25,15 @@ public class PlanCuentas implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public PlanCuentas(int id, String tipo, String descrip, CuentaAhorros cuentaA) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.descrip = descrip;
+		this.cuentaA = cuentaA;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -43,6 +52,15 @@ public class PlanCuentas implements Serializable{
 	public void setDescrip(String descrip) {
 		this.descrip = descrip;
 	}
+	
+	public CuentaAhorros getCuentaA() {
+		return cuentaA;
+	}
+
+	public void setCuentaA(CuentaAhorros cuentaA) {
+		this.cuentaA = cuentaA;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

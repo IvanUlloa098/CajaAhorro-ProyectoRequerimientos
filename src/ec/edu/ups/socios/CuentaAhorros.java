@@ -44,9 +44,20 @@ public class CuentaAhorros implements Serializable{
 	
 	
 	public CuentaAhorros() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Set<CuentaAhorros> cuentaAhorros,
+			Socio socio) {
+		super();
+		this.cuentaId = cuentaId;
+		this.numeroCta = numeroCta;
+		this.fechaCre = fechaCre;
+		this.cuentaAct = cuentaAct;
+		this.cuentaAhorros = cuentaAhorros;
+		this.socio = socio;
+	}
+
 	public int getCuentaId() {
 		return cuentaId;
 	}
@@ -71,6 +82,47 @@ public class CuentaAhorros implements Serializable{
 	public void setCuentaAct(char cuentaAct) {
 		this.cuentaAct = cuentaAct;
 	}
+	
+	public Set<CuentaAhorros> getCuentaAhorros() {
+		return cuentaAhorros;
+	}
+
+	public void setCuentaAhorros(Set<CuentaAhorros> cuentaAhorros) {
+		this.cuentaAhorros = cuentaAhorros;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
+	}
+
+	public Set<PlanCuentas> getPlanCuentas() {
+		return planCuentas;
+	}
+
+	public void setPlanCuentas(Set<PlanCuentas> planCuentas) {
+		this.planCuentas = planCuentas;
+	}
+
+	public Set<SolicitudCredito> getSolicitudCredito() {
+		return solicitudCredito;
+	}
+
+	public void setSolicitudCredito(Set<SolicitudCredito> solicitudCredito) {
+		this.solicitudCredito = solicitudCredito;
+	}
+
+	public Set<Credito> getCredito() {
+		return credito;
+	}
+
+	public void setCredito(Set<Credito> credito) {
+		this.credito = credito;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

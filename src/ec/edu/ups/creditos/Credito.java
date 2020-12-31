@@ -45,6 +45,19 @@ public class Credito implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Credito(int id, float monto, int interes, int numeroCuota, char estado, CuentaAhorros cuentaA,
+			CarteraCreditos carteraC) {
+		super();
+		this.id = id;
+		this.monto = monto;
+		this.interes = interes;
+		this.numeroCuota = numeroCuota;
+		this.estado = estado;
+		this.cuentaA = cuentaA;
+		this.carteraC = carteraC;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -75,6 +88,39 @@ public class Credito implements Serializable {
 	public void setEstado(char estado) {
 		this.estado = estado;
 	}
+	
+	public CuentaAhorros getCuentaA() {
+		return cuentaA;
+	}
+
+	public void setCuentaA(CuentaAhorros cuentaA) {
+		this.cuentaA = cuentaA;
+	}
+
+	public CarteraCreditos getCarteraC() {
+		return carteraC;
+	}
+
+	public void setCarteraC(CarteraCreditos carteraC) {
+		this.carteraC = carteraC;
+	}
+
+	public Set<CarteraCreditos> getCarteraCreditos() {
+		return carteraCreditos;
+	}
+
+	public void setCarteraCreditos(Set<CarteraCreditos> carteraCreditos) {
+		this.carteraCreditos = carteraCreditos;
+	}
+
+	public Set<TablaAmortizacion> getTablaAmortizacion() {
+		return tablaAmortizacion;
+	}
+
+	public void setTablaAmortizacion(Set<TablaAmortizacion> tablaAmortizacion) {
+		this.tablaAmortizacion = tablaAmortizacion;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
