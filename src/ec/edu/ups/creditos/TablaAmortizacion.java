@@ -1,20 +1,41 @@
 package ec.edu.ups.creditos;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import java.util.Date;
+import javax.persistence.*;
+@Entity
+@Table(name="CDA_TablaAmortizacion")
 public class TablaAmortizacion implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@Column(nullable=false)
 	private int id;
+	@Column(nullable=false)
 	private int numCuota;
+	@Column(nullable=false)
 	private Date fechaVenc;
+	@Column(nullable=false)
 	private Date fechaPag;
+	@Column(nullable=false)
 	private float capital;
+	@Column(nullable=false)
 	private int cuotas;
+	@Column(nullable=false)
 	private float interes;
+	@Column(nullable=false)
 	private float saldo;
 	
+	@ManyToOne
+	@JoinColumn
+	private Credito credito;
+	
+	public TablaAmortizacion() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}

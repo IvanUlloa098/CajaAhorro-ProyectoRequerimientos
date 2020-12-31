@@ -12,6 +12,12 @@ public class Persona implements Serializable{
 	private String telefono;
 	private String direccion;
 	private String email;
+	
+	
+	public Persona() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
