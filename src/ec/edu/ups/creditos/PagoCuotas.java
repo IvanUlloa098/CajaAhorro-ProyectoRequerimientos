@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="CDA_PagoCuotas")
-public class RegistroPagoCuotas implements Serializable {
+public class PagoCuotas implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -22,12 +22,12 @@ public class RegistroPagoCuotas implements Serializable {
 	@JoinColumn
 	private Credito credito ;
 	
-	public RegistroPagoCuotas() {
+	public PagoCuotas() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public RegistroPagoCuotas(int id, float montoPag, Date fecha, Credito credito) {
+	public PagoCuotas(int id, float montoPag, Date fecha, Credito credito) {
 		super();
 		this.id = id;
 		this.montoPag = montoPag;

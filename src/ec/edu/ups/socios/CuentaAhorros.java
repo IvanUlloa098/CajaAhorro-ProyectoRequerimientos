@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
 
@@ -27,7 +28,7 @@ public class CuentaAhorros implements Serializable{
 	private char cuentaAct;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
-	private Set<CuentaAhorros>cuentaAhorros = new HashSet<CuentaAhorros>();
+	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
 	
 	@ManyToOne
 	@JoinColumn
@@ -47,14 +48,12 @@ public class CuentaAhorros implements Serializable{
 		
 	}
 	
-	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Set<CuentaAhorros> cuentaAhorros,
-			Socio socio) {
+	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio) {
 		super();
 		this.cuentaId = cuentaId;
 		this.numeroCta = numeroCta;
 		this.fechaCre = fechaCre;
 		this.cuentaAct = cuentaAct;
-		this.cuentaAhorros = cuentaAhorros;
 		this.socio = socio;
 	}
 
@@ -82,13 +81,13 @@ public class CuentaAhorros implements Serializable{
 	public void setCuentaAct(char cuentaAct) {
 		this.cuentaAct = cuentaAct;
 	}
-	
-	public Set<CuentaAhorros> getCuentaAhorros() {
-		return cuentaAhorros;
+
+	public Set<Movimiento> getMovimiento() {
+		return movimiento;
 	}
 
-	public void setCuentaAhorros(Set<CuentaAhorros> cuentaAhorros) {
-		this.cuentaAhorros = cuentaAhorros;
+	public void setMovimiento(Set<Movimiento> movimiento) {
+		this.movimiento = movimiento;
 	}
 
 	public Socio getSocio() {

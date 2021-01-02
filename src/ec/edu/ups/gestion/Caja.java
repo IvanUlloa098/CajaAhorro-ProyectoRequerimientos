@@ -24,6 +24,7 @@ public class Caja implements Serializable {
 	@Column(nullable=false)
 	private float saldo;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "caja")
 	private Set<Usuario> usuarios = new HashSet<Usuario>();
 	
@@ -32,8 +33,7 @@ public class Caja implements Serializable {
 	
 	
 	public Caja() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public Caja(int id, String direccion, float saldo) {

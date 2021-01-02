@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="CajaAhorro-ProyectoRequerimientos" transaction-type="RESOURCE_LOCAL">
+	<class>ec.edu.ups.aporte_ahorros.Movimiento</class>
+	<class>ec.edu.ups.aporte_ahorros.TipoMovimiento</class>
+	<class>ec.edu.ups.creditos.CarteraCreditos</class>
+	<class>ec.edu.ups.creditos.Credito</class>
+	<class>ec.edu.ups.creditos.PagoCuotas</class>
+	<class>ec.edu.ups.creditos.SolicitudCredito</class>
+	<class>ec.edu.ups.creditos.TablaAmortizacion</class>
+	<class>ec.edu.ups.gestion.Caja</class>
+	<class>ec.edu.ups.gestion.DiarioCaja</class>
+	<class>ec.edu.ups.gestion.Rol</class>
+	<class>ec.edu.ups.gestion.Usuario</class>
+	<class>ec.edu.ups.socios.CuentaAhorros</class>
+	<class>ec.edu.ups.socios.PlanCuentas</class>
+	<class>ec.edu.ups.socios.Socio</class>
+	
+		<properties>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Caja_Ahorros?serverTimezone=UTC"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="DFTUrptu9799"/>
+ 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
+		</properties>
+	</persistence-unit>
+	
+</persistence>

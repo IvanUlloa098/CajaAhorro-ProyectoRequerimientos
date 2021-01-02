@@ -59,10 +59,4 @@ public class Socio extends Persona implements Serializable{
 		return serialVersionUID;
 	}
 	
-	
-	
-
-	
-	
-	
 }

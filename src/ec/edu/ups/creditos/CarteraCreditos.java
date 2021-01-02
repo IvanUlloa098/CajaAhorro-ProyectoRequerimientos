@@ -21,7 +21,7 @@ public class CarteraCreditos implements Serializable {
 	private int diasMora;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "carteraC")
-	private Set<CarteraCreditos>carteraCreditos= new HashSet<CarteraCreditos>();
+	private Set<Credito>Creditos= new HashSet<Credito>();
 	
 	
 	public CarteraCreditos(int id, char calificacion, int diasMora) {
@@ -53,11 +53,11 @@ public class CarteraCreditos implements Serializable {
 		this.diasMora = diasMora;
 	}
 	
-	public Set<CarteraCreditos> getCarteraCreditos() {
-		return carteraCreditos;
+	public Set<Credito> getCreditos() {
+		return Creditos;
 	}
-	public void setCarteraCreditos(Set<CarteraCreditos> carteraCreditos) {
-		this.carteraCreditos = carteraCreditos;
+	public void setCreditos(Set<Credito> creditos) {
+		Creditos = creditos;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

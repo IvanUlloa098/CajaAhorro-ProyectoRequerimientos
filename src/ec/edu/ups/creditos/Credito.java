@@ -34,12 +34,12 @@ public class Credito implements Serializable {
 	@JoinColumn
 	private CarteraCreditos carteraC;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
-	private Set<CarteraCreditos>carteraCreditos= new HashSet<CarteraCreditos>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
 	private Set<TablaAmortizacion>tablaAmortizacion  = new HashSet<TablaAmortizacion>();
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
+	private Set<PagoCuotas> pagos = new HashSet<PagoCuotas>();
 	
 	public Credito() {
 		super();
@@ -105,13 +105,6 @@ public class Credito implements Serializable {
 		this.carteraC = carteraC;
 	}
 
-	public Set<CarteraCreditos> getCarteraCreditos() {
-		return carteraCreditos;
-	}
-
-	public void setCarteraCreditos(Set<CarteraCreditos> carteraCreditos) {
-		this.carteraCreditos = carteraCreditos;
-	}
 
 	public Set<TablaAmortizacion> getTablaAmortizacion() {
 		return tablaAmortizacion;
@@ -119,6 +112,14 @@ public class Credito implements Serializable {
 
 	public void setTablaAmortizacion(Set<TablaAmortizacion> tablaAmortizacion) {
 		this.tablaAmortizacion = tablaAmortizacion;
+	}
+
+	public Set<PagoCuotas> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(Set<PagoCuotas> pagos) {
+		this.pagos = pagos;
 	}
 
 	public static long getSerialversionuid() {
