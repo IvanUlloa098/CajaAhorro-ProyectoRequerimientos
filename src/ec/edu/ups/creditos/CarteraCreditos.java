@@ -21,8 +21,15 @@ public class CarteraCreditos implements Serializable {
 	private int diasMora;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "carteraC")
-	private Set<CarteraCreditos>carteraCreditos= new HashSet<CarteraCreditos>();
+	private Set<Credito>Creditos= new HashSet<Credito>();
 	
+	
+	public CarteraCreditos(int id, char calificacion, int diasMora) {
+		super();
+		this.id = id;
+		this.calificacion = calificacion;
+		this.diasMora = diasMora;
+	}
 	public CarteraCreditos() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,6 +51,13 @@ public class CarteraCreditos implements Serializable {
 	}
 	public void setDiasMora(int diasMora) {
 		this.diasMora = diasMora;
+	}
+	
+	public Set<Credito> getCreditos() {
+		return Creditos;
+	}
+	public void setCreditos(Set<Credito> creditos) {
+		Creditos = creditos;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
 
@@ -27,7 +28,7 @@ public class CuentaAhorros implements Serializable{
 	private char cuentaAct;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
-	private Set<CuentaAhorros>cuentaAhorros = new HashSet<CuentaAhorros>();
+	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
 	
 	@ManyToOne
 	@JoinColumn
@@ -44,9 +45,18 @@ public class CuentaAhorros implements Serializable{
 	
 	
 	public CuentaAhorros() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio) {
+		super();
+		this.cuentaId = cuentaId;
+		this.numeroCta = numeroCta;
+		this.fechaCre = fechaCre;
+		this.cuentaAct = cuentaAct;
+		this.socio = socio;
+	}
+
 	public int getCuentaId() {
 		return cuentaId;
 	}
@@ -71,6 +81,47 @@ public class CuentaAhorros implements Serializable{
 	public void setCuentaAct(char cuentaAct) {
 		this.cuentaAct = cuentaAct;
 	}
+
+	public Set<Movimiento> getMovimiento() {
+		return movimiento;
+	}
+
+	public void setMovimiento(Set<Movimiento> movimiento) {
+		this.movimiento = movimiento;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
+	}
+
+	public Set<PlanCuentas> getPlanCuentas() {
+		return planCuentas;
+	}
+
+	public void setPlanCuentas(Set<PlanCuentas> planCuentas) {
+		this.planCuentas = planCuentas;
+	}
+
+	public Set<SolicitudCredito> getSolicitudCredito() {
+		return solicitudCredito;
+	}
+
+	public void setSolicitudCredito(Set<SolicitudCredito> solicitudCredito) {
+		this.solicitudCredito = solicitudCredito;
+	}
+
+	public Set<Credito> getCredito() {
+		return credito;
+	}
+
+	public void setCredito(Set<Credito> credito) {
+		this.credito = credito;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

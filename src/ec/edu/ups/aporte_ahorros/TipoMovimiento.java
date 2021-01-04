@@ -26,6 +26,14 @@ public class TipoMovimiento implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public TipoMovimiento(int id, String nombre, boolean suma) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.suma = suma;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -44,10 +52,15 @@ public class TipoMovimiento implements Serializable{
 	public void setSuma(boolean suma) {
 		this.suma = suma;
 	}
+	public Set<Movimiento> getMovimiento() {
+		return movimiento;
+	}
+	public void setMovimiento(Set<Movimiento> movimiento) {
+		this.movimiento = movimiento;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
-	
-
 }

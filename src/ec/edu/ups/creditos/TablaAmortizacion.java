@@ -36,6 +36,23 @@ public class TablaAmortizacion implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public TablaAmortizacion(int id, int numCuota, Date fechaVenc, Date fechaPag, float capital, int cuotas,
+			float interes, float saldo, Credito credito) {
+		super();
+		this.id = id;
+		this.numCuota = numCuota;
+		this.fechaVenc = fechaVenc;
+		this.fechaPag = fechaPag;
+		this.capital = capital;
+		this.cuotas = cuotas;
+		this.interes = interes;
+		this.saldo = saldo;
+		this.credito = credito;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -84,6 +101,17 @@ public class TablaAmortizacion implements Serializable{
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
+	
+	public Credito getCredito() {
+		return credito;
+	}
+
+
+	public void setCredito(Credito credito) {
+		this.credito = credito;
+	}
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

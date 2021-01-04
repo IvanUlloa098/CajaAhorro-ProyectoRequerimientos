@@ -31,10 +31,6 @@ public class Movimiento implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn
-	private Caja caja;
-	
-	@ManyToOne
-	@JoinColumn
 	private DiarioCaja diarioCaja;
 	
 	@ManyToOne
@@ -50,6 +46,19 @@ public class Movimiento implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public Movimiento(int id, Date fecha, float monto, DiarioCaja diarioCaja, TipoMovimiento tipoM,
+			CuentaAhorros cuentaA) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.monto = monto;
+		this.diarioCaja = diarioCaja;
+		this.tipoM = tipoM;
+		this.cuentaA = cuentaA;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -68,10 +77,21 @@ public class Movimiento implements Serializable{
 	public void setMonto(float monto) {
 		this.monto = monto;
 	}
+	
+	public DiarioCaja getDiarioCaja() {
+		return diarioCaja;
+	}
+
+	public TipoMovimiento getTipoM() {
+		return tipoM;
+	}
+
+	public CuentaAhorros getCuentaA() {
+		return cuentaA;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	
 
 }

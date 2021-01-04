@@ -29,9 +29,16 @@ public class DiarioCaja implements Serializable{
 	private Set<Movimiento> movimiento = new HashSet<Movimiento>();
 	
 	public DiarioCaja() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	public DiarioCaja(Date fecha, Caja caja, Set<Movimiento> movimiento) {
+		super();
+		this.fecha = fecha;
+		this.caja = caja;
+		this.movimiento = movimiento;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -44,9 +51,28 @@ public class DiarioCaja implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	
+	public Caja getCaja() {
+		return caja;
+	}
+
+	public void setCaja(Caja caja) {
+		this.caja = caja;
+	}
+
+	public Set<Movimiento> getMovimiento() {
+		return movimiento;
+	}
+
+	public void setMovimiento(Set<Movimiento> movimiento) {
+		this.movimiento = movimiento;
+	}
+	
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 	
 	
 

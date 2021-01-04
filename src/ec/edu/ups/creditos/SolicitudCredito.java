@@ -37,6 +37,16 @@ public class SolicitudCredito implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public SolicitudCredito(int id, char estado, Date fecha, String observacion, CuentaAhorros cuentaA) {
+		super();
+		this.id = id;
+		this.estado = estado;
+		this.fecha = fecha;
+		this.observacion = observacion;
+		this.cuentaA = cuentaA;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -61,6 +71,15 @@ public class SolicitudCredito implements Serializable {
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
+	
+	public CuentaAhorros getCuentaA() {
+		return cuentaA;
+	}
+
+	public void setCuentaA(CuentaAhorros cuentaA) {
+		this.cuentaA = cuentaA;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
