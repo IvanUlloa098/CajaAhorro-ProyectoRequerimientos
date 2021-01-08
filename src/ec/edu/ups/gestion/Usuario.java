@@ -36,18 +36,18 @@ public class Usuario extends Persona implements Serializable {
 	@JoinColumn
 	private Caja caja;
 	
+	
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Usuario(int id, String username, String password, Rol rol, Caja caja) {
+	public Usuario(int id, String username, String password, Rol rol ) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.rol = rol;
-		this.caja = caja;
 	}
 
 	public int getId() {
@@ -77,13 +77,6 @@ public class Usuario extends Persona implements Serializable {
 		this.rol = rol;
 	}
 
-	public Caja getCaja() {
-		return caja;
-	}
-
-	public void setCaja(Caja caja) {
-		this.caja = caja;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

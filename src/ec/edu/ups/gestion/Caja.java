@@ -37,7 +37,6 @@ public class Caja implements Serializable {
 	}
 	
 	public Caja(int id, String direccion, float saldo) {
-		super();
 		this.id = id;
 		this.direccion = direccion;
 		this.saldo = saldo;
