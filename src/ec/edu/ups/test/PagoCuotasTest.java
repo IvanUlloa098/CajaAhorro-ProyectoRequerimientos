@@ -50,13 +50,13 @@ public class PagoCuotasTest {
 		this.credito = new Credito(1, 1800, 15, 6, 'A',cuentaAhorros, carteraCreditos);
 		this.pagoCuotas = new PagoCuotas(1,1000, date,this.credito);
 		
-		float monto = (this.pagoCuotas.getCredito().getMonto()/this.pagoCuotas.getCredito().getNumeroCuota())*(this.pagoCuotas.getCredito().getInteres()/100);
+		float monto = (this.pagoCuotas.getCredito().getMonto()/this.pagoCuotas.getCredito().getNumeroCuota())*(((float)this.pagoCuotas.getCredito().getInteres())/100);
 		pagoCuotas = new PagoCuotas(1, 0, date, this.credito);
 		if(pagoCuotas.verificarCredito()==true) {
 			pagoCuotas.setMontoPag(monto);
 		}
 		
-		assertEquals(1455, (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 1e-6);
+		assertEquals((float) 1755, (float) (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class PagoCuotasTest {
 		this.credito = new Credito(2, 2000, 15, 6, 'A',cuentaAhorros, carteraCreditos);
 		this.pagoCuotas = new PagoCuotas(1,1000, date,this.credito);
 		
-		float monto = 100 * (this.pagoCuotas.getCredito().getInteres()/100);
+		float monto = 100 * (((float)this.pagoCuotas.getCredito().getInteres())/100);
 		
 		pagoCuotas = new PagoCuotas(2, 0, date, this.credito);
 		if(pagoCuotas.verificarCredito()==true) {
@@ -76,7 +76,7 @@ public class PagoCuotasTest {
 			this.pagoCuotas = new PagoCuotas();
 		}
 		
-		assertEquals(1885, (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 1e-6);
+		assertEquals((float) 1985, (float) (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
 		
 	}
 	
@@ -85,19 +85,20 @@ public class PagoCuotasTest {
 		
 		Date date = new Date();
 		
-		this.credito = new Credito(1, 10, 15, 6, 'D',cuentaAhorros, carteraCreditos);
+		this.credito = new Credito(3, 10, 15, 6, 'D',cuentaAhorros, carteraCreditos);
 		this.pagoCuotas = new PagoCuotas(1,1000, date,this.credito);
 		
-		float monto = 100 * (this.pagoCuotas.getCredito().getInteres()/100);
+		float monto = 100 * (((float)this.pagoCuotas.getCredito().getInteres())/100);
 		
-		pagoCuotas = new PagoCuotas(2, 0, date, this.credito);
+		
+		pagoCuotas = new PagoCuotas(3, 0, date, this.credito);
 		if(pagoCuotas.verificarCredito()==true) {
 			this.pagoCuotas.setMontoPag(monto);
 		} else {
 			this.pagoCuotas = new PagoCuotas();
 		}
 		
-		assertEquals(null, this.pagoCuotas.getMontoPag());
+		assertEquals((float) 0, (float) this.pagoCuotas.getMontoPag(), 0.01d);
 		
 	}
 

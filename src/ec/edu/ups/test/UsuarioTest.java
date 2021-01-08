@@ -43,7 +43,7 @@ public class UsuarioTest {
 	public void testAsignarRolUsuario() {
 		this.rol = new Rol(1, "U");
 		this.usuario.setRol(rol);
-		assertEquals("U", this.usuario.getRol());
+		assertEquals("U", this.usuario.getRol().getRol());
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class UsuarioTest {
 		
 		this.rol = new Rol(1, "A");
 		this.usuario.setRol(rol);
-		assertEquals("A", this.usuario.getRol());
+		assertEquals("A", this.usuario.getRol().getRol());
 	}
 
 }

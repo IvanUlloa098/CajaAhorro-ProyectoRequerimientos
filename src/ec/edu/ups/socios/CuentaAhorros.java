@@ -57,6 +57,23 @@ public class CuentaAhorros implements Serializable{
 		this.socio = socio;
 	}
 
+	public void addRetiro(Movimiento movimiento) {
+		if (movimiento.getTipoM().getNombre().equals("RETIRO")) {
+			this.movimiento.add(movimiento);
+		} else {
+			System.out.println("NO ES RETIRO");
+		}
+		
+	}
+	
+	public void addDeposito(Movimiento movimiento) {
+		if (movimiento.getTipoM().getNombre().equals("DEPOSITO")) {
+			this.movimiento.add(movimiento);
+		} else {
+			System.out.println("NO ES DEPOSITO");
+		}
+	}
+	
 	public int getCuentaId() {
 		return cuentaId;
 	}

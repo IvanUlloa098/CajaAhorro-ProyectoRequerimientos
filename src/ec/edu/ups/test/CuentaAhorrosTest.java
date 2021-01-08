@@ -47,6 +47,8 @@ public class CuentaAhorrosTest {
 	public void testCrearCuentadeAhorrosSocio() {
 		Date date = new Date();
 		this.cuentaAhorros = new CuentaAhorros(1, 12121212, date, 'A', socio);
+		
+		assertEquals(socio, cuentaAhorros.getSocio());
 	}
 	
 	@Test
@@ -62,6 +64,7 @@ public class CuentaAhorrosTest {
 		this.socio.setEmail(usuario.getEmail());
 		
 		this.cuentaAhorros = new CuentaAhorros(1, 12121212, date, 'A', socio);
+		assertEquals(socio, cuentaAhorros.getSocio());
 	}
 
 }
