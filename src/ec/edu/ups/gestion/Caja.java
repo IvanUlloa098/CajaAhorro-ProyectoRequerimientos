@@ -81,5 +81,14 @@ public class Caja implements Serializable {
 		return serialVersionUID;
 	}
 	
+	public boolean agregarUsuario(Usuario user, Caja caja) {
+		usuarios = new HashSet<Usuario>();
+		usuarios.add(user);
+		caja.setUsuarios(usuarios);
+		return true;
+		
+	}
+	
+	
 
 }

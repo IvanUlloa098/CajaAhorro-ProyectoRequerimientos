@@ -38,12 +38,12 @@ public class Usuario extends Persona implements Serializable {
 	
 	
 	public Usuario() {
-		super();
+	
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Usuario(int id, String username, String password, Rol rol ) {
-		super();
+		
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -81,6 +81,7 @@ public class Usuario extends Persona implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 	
 	
 

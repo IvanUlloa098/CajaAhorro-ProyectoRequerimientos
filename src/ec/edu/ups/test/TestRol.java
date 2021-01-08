@@ -6,20 +6,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.operaciones.RolController;
+
+import ec.edu.ups.gestion.Caja;
+import ec.edu.ups.gestion.Rol;
+import ec.edu.ups.gestion.Usuario;
 
 public class TestRol {
-	private RolController rolController;
+	private Usuario usuario; 
+	private Rol rol; 
 	
-	@Test
-	public void resultado() {
-		String correo = "dtixi@gmail.com";
-		assertTrue(rolController.asignarRol(correo));
-	}
+	
 
 	@Before
 	public void paraEjecutarAntes()throws Exception{
-		rolController = new RolController();
+		
+		
+	}
+	
+	@Test
+	public void asignarRol() {
+		
 	}
 	
 	@After

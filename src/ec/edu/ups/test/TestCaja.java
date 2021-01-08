@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.operaciones.CajaController;
 
 import ec.edu.ups.gestion.Caja;
 import ec.edu.ups.gestion.Rol;
@@ -14,40 +13,35 @@ import ec.edu.ups.gestion.Usuario;
 
 public class TestCaja {
 	private Caja caja; 
-	
-	private CajaController controladorCaja;
+	//private CajaController controladorCaja;
 	
 	private Usuario user; 
 	private Rol rol;
-	private boolean confirmacion = false;
 	
 	@Before
 	public void setUp() throws Exception{
-		controladorCaja = new CajaController();
+		caja = new Caja(1, "Av Americas y Batan", 400.50f);
+		rol = new Rol (1,"Admin");
+		user = new Usuario(1, "dianaTixi", "patito123", rol);
 	
 	}
 	@Test
 	public void obtenerSaldo(){
 		double valorPrueba= 400.50f;
-		float saldoCaja = controladorCaja.revisarSaldo();
+		float saldoCaja = caja.getSaldo();
 		double saldo= saldoCaja;
-		assertEquals("Test suma", valorPrueba, saldo, 1e-6);
+		assertEquals("Test Control Saldo Caja", valorPrueba, saldo, 0.01d);
 		
 	}
+	
 	@Test
 	public void usuarioAdd() {
-		rol = new Rol();
-		rol.setId(1);
-		rol.setRol("Admin");
-		user = new Usuario(1, "dianaTixi", "patito123", rol);
-		confirmacion = controladorCaja.agregarUsuario(user);
-		assertTrue("Add Exitoso", confirmacion);
+		boolean confirmacion= caja.agregarUsuario(user, caja);
+		assertTrue("Se Agrego Correctamente", confirmacion);
 	}
 	
 	@After
 	public void tearDown() throws Exception {
 	}
-
-	
 
 }
