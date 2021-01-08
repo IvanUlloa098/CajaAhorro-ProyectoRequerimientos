@@ -1,6 +1,7 @@
 package ec.edu.ups.creditos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,9 +38,13 @@ public class Credito implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
 	private Set<TablaAmortizacion>tablaAmortizacion  = new HashSet<TablaAmortizacion>();
+	//private ArrayList<TablaAmortizacion>tablaAmortizacion  = new ArrayList<TablaAmortizacion>();
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
 	private Set<PagoCuotas> pagos = new HashSet<PagoCuotas>();
+	//private ArrayList<PagoCuotas> pagos = new ArrayList<PagoCuotas>();
+	
 	
 	public Credito() {
 		super();
@@ -122,10 +127,39 @@ public class Credito implements Serializable {
 		this.pagos = pagos;
 	}
 
+	
+	
+	/*
+	public ArrayList<TablaAmortizacion> getTablaAmortizacion() {
+		return tablaAmortizacion;
+	}
+
+	public void setTablaAmortizacion(ArrayList<TablaAmortizacion> tablaAmortizacion) {
+		this.tablaAmortizacion = tablaAmortizacion;
+	}
+
+	public ArrayList<PagoCuotas> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(ArrayList<PagoCuotas> pagos) {
+		this.pagos = pagos;
+	}
+	
+	public void addTablaAmortizacion(TablaAmortizacion tablaAmortizacion) {
+		this.tablaAmortizacion.add(tablaAmortizacion);
+	}
+	
+	public void addPagoCuotas(PagoCuotas pagos) {
+		this.pagos.add(pagos);
+	}
+	*/
+	
+	
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	
 
 }

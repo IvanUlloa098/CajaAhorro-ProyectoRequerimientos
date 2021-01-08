@@ -10,7 +10,8 @@ import com.operaciones.Suma;
 public class TestSuma {
 	
 	private Suma suma;
-
+	
+	
     @Test
     public void aVerSiIncrementaBien() {
         assertEquals("Test incrementa", 2.0, suma.incrementa(1.0), 1e-6);
