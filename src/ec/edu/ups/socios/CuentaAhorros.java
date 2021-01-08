@@ -1,4 +1,4 @@
-package ec.edu.ups.socios;
+ package ec.edu.ups.socios;
 
 import java.io.Serializable;
 import java.util.Date;

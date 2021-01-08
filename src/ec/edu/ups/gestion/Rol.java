@@ -33,11 +33,11 @@ public class Rol implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Rol(int id, String rol, Usuario user) {
+	public Rol(int id, String rol) {
 		super();
 		this.id = id;
 		this.rol = rol;
-		this.user = user;
+		
 	}
 
 	public int getId() {
