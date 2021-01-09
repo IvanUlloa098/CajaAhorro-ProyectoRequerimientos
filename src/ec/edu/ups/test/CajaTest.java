@@ -27,7 +27,7 @@ public class CajaTest {
 	}
 	@Test
 	public void obtenerSaldo(){
-		double valorPrueba= 400.50f;
+		double valorPrueba= 4700.50f;
 		float saldoCaja = caja.getSaldo();
 		double saldo= saldoCaja;
 		assertEquals("Test Control Saldo Caja", valorPrueba, saldo, 0.01d);
