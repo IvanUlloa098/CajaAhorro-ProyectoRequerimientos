@@ -11,7 +11,7 @@ import ec.edu.ups.gestion.Caja;
 import ec.edu.ups.gestion.Rol;
 import ec.edu.ups.gestion.Usuario;
 
-public class TestCaja {
+public class CajaTest {
 	private Caja caja; 
 	//private CajaController controladorCaja;
 	
@@ -22,7 +22,7 @@ public class TestCaja {
 	public void setUp() throws Exception{
 		caja = new Caja(1, "Av Americas y Batan", 400.50f);
 		rol = new Rol (1,"Admin");
-		user = new Usuario(1, "dianaTixi", "patito123", rol);
+		user = new Usuario(1, "dianaTixi", "patito123", rol, new Caja());
 	
 	}
 	@Test
@@ -42,6 +42,7 @@ public class TestCaja {
 	
 	@After
 	public void tearDown() throws Exception {
+		
 	}
 
 }
