@@ -10,7 +10,7 @@ import ec.edu.ups.gestion.Caja;
 import ec.edu.ups.gestion.Rol;
 import ec.edu.ups.gestion.Usuario;
 
-public class UsuarioTest {
+public class TestUsuario {
 
 	private Usuario usuario;
 	private Rol rol;

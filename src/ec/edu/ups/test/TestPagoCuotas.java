@@ -14,7 +14,7 @@ import ec.edu.ups.creditos.PagoCuotas;
 import ec.edu.ups.socios.CuentaAhorros;
 import ec.edu.ups.socios.Socio;
 
-public class PagoCuotasTest {
+public class TestPagoCuotas {
 
 	private CuentaAhorros cuentaAhorros;
 	private CarteraCreditos carteraCreditos;

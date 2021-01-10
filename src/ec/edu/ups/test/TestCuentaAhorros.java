@@ -14,7 +14,7 @@ import ec.edu.ups.gestion.Usuario;
 import ec.edu.ups.socios.CuentaAhorros;
 import ec.edu.ups.socios.Socio;
 
-public class CuentaAhorrosTest {
+public class TestCuentaAhorros {
 
 	private CuentaAhorros cuentaAhorros;
 	private Socio socio;
