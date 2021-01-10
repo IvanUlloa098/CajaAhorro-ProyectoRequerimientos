@@ -10,10 +10,14 @@ public class Suma {
         // Se multiplica en vez de sumar a posta, para que los test fallen
         return a + b;
     }
-
+    
     
     public double incrementa(double a) {
         return a + 1;
     }
     
 }
+
+
+
+

@@ -18,15 +18,18 @@ public class TablaAmortizacion implements Serializable{
 	@Column(nullable=false)
 	private Date fechaVenc;
 	@Column(nullable=false)
-	private Date fechaPag;
+	private int tasa;
 	@Column(nullable=false)
-	private float capital;
+	private double capital;
 	@Column(nullable=false)
-	private int cuotas;
+	private double interes;
 	@Column(nullable=false)
-	private float interes;
+	private double pagoTotal;
 	@Column(nullable=false)
-	private float saldo;
+	private double saldo;
+	@Column(nullable=false)
+	private String estado;
+	
 	
 	@ManyToOne
 	@JoinColumn
@@ -38,17 +41,18 @@ public class TablaAmortizacion implements Serializable{
 	}
 	
 	
-	public TablaAmortizacion(int id, int numCuota, Date fechaVenc, Date fechaPag, float capital, int cuotas,
-			float interes, float saldo, Credito credito) {
+	public TablaAmortizacion(int id, int numCuota, Date fechaVenc, int  tasa, double capital,
+			double interes, double pagoTotal, double saldo, String estado, Credito credito) {
 		super();
 		this.id = id;
 		this.numCuota = numCuota;
 		this.fechaVenc = fechaVenc;
-		this.fechaPag = fechaPag;
+		this.tasa = tasa;
 		this.capital = capital;
-		this.cuotas = cuotas;
 		this.interes = interes;
+		this.pagoTotal = pagoTotal;
 		this.saldo = saldo;
+		this.estado = estado;
 		this.credito = credito;
 	}
 
@@ -71,35 +75,53 @@ public class TablaAmortizacion implements Serializable{
 	public void setFechaVenc(Date fechaVenc) {
 		this.fechaVenc = fechaVenc;
 	}
-	public Date getFechaPag() {
-		return fechaPag;
+	
+	public int getTasa() {
+		return tasa;
 	}
-	public void setFechaPag(Date fechaPag) {
-		this.fechaPag = fechaPag;
-	}
-	public float getCapital() {
+
+	public void setTasa(int tasa) {
+		this.tasa = tasa;
+	};
+	
+	public double getCapital() {
 		return capital;
 	}
-	public void setCapital(float capital) {
+	public void setCapital(double capital) {
 		this.capital = capital;
 	}
-	public int getCuotas() {
-		return cuotas;
-	}
-	public void setCuotas(int cuotas) {
-		this.cuotas = cuotas;
-	}
-	public float getInteres() {
+	
+	public double getInteres() {
 		return interes;
 	}
-	public void setInteres(float interes) {
+	public void setInteres(double interes) {
 		this.interes = interes;
 	}
-	public float getSaldo() {
+	
+	public double getPagoTotal() {
+		return pagoTotal;
+	}
+
+
+	public void setPagoTotal(double pagoTotal) {
+		this.pagoTotal = pagoTotal;
+	}
+	
+	
+	public double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(float saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	public Credito getCredito() {
@@ -115,6 +137,76 @@ public class TablaAmortizacion implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+	
+	public double calculaCapital() {
+		
+		double obtenerCapital = (double) pagoTotal-interes;
+		//System.out.println(obtenerCapital);
+		return obtenerCapital;
+	};
+	
+	public double calculaInteres() {
+		double obtenerTasa = (double) tasa/100;
+		double obtenerInteres = (double) (saldo*obtenerTasa);
+		//System.out.println(obtenerTasa);
+		//System.out.println(obtenerInteres);
+		return obtenerInteres;
+	};
+	
+	public double calculaPagoTotal() {
+		
+		double obtenerTasa = (double) tasa/100;
+		double obtenerPagoTotal = (double) (saldo*obtenerTasa)/( 1-Math.pow((1+obtenerTasa), -numCuota)); 
+		//System.out.println( tasaInteres);
+		//System.out.println(obtenerPagoTotal);
+		return obtenerPagoTotal;
+		
+	}
+	
+
+	public double calculaSaldo() {
+		double obtenerSaldo = (double) saldo-this.getCapital();
+		//System.out.println(obtenerTasa);
+		//System.out.println(obtenerCapital);
+		//System.out.println(obtenerSaldo);
+		return obtenerSaldo;
+		
+	}
+
+	public double calculaPagoUnaCuota(int cuota) {
+		double obtenerSaldo=0.0;
+		
+		double obtenerTasa = (double) tasa/100;
+		double obtenerPagoTotal = (double) (saldo*obtenerTasa)/( 1-Math.pow((1+obtenerTasa), -numCuota)); 
+		this.setPagoTotal(obtenerPagoTotal);
+		
+		for( int i=1; i<= cuota; i++) {
+		
+		double obtenerInteres = (double) (saldo*obtenerTasa);
+		this.setInteres(obtenerInteres);
+		
+		double obtenerCapital = (double) pagoTotal-interes;
+		this.setCapital(obtenerCapital);
+		
+		
+		obtenerSaldo = (double) saldo-this.getCapital();
+		this.setSaldo(obtenerSaldo);
+
+		System.out.println("---------------");
+		System.out.println("Capital  " +obtenerCapital);
+		System.out.println("Interes  " +obtenerInteres);
+		System.out.println("Pago total  " +  obtenerPagoTotal);
+		System.out.println("saldo  "  +obtenerSaldo);
+		}
+		
+		
+		return obtenerSaldo;
+	}
+	
+
+	
 	
 	
 

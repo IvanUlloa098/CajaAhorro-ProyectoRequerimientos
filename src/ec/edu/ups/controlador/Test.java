@@ -1,4 +1,4 @@
-package ec.udu.ups.controlador;
+package ec.edu.ups.controlador;
 
 import ec.edu.ups.dao.CajaDAO;
 import ec.edu.ups.dao.DAOFactory;

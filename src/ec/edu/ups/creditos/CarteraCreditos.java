@@ -65,5 +65,16 @@ public class CarteraCreditos implements Serializable {
 	}
 
 	
+	public boolean agregarCredito(Credito credito) {
+	
+		this.setId(1);
+		this.setCalificacion((char) 1);
+		this.setDiasMora(4);
+		
+		this.Creditos.add(credito);
+	
+		return true;
+	};
+	
 
 }
