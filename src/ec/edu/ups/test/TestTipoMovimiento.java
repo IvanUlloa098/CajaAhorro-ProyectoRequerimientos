@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import ec.edu.ups.aporte_ahorros.TipoMovimiento;
 
-public class TestTipoMovimientoController {
+public class TestTipoMovimiento {
 	
 	private boolean confirmacion = false;
 	private TipoMovimiento tipoMovimiento;

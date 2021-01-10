@@ -12,7 +12,7 @@ import java.util.Date;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.TablaAmortizacion;
 
-public class TestTablaAmortizacionController {
+public class TestTablaAmortizacion {
 
 	private Credito credito;
 	private TablaAmortizacion tablaAmorizacion;
