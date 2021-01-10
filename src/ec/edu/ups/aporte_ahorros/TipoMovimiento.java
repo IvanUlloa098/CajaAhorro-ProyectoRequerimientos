@@ -63,4 +63,11 @@ public class TipoMovimiento implements Serializable{
 		return serialVersionUID;
 	}
 	
+	public boolean crearTipoMovimiento(int id, String nombre, boolean suma ) {
+		
+		this.setId(id);
+		this.setNombre(nombre);
+		this.setSuma(suma);
+		return true;
+	};
 }
