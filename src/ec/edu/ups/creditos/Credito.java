@@ -126,6 +126,15 @@ public class Credito implements Serializable {
 		return serialVersionUID;
 	}
 	
+	private float calcularTEM(float tea, int dias) {
+        return (float) (Math.pow(1f + (tea / 100f), dias / 360f) - 1f) * 100f;
+    }
 	
+	public float calcularCuota(float tea, float cuotas, float monto) {
+		 float tem = this.calcularTEM(tea, 30) / 100f;
+
+        float x = (float) Math.pow(1f + tem, cuotas);
+        return monto * ((x * tem) / (x - 1f));
+    }
 
 }
