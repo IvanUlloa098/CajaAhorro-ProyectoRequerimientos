@@ -39,18 +39,16 @@ public class TestMovimiento {
 	public void testDeposito(){
 		
 		double inicial = 399.33;
-		String tipoTXN = "Depo";
-		String esperado=ca.Transacciones(inicial, tipoTXN);
-		System.out.println(esperado);
-		assertEquals(tipoTXN, esperado);
+		String tipoTXN = "Depoto";
+		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		System.out.println("Esperado-> "+tipoTXN);
+		System.out.println("Resultado-> "+resultado);
+		assertTrue(tipoTXN, resultado);
 		
 	}
 
 
-	private void assertEquals(String string, String esperado) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }
