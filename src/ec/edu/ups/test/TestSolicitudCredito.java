@@ -12,20 +12,17 @@ import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.socios.CuentaAhorros;
 import ec.edu.ups.socios.PlanCuentas;
 import ec.edu.ups.socios.Socio;
-import ec.udu.ups.controlador.SolicitudCreditosController;
 
 public class TestSolicitudCredito {
 	
 	private Socio socio;
 	private CuentaAhorros cuentaAhorros;
-	private SolicitudCreditosController controller;
 	private boolean confirmacion = false;
 	private PlanCuentas plan;
 	private SolicitudCredito solicitud;
 	
 	@Before
 	public void setUp() {
-		controller = new SolicitudCreditosController();
 	}
 	
 	@After

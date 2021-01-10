@@ -12,12 +12,10 @@ import org.junit.Test;
 import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.gestion.Caja;
 import ec.edu.ups.gestion.DiarioCaja;
-import ec.udu.ups.controlador.DiarioCajaController;
 
 
 public class TestDiarioCaja {
 
-	private DiarioCajaController controller;
 	private boolean confirmacion = false;
 	private Caja caja;
 	private HashSet<Movimiento> movimientos;
@@ -25,7 +23,6 @@ public class TestDiarioCaja {
 	
 	@Before
 	public void setUp() {
-		controller = new DiarioCajaController();
 	}
 	
 	@After
