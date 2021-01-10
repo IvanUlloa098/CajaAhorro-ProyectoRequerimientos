@@ -160,16 +160,14 @@ public class CuentaAhorros implements Serializable{
 		
 	}
 	
-	public String Transacciones(double cantidad, String tipotxn) {
+	public boolean Transacciones(double cantidad, String tipotxn) {
 		
-		if(tipotxn == "Deposito")	{
+		if(tipotxn == "Deposito")	
+			{
 				saldo = saldo + cantidad;
 				System.out.println("Deposito Realizado por: "+ cantidad);
 				System.out.println("Saldo: "+ saldo);
-				
-			}else {
-				
-				return "Error Deposito";
+				return true;
 			}
 			
 		if(tipotxn == "Retiro")
@@ -177,12 +175,9 @@ public class CuentaAhorros implements Serializable{
 				saldo = saldo - cantidad;
 				System.out.println("Deposito Realizado por: "+ cantidad);
 				System.out.println("Saldo: "+ saldo);
-			
-			}else {
-				return "Error Retiro";
+				return true;
 			}
-		
-		return tipotxn;
+		return false;
 	}
 	
 
