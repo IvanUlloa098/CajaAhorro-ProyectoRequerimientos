@@ -30,6 +30,7 @@ public class CarteraCreditos implements Serializable {
 		this.calificacion = calificacion;
 		this.diasMora = diasMora;
 	}
+	
 	public CarteraCreditos() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -42,12 +42,13 @@ public class Usuario extends Persona implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Usuario(int id, String username, String password, Rol rol ) {
+	public Usuario(int id, String username, String password, Rol rol, Caja caja) {
 		
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.rol = rol;
+		this.caja = caja;
 	}
 
 	public int getId() {

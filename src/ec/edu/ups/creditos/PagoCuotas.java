@@ -34,6 +34,16 @@ public class PagoCuotas implements Serializable {
 		this.fecha = fecha;
 		this.credito = credito;
 	}
+	
+	public boolean verificarCredito() {
+		
+		if(this.credito.getEstado() == 'A' ) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
 
 	public int getId() {
 		return id;

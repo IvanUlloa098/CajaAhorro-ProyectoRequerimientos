@@ -1,4 +1,4 @@
-package ec.edu.ups.socios;
+ package ec.edu.ups.socios;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +10,7 @@ import javax.persistence.*;
 import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
+import ec.edu.ups.gestion.Caja;
 
 @Entity
 @Table(name="CDA_CuentaAhorros")
@@ -43,6 +44,13 @@ public class CuentaAhorros implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<Credito> credito = new HashSet<Credito>();
 	
+	private double inicial;
+	
+	private double saldo;
+	
+	private Movimiento m;
+	
+	private Caja c;
 	
 	public CuentaAhorros() {
 		
@@ -56,7 +64,7 @@ public class CuentaAhorros implements Serializable{
 		this.cuentaAct = cuentaAct;
 		this.socio = socio;
 	}
-
+	
 	public int getCuentaId() {
 		return cuentaId;
 	}
@@ -117,6 +125,13 @@ public class CuentaAhorros implements Serializable{
 	public Set<Credito> getCredito() {
 		return credito;
 	}
+	
+	public double getinicial() {
+		return inicial;
+	}
+	public void setinicial(double inicial) {
+		this.inicial = inicial;
+	}
 
 	public void setCredito(Set<Credito> credito) {
 		this.credito = credito;
@@ -126,6 +141,51 @@ public class CuentaAhorros implements Serializable{
 		return serialVersionUID;
 	}
 	
+		
+	public double addDeposito(double cantidad) {
+		
+		saldo = saldo + cantidad;
+		//c.setSaldo((float) saldo);
+		System.out.println("Deposito Realizado por: "+ cantidad);
+		System.out.println("Saldo: "+ saldo);
+		return saldo;
+	}
+	
+	public double addRetiro(double cantidad) {
+		
+		saldo = saldo - cantidad;
+		System.out.println("Retiro Realizado por: "+ cantidad);
+		System.out.println("Saldo: "+ saldo);
+		return saldo;
+		
+	}
+	
+	public boolean Transacciones(double cantidad, String tipotxn) {
+		
+		if(tipotxn == "Deposito")	
+			{
+				saldo = saldo + cantidad;
+				System.out.println("Deposito Realizado por: "+ cantidad);
+				System.out.println("Saldo: "+ saldo);
+				return true;
+			}
+			
+		if(tipotxn == "Retiro")
+			{
+				saldo = saldo - cantidad;
+				System.out.println("Deposito Realizado por: "+ cantidad);
+				System.out.println("Saldo: "+ saldo);
+				return true;
+			}
+		if(tipotxn == "Transferencia")
+		{
+			saldo = saldo - cantidad;
+			System.out.println("Deposito Realizado por: "+ cantidad);
+			System.out.println("Saldo: "+ saldo);
+			return true;
+		}
+		return false;
+	}
 	
 
 }

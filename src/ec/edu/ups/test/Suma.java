@@ -1,4 +1,4 @@
-package com.operaciones;
+package ec.edu.ups.test;
 
 /**
  * Clase tonta para poder hacer test de junit con ella

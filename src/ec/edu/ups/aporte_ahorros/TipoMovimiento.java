@@ -68,10 +68,6 @@ public class TipoMovimiento implements Serializable{
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setSuma(suma);
-		
-		
-		
 		return true;
 	};
-	
 }
