@@ -36,10 +36,22 @@ public class TestMovimiento {
 	
 	
 	@Test
-	public void testDeposito(){
+	public void testTransaccion(){
 		
 		double inicial = 399.33;
 		String tipoTXN = "Depoto";
+		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		System.out.println("Esperado-> "+tipoTXN);
+		System.out.println("Resultado-> "+resultado);
+		assertTrue(tipoTXN, resultado);
+		
+	}
+	
+	@Test
+	public void testTransaccion1(){
+		
+		double inicial = 399.33;
+		String tipoTXN = "Retiro";
 		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
 		System.out.println("Esperado-> "+tipoTXN);
 		System.out.println("Resultado-> "+resultado);
