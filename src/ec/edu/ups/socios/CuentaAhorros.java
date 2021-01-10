@@ -43,12 +43,17 @@ public class CuentaAhorros implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<Credito> credito = new HashSet<Credito>();
 	
+	private double inicial;
+	
+	private double saldo;
+	
+	private Movimiento m;
 	
 	public CuentaAhorros() {
 		
 	}
 	
-	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio) {
+	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio, double inicial) {
 		super();
 		this.cuentaId = cuentaId;
 		this.numeroCta = numeroCta;
@@ -117,6 +122,13 @@ public class CuentaAhorros implements Serializable{
 	public Set<Credito> getCredito() {
 		return credito;
 	}
+	
+	public double getinicial() {
+		return inicial;
+	}
+	public void setinicial(double inicial) {
+		this.inicial = inicial;
+	}
 
 	public void setCredito(Set<Credito> credito) {
 		this.credito = credito;
@@ -126,6 +138,23 @@ public class CuentaAhorros implements Serializable{
 		return serialVersionUID;
 	}
 	
+		
+	public double addDeposito(double cantidad) {
+		
+		saldo = saldo + cantidad;
+		System.out.println("Deposito Realizado por: "+ cantidad);
+		System.out.println("Saldo: "+ saldo);
+		return saldo;
+	}
+	
+	public double addRetiro(double cantidad) {
+		
+		saldo = saldo - cantidad;
+		System.out.println("Retiro Realizado por: "+ cantidad);
+		System.out.println("Saldo: "+ saldo);
+		return saldo;
+		
+	}
 	
 
 }

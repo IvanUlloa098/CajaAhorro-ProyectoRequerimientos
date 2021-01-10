@@ -27,7 +27,7 @@ public class Movimiento implements Serializable{
 	@Column(nullable=false)
 	private Date fecha;
 	@Column(nullable=false)
-	private float monto;
+	private double monto;
 	
 	@ManyToOne
 	@JoinColumn
@@ -57,7 +57,7 @@ public class Movimiento implements Serializable{
 		this.tipoM = tipoM;
 		this.cuentaA = cuentaA;
 	}*/
-	public Movimiento(int id, Date fecha, float monto, TipoMovimiento tipoM) {
+	public Movimiento(int id, Date fecha, double monto, TipoMovimiento tipoM) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
@@ -79,7 +79,7 @@ public class Movimiento implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public float getMonto() {
+	public double getMonto() {
 		return monto;
 	}
 	public void setMonto(float monto) {

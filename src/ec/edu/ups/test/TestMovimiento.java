@@ -3,11 +3,13 @@ package ec.edu.ups.test;
 import junit.framework.TestCase;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,36 +22,46 @@ public class TestMovimiento {
 
 	private CuentaAhorros ca;
 	private Movimiento m;
-	private Movimiento me;
+	private Socio s;
 	private TipoMovimiento tm;
-	private TipoMovimiento tme;
+	private double procesado;
 	private Date d = new Date(121,0,8);
 	
 	
-	public void escenario()
-	{
-		tm =new TipoMovimiento();
-		tm.setId(1);
-		tm.setNombre("Retiro");
-		m = new Movimiento(1,d, 400, tm);
+
+	@Before
+	public void setUp() throws Exception {
+		ca = new CuentaAhorros();
 	}
-			
-	@Test
-	public void testMovimientos(){
-		
-		// esperado
-		tme = new TipoMovimiento();
-		tme.setId(1);
-		tme.setNombre("Retiro");
-		
-		me = new Movimiento(1,d, 400, tme);
-		
-		escenario();
-		assertEquals(me, m);
 	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testTransaccion(){
+		double inicial = 399.33;
+		tm = new TipoMovimiento(1, "retiro", true);
+		m= new Movimiento(1, d, inicial, tm);
+		s= new Socio(1,'A');
+		
+			if((tm.getNombre() == "Deposito")) {
+				procesado = ca.addDeposito(m.getMonto());
+			}else {
+				procesado = ca.addRetiro(m.getMonto());
+			}
+		
+			System.out.println(inicial);
+			System.out.println(procesado);
+		Assert.assertEquals(inicial, procesado, 0);
+		
+
+		
+
+		
+		
+		
+	}
+
 	
 }
  
 
 
-}
