@@ -34,31 +34,43 @@ public class TestMovimiento {
 		ca = new CuentaAhorros();
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testTransaccion(){
+		
 		double inicial = 399.33;
-		tm = new TipoMovimiento(1, "retiro", true);
-		m= new Movimiento(1, d, inicial, tm);
-		s= new Socio(1,'A');
-		
-			if((tm.getNombre() == "Deposito")) {
-				procesado = ca.addDeposito(m.getMonto());
-			}else {
-				procesado = ca.addRetiro(m.getMonto());
-			}
-		
-			System.out.println(inicial);
-			System.out.println(procesado);
-		Assert.assertEquals(inicial, procesado, 0);
-		
-
-		
-
-		
-		
+		String tipoTXN = "Depoto";
+		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		System.out.println("Esperado-> "+tipoTXN);
+		System.out.println("Resultado-> "+resultado);
+		assertTrue(tipoTXN, resultado);
 		
 	}
+	
+	@Test
+	public void testTransaccion1(){
+		
+		double inicial = 399.33;
+		String tipoTXN = "Retiro";
+		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		System.out.println("Esperado-> "+tipoTXN);
+		System.out.println("Resultado-> "+resultado);
+		assertTrue(tipoTXN, resultado);
+		
+	}
+
+	@Test
+	public void testTransaccion2(){
+		
+		double inicial = 399.33;
+		String tipoTXN = "Transferencia";
+		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		System.out.println("Esperado-> "+tipoTXN);
+		System.out.println("Resultado-> "+resultado);
+		assertTrue(tipoTXN, resultado);
+		
+	}
+	
 
 	
 }

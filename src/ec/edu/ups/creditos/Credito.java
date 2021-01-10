@@ -1,7 +1,6 @@
 package ec.edu.ups.creditos;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,13 +37,9 @@ public class Credito implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
 	private Set<TablaAmortizacion>tablaAmortizacion  = new HashSet<TablaAmortizacion>();
-	//private ArrayList<TablaAmortizacion>tablaAmortizacion  = new ArrayList<TablaAmortizacion>();
-	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "credito")
 	private Set<PagoCuotas> pagos = new HashSet<PagoCuotas>();
-	//private ArrayList<PagoCuotas> pagos = new ArrayList<PagoCuotas>();
-	
 	
 	public Credito() {
 		super();
@@ -127,51 +122,19 @@ public class Credito implements Serializable {
 		this.pagos = pagos;
 	}
 
-	
-	
-	/*
-	public ArrayList<TablaAmortizacion> getTablaAmortizacion() {
-		return tablaAmortizacion;
-	}
-
-	public void setTablaAmortizacion(ArrayList<TablaAmortizacion> tablaAmortizacion) {
-		this.tablaAmortizacion = tablaAmortizacion;
-	}
-
-	public ArrayList<PagoCuotas> getPagos() {
-		return pagos;
-	}
-
-	public void setPagos(ArrayList<PagoCuotas> pagos) {
-		this.pagos = pagos;
-	}
-	
-	public void addTablaAmortizacion(TablaAmortizacion tablaAmortizacion) {
-		this.tablaAmortizacion.add(tablaAmortizacion);
-	}
-	
-	public void addPagoCuotas(PagoCuotas pagos) {
-		this.pagos.add(pagos);
-	}
-	*/
-	
-	
-	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
-	public void calcularCapital() {
-		
-	};
+	private float calcularTEM(float tea, int dias) {
+        return (float) (Math.pow(1f + (tea / 100f), dias / 360f) - 1f) * 100f;
+    }
 	
-	public void calcularInteres() {
-		
-	};
-	
-	public void calcularPagoTotal() {
-		
-	};
-	
+	public float calcularCuota(float tea, float cuotas, float monto) {
+		 float tem = this.calcularTEM(tea, 30) / 100f;
+
+        float x = (float) Math.pow(1f + tem, cuotas);
+        return monto * ((x * tem) / (x - 1f));
+    }
 
 }

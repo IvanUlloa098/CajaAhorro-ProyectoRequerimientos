@@ -10,6 +10,7 @@ import javax.persistence.*;
 import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
+import ec.edu.ups.gestion.Caja;
 
 @Entity
 @Table(name="CDA_CuentaAhorros")
@@ -49,11 +50,13 @@ public class CuentaAhorros implements Serializable{
 	
 	private Movimiento m;
 	
+	private Caja c;
+	
 	public CuentaAhorros() {
 		
 	}
 	
-	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio, double inicial) {
+	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio) {
 		super();
 		this.cuentaId = cuentaId;
 		this.numeroCta = numeroCta;
@@ -142,6 +145,7 @@ public class CuentaAhorros implements Serializable{
 	public double addDeposito(double cantidad) {
 		
 		saldo = saldo + cantidad;
+		//c.setSaldo((float) saldo);
 		System.out.println("Deposito Realizado por: "+ cantidad);
 		System.out.println("Saldo: "+ saldo);
 		return saldo;
@@ -154,6 +158,33 @@ public class CuentaAhorros implements Serializable{
 		System.out.println("Saldo: "+ saldo);
 		return saldo;
 		
+	}
+	
+	public boolean Transacciones(double cantidad, String tipotxn) {
+		
+		if(tipotxn == "Deposito")	
+			{
+				saldo = saldo + cantidad;
+				System.out.println("Deposito Realizado por: "+ cantidad);
+				System.out.println("Saldo: "+ saldo);
+				return true;
+			}
+			
+		if(tipotxn == "Retiro")
+			{
+				saldo = saldo - cantidad;
+				System.out.println("Deposito Realizado por: "+ cantidad);
+				System.out.println("Saldo: "+ saldo);
+				return true;
+			}
+		if(tipotxn == "Transferencia")
+		{
+			saldo = saldo - cantidad;
+			System.out.println("Deposito Realizado por: "+ cantidad);
+			System.out.println("Saldo: "+ saldo);
+			return true;
+		}
+		return false;
 	}
 	
 

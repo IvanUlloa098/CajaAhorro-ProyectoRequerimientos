@@ -21,7 +21,7 @@ public class TestCredito extends TestCase {
 		s = new Socio();
 		s.setId(1);
 		s.setEstado('A');
-		ca = new CuentaAhorros(1, 23456789, d, 'a', s,200.30);
+		ca = new CuentaAhorros(1, 23456789, d, 'a', s);
 		cc = new CarteraCreditos(1,'a',2);
 		
 		c = new Credito(1, 238.33f, 15, 1, 'B', ca, cc);
@@ -36,18 +36,24 @@ public class TestCredito extends TestCase {
 		super.tearDown();
 	}
 		
-	
 	@Test
-	public void testCredito() {
-		//fail("Not yet implemented");
-		Escenario();
+	public void testCalculoCuota() {
+		float esperado = 532.381f;		
 		ce= new Credito(1,238.33f, 15, 1, 'B', ca, cc);
-	//	System.out.println("CE: "+ce);
-		//System.out.println("C: "+c);
-		
-		assertEquals(c, ce);
+		float resultado = ce.calcularCuota(12.4f, 12, 6000);
+		assertEquals(esperado, resultado);
 		
 	}
+	
+	@Test
+	public void testCalculoCuota1() {
+		float esperado = 250.00f;		
+		ce= new Credito(1,238.33f, 15, 1, 'B', ca, cc);
+		float resultado = ce.calcularCuota(15, 24, 6000);
+		assertEquals(esperado, resultado);
+		
+	}
+	
 	
 	
 
