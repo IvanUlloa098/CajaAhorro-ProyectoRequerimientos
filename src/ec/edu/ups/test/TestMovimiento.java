@@ -34,29 +34,21 @@ public class TestMovimiento {
 		ca = new CuentaAhorros();
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
-	public void testTransaccion(){
+	public void testDeposito(){
+		
 		double inicial = 399.33;
-		tm = new TipoMovimiento(1, "retiro", true);
-		m= new Movimiento(1, d, inicial, tm);
-		s= new Socio(1,'A');
+		String tipoTXN = "Depo";
+		String esperado=ca.Transacciones(inicial, tipoTXN);
+		System.out.println(esperado);
+		assertEquals(tipoTXN, esperado);
 		
-			if((tm.getNombre() == "Deposito")) {
-				procesado = ca.addDeposito(m.getMonto());
-			}else {
-				procesado = ca.addRetiro(m.getMonto());
-			}
-		
-			System.out.println(inicial);
-			System.out.println(procesado);
-		Assert.assertEquals(inicial, procesado, 0);
-		
+	}
 
-		
 
-		
-		
+	private void assertEquals(String string, String esperado) {
+		// TODO Auto-generated method stub
 		
 	}
 
