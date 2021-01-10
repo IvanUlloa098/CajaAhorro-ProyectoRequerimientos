@@ -7,21 +7,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ec.edu.ups.aporte_ahorros.TipoMovimiento;
-import ec.edu.ups.controlador.TipoMovimientoController;
 
 public class TestTipoMovimientoController {
 	
-	private TipoMovimientoController controller;
-	private int id =1 ;
-	private String nombre = "Juan";
-	private boolean suma = true;
 	private boolean confirmacion = false;
 	private TipoMovimiento tipoMovimiento;
 	
 
 	@Before
 	public void setUp() throws Exception {
-		controller = new TipoMovimientoController();
+		tipoMovimiento = new TipoMovimiento();
 	}
 
 	@After
@@ -31,12 +26,7 @@ public class TestTipoMovimientoController {
 	@Test
 	public void testCrearTipoMovimiento() {
 		
-		tipoMovimiento = new TipoMovimiento();
-		tipoMovimiento.setId(id);
-		tipoMovimiento.setNombre(nombre);
-		tipoMovimiento.setSuma(suma);
-		
-		confirmacion = controller.crearTipoMovimiento(tipoMovimiento);
+		confirmacion = tipoMovimiento.crearTipoMovimiento(1, "transferencia", true);
 		
 		assertTrue("exito" , confirmacion);
 		

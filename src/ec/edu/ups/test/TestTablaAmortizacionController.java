@@ -8,30 +8,21 @@ import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import ec.edu.ups.controlador.TablaAmortizacionController;
+import java.util.Date;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.TablaAmortizacion;
 
 public class TestTablaAmortizacionController {
 
-	private TablaAmortizacionController controller;
-	private int id = 1;
-	private int numCuota = 120;
-	private Date fechaVenc;
-	private Date fechaPag;
-	private float capital = (float) 123.44;
-	private int cuotas = 2;
-	private float interes = (float) 2.5;
-	private float saldo = (float) 301.03;
 	private Credito credito;
 	private TablaAmortizacion tablaAmorizacion;
 	private boolean confirmacion = false;
+	private  Date fecha = new Date();
 	
 	
 	@Before
 	public void setUp() throws Exception {
-		controller = new TablaAmortizacionController();
+		this.tablaAmorizacion = new TablaAmortizacion(1, 3, fecha, 5, 0.0, 0.0, 0.0, 6000.00, "pendiente", credito);
 	}
 
 	@After
@@ -39,21 +30,60 @@ public class TestTablaAmortizacionController {
 	}
 
 	@Test
-	public void testcrearTablaAmortizacion() {
-		tablaAmorizacion = new TablaAmortizacion();
-		tablaAmorizacion.setId(id);
-		tablaAmorizacion.setNumCuota(numCuota);
-		tablaAmorizacion.setFechaVenc(fechaVenc);
-		tablaAmorizacion.setFechaPag(fechaPag);
-		tablaAmorizacion.setCapital(capital);
-		tablaAmorizacion.setCuotas(cuotas);
-		tablaAmorizacion.setInteres(interes);
-		tablaAmorizacion.setSaldo(saldo);
+	public void testCalculaCapital() {
+		this.tablaAmorizacion.setPagoTotal(2203.25);
+		this.tablaAmorizacion.setInteres(300);
 		
-		confirmacion = controller.crearTablaAmortizacion(tablaAmorizacion, credito);
-		
-		assertTrue("exito" , confirmacion);
+		double capitalEsperado = 1903.25;
+		double capitalObtenido=(tablaAmorizacion.calculaCapital());
+		assertEquals(capitalEsperado , capitalObtenido , 1e-2);
 		
 	}
+	
+	
+	
+	@Test
+	public void testCalculaInteres() {
+		//this.tablaAmorizacion.setSaldo(6000.00);
+		
+		double interesEsperado = 300;
+		double interesObtenido=(tablaAmorizacion.calculaInteres());
+		assertEquals(interesEsperado , interesObtenido , 1e-2);
+		
+	}
+	
+	
+	@Test
+	public void testCalculaPagoTotal() {
+		double pagoTotalEsperado = 2203.25;
+		double pagoTotalObtenido=(tablaAmorizacion.calculaPagoTotal());
+		assertEquals(pagoTotalEsperado , pagoTotalObtenido , 1e-2);
+		
+	}
+	
+	
+	@Test
+	public void testCalculaSaldo() {
+		this.tablaAmorizacion.setCapital(1903.25);
+		
+		double saldoEsperado = 4096.75;
+		double saldoObtenido=(tablaAmorizacion.calculaSaldo());
+		assertEquals(saldoEsperado , saldoObtenido , 1e-2);
+		
+	}
+	
+	
+	@Test
+	public void testCalculaPagoUnaCuota() {
+		int cuota = 3;
+		//double saldoCuotaEsperado2 = 2098.34;
+		double saldoCuotaEsperado1 = 0;
+		
+		double saldoCuotaObtenido=(tablaAmorizacion.calculaPagoUnaCuota(cuota));
+		
+		assertEquals(saldoCuotaEsperado1 , saldoCuotaObtenido , 1e-2);
+		
+	}
+	
 
 }

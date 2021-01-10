@@ -9,22 +9,22 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import ec.edu.ups.controlador.CarteraCreditosController;
+import ec.edu.ups.creditos.CarteraCreditos;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.PagoCuotas;
 import ec.edu.ups.creditos.TablaAmortizacion;
 
-public class TestCarteraCreditosController {
+public class TestCarteraCreditos {
 	
 	private Credito credito;
 	private Set<PagoCuotas> listaPAgoCuotas = new HashSet<PagoCuotas>();
 	private Set<TablaAmortizacion> listaTablaAmortizacion = new HashSet<TablaAmortizacion>();
 	private boolean confirmacion = false;
-	private CarteraCreditosController controller;
+	private CarteraCreditos carteraCreditos;
 	
 	@Before
 	public void setUp() throws Exception {
-		controller = new CarteraCreditosController();
+		carteraCreditos = new CarteraCreditos();
 		
 	}
 
@@ -45,7 +45,7 @@ public class TestCarteraCreditosController {
 		credito.setPagos(listaPAgoCuotas);
 		credito.setTablaAmortizacion(listaTablaAmortizacion);
 		
-		confirmacion = controller.agregarCredito(credito);
+		confirmacion = carteraCreditos.agregarCredito(credito);
 		assertTrue("exito", confirmacion);
 	}
 

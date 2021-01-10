@@ -161,5 +161,17 @@ public class Credito implements Serializable {
 		return serialVersionUID;
 	}
 	
+	public void calcularCapital() {
+		
+	};
+	
+	public void calcularInteres() {
+		
+	};
+	
+	public void calcularPagoTotal() {
+		
+	};
+	
 
 }
