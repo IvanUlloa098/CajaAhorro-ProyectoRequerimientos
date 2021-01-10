@@ -12,20 +12,17 @@ import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.socios.CuentaAhorros;
 import ec.edu.ups.socios.PlanCuentas;
 import ec.edu.ups.socios.Socio;
-import ec.udu.ups.controlador.PlanCuentasController;
 
 public class TestPlanCuentas {
 
 	private Socio socio;
 	private CuentaAhorros cuentaAhorros;
-	private PlanCuentasController controller;
 	private boolean confirmacion = false;
 	private PlanCuentas plan;
 	private SolicitudCredito solicitud;
 	
 	@Before
 	public void setUp() {
-		controller = new PlanCuentasController();
 	}
 	
 	@After
@@ -47,7 +44,7 @@ public class TestPlanCuentas {
 		cuentaAhorros.setCuentaAct('A');
 		cuentaAhorros.setSocio(socio);
 		
-		confirmacion = controller.agregarPlanCuentas(cuentaAhorros);
+		confirmacion = agregarPlanCuentas(cuentaAhorros);
 		
 		assertTrue("exito", confirmacion);
 		
