@@ -35,7 +35,7 @@ public class TestDiarioCaja {
 		
 		caja.setId(1);
 		caja.setDireccion("Cuenca");
-		caja.setSaldo((float) 155.36);
+		caja.setSaldo( 155.36);
 		
 		movimientos = new HashSet<Movimiento>();
 		

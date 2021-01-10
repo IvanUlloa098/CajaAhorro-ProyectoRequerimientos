@@ -20,7 +20,7 @@ public class TestCaja {
 	
 	@Before
 	public void setUp() throws Exception{
-		caja = new Caja(1, "Av Americas y Batan", 400.50f);
+		caja = new Caja(1, "Av Americas y Batan", 400.50);
 		rol = new Rol (1,"Admin");
 		user = new Usuario(1, "dianaTixi", "patito123", rol, new Caja());
 	
@@ -28,8 +28,7 @@ public class TestCaja {
 	@Test
 	public void obtenerSaldo(){
 		double valorPrueba= 4700.50f;
-		float saldoCaja = caja.getSaldo();
-		double saldo= saldoCaja;
+		double saldo= caja.getSaldo();
 		assertEquals("Test Control Saldo Caja", valorPrueba, saldo, 0.01d);
 		
 	}

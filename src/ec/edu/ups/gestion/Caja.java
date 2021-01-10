@@ -22,7 +22,7 @@ public class Caja implements Serializable {
 	@Column(nullable=false)
 	private String direccion;
 	@Column(nullable=false)
-	private float saldo;
+	private Double saldo;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "caja")
@@ -36,7 +36,7 @@ public class Caja implements Serializable {
 		
 	}
 	
-	public Caja(int id, String direccion, float saldo) {
+	public Caja(int id, String direccion, Double saldo) {
 		this.id = id;
 		this.direccion = direccion;
 		this.saldo = saldo;
@@ -54,10 +54,10 @@ public class Caja implements Serializable {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public float getSaldo() {
+	public Double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(float saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
 	

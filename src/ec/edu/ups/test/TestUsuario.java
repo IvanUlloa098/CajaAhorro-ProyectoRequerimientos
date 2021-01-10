@@ -18,7 +18,7 @@ public class TestUsuario {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.caja = new Caja(1, "Calle Real 1-23", 1000);
+		this.caja = new Caja(1, "Calle Real 1-23", 1000.0);
 		this.usuario = new Usuario(1, "user1", "1234", new Rol(), this.caja);
 	}
 
