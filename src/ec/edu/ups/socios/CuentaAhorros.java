@@ -177,6 +177,13 @@ public class CuentaAhorros implements Serializable{
 				System.out.println("Saldo: "+ saldo);
 				return true;
 			}
+		if(tipotxn == "Transferencia")
+		{
+			saldo = saldo - cantidad;
+			System.out.println("Deposito Realizado por: "+ cantidad);
+			System.out.println("Saldo: "+ saldo);
+			return true;
+		}
 		return false;
 	}
 	
