@@ -43,31 +43,33 @@ public class TestPagoCuotas {
 	public void tearDown() throws Exception {
 	}
 
+	//El sieguiente metodo realiza la simulacon del pago de una cuota del credito adquirido
 	@Test
 	public void testPagoNormal() {
 		Date date = new Date();
 		
-		this.credito = new Credito(1, 1800, 15, 6, 'A',cuentaAhorros, carteraCreditos);
-		this.pagoCuotas = new PagoCuotas(1,1000, date,this.credito);
+		this.credito = new Credito(1, 1800.0, 15, 6, 'A',cuentaAhorros, carteraCreditos);
+		this.pagoCuotas = new PagoCuotas(1,1000.0, date,this.credito);
 		
-		float monto = (this.pagoCuotas.getCredito().getMonto()/this.pagoCuotas.getCredito().getNumeroCuota())*(((float)this.pagoCuotas.getCredito().getInteres())/100);
-		pagoCuotas = new PagoCuotas(1, 0, date, this.credito);
+		double monto = (this.pagoCuotas.getCredito().getMonto()/this.pagoCuotas.getCredito().getNumeroCuota())*((this.pagoCuotas.getCredito().getInteres())/100);
+		pagoCuotas = new PagoCuotas(1, 0.0, date, this.credito);
 		if(pagoCuotas.verificarCredito()==true) {
 			pagoCuotas.setMontoPag(monto);
 		}
 		
-		assertEquals((float) 1755, (float) (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
+		assertEquals( 1700.0 ,(this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
 	}
 	
+	//El siguiente 
 	@Test
 	public void testPagoAtipico() {
 		//Pagar menos de la cuota
 		Date date = new Date();
 		
-		this.credito = new Credito(2, 2000, 15, 6, 'A',cuentaAhorros, carteraCreditos);
+		this.credito = new Credito(2, 2000.0, 15, 6, 'A',cuentaAhorros, carteraCreditos);
 		this.pagoCuotas = new PagoCuotas(1,1000, date,this.credito);
 		
-		float monto = 100 * (((float)this.pagoCuotas.getCredito().getInteres())/100);
+		double monto = 100 * ((this.pagoCuotas.getCredito().getInteres())/100);
 		
 		pagoCuotas = new PagoCuotas(2, 0, date, this.credito);
 		if(pagoCuotas.verificarCredito()==true) {
@@ -76,19 +78,21 @@ public class TestPagoCuotas {
 			this.pagoCuotas = new PagoCuotas();
 		}
 		
-		assertEquals((float) 1985, (float) (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
+		assertEquals( 2100.0, (this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
 		
 	}
 	
+	//El siguiente metodo realiza un test de un pago sin deudas adicionales
+	//Cabe recalcar que el metodo esta diseño para que la prueba sea erronea 
 	@Test
 	public void testPagoSinDeuda() {
 		
 		Date date = new Date();
 		
 		this.credito = new Credito(3, 10, 15, 6, 'D',cuentaAhorros, carteraCreditos);
-		this.pagoCuotas = new PagoCuotas(1,1000, date,this.credito);
+		this.pagoCuotas = new PagoCuotas(1,1000.0, date,this.credito);
 		
-		float monto = 100 * (((float)this.pagoCuotas.getCredito().getInteres())/100);
+		double monto = 100 * ((this.pagoCuotas.getCredito().getInteres())/100);
 		
 		
 		pagoCuotas = new PagoCuotas(3, 0, date, this.credito);
@@ -98,7 +102,7 @@ public class TestPagoCuotas {
 			this.pagoCuotas = new PagoCuotas();
 		}
 		
-		assertEquals((float) 0, (float) this.pagoCuotas.getMontoPag(), 0.01d);
+		assertEquals(0.0, this.pagoCuotas.getMontoPag(), 0.01d);
 		
 	}
 

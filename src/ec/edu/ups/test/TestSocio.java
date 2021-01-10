@@ -27,6 +27,7 @@ public class TestSocio extends TestCase {
 		
 	}
 	
+	//El metodo verifica que no cree un socio repetido
 	@Test
 	private void socio() {
 		Escenario();

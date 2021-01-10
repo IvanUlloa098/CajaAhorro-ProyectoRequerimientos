@@ -22,7 +22,7 @@ public class TestRol {
 		usuario = new Usuario();
 		
 	}
-	
+	//El siguiente metodo asigna un rol a un usuario
 	@Test
 	public void asignarRolAdmin() {
 		rol= new Rol(1, "ADMINISTRADOR");

@@ -43,6 +43,7 @@ public class TestCuentaAhorros {
 	public void tearDown() throws Exception {
 	}
 
+	//El siguiente metodo nos indica la creacion de una cuenta asociada a un socio
 	@Test
 	public void testCrearCuentadeAhorrosSocio() {
 		Date date = new Date();
@@ -51,6 +52,7 @@ public class TestCuentaAhorros {
 		assertEquals(socio, cuentaAhorros.getSocio());
 	}
 	
+	//El siguiente metodo crea una cuenta de ahorros asignada a un usuario
 	@Test
 	public void testCrearCuentadeAhorrosUsuario() {
 		Date date = new Date();

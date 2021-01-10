@@ -26,6 +26,7 @@ public class TestUsuario {
 	public void tearDown() throws Exception {
 	}
 
+	// EL siguiente metodo realiza la simulacion de la creacion de un usuario 
 	@Test
 	public void testCrearUsuario() {
 		this.usuario.setNombre("Ivan");
@@ -39,6 +40,7 @@ public class TestUsuario {
 		
 	}
 	
+	//El metodo a continuacion realiza la asignacion de un rol al usuario previamente creado 
 	@Test
 	public void testAsignarRolUsuario() {
 		this.rol = new Rol(1, "U");

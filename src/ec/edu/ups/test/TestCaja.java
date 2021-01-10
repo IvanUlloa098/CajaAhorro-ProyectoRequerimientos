@@ -25,14 +25,16 @@ public class TestCaja {
 		user = new Usuario(1, "dianaTixi", "patito123", rol, new Caja());
 	
 	}
+	// Este metodo esta realizado para revisar el saldo de la Caja
 	@Test
 	public void obtenerSaldo(){
-		double valorPrueba= 4700.50f;
+		double valorPrueba= 400.50;
 		double saldo= caja.getSaldo();
 		assertEquals("Test Control Saldo Caja", valorPrueba, saldo, 0.01d);
 		
 	}
 	
+	//Este metodo esta realizado para asociar un usuario a la caja
 	@Test
 	public void usuarioAdd() {
 		boolean confirmacion= caja.agregarUsuario(user, caja);

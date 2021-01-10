@@ -18,7 +18,7 @@ public class Credito implements Serializable {
 	@Column(nullable=false)
 	private int id;
 	@Column(nullable=false)
-	private float monto;
+	private double monto;
 	@Column(nullable=false)
 	private int interes;
 	@Column(nullable=false)
@@ -46,7 +46,7 @@ public class Credito implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Credito(int id, float monto, int interes, int numeroCuota, char estado, CuentaAhorros cuentaA,
+	public Credito(int id, double monto, int interes, int numeroCuota, char estado, CuentaAhorros cuentaA,
 			CarteraCreditos carteraC) {
 		super();
 		this.id = id;
@@ -64,10 +64,10 @@ public class Credito implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public float getMonto() {
+	public double getMonto() {
 		return monto;
 	}
-	public void setMonto(float monto) {
+	public void setMonto(double monto) {
 		this.monto = monto;
 	}
 	public int getInteres() {
@@ -126,15 +126,15 @@ public class Credito implements Serializable {
 		return serialVersionUID;
 	}
 	
-	private float calcularTEM(float tea, int dias) {
-        return (float) (Math.pow(1f + (tea / 100f), dias / 360f) - 1f) * 100f;
+	private double calcularTEM(double tea, int dias) {
+        return (double) (Math.pow(1.0 + (tea / 100.0), dias / 360.0) - 1) * 100.0;
     }
 	
-	public float calcularCuota(float tea, float cuotas, float monto) {
-		 float tem = this.calcularTEM(tea, 30) / 100f;
+	public double calcularCuota(double tea, double cuotas, double monto) {
+		 double tem = this.calcularTEM(tea, 30) / 100.0;
 
-        float x = (float) Math.pow(1f + tem, cuotas);
-        return monto * ((x * tem) / (x - 1f));
+        double x = (double) Math.pow(1.0 + tem, cuotas);
+        return monto * ((x * tem) / (x - 1.0));
     }
 
 }
