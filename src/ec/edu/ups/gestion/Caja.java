@@ -22,7 +22,7 @@ public class Caja implements Serializable {
 	@Column(nullable=false)
 	private String direccion;
 	@Column(nullable=false)
-	private Double saldo;
+	private Double saldo; 
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "caja")
