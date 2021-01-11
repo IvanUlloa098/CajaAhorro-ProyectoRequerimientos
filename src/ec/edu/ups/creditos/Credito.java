@@ -127,14 +127,14 @@ public class Credito implements Serializable {
 	}
 	
 	private double calcularTEM(double tea, int dias) {
-        return (double) (Math.pow(1.0 + (tea / 100.0), dias / 360.0) - 1) * 100.0;
+        return (double) (Math.pow(1f + (tea / 100f), dias / 360f) - 1f) * 100f;
     }
 	
 	public double calcularCuota(double tea, double cuotas, double monto) {
-		 double tem = this.calcularTEM(tea, 30) / 100.0;
+		 double tem = this.calcularTEM(tea, 30) / 100f;
 
-        double x = (double) Math.pow(1.0 + tem, cuotas);
-        return monto * ((x * tem) / (x - 1.0));
+        double x = (double) Math.pow(1f + tem, cuotas);
+        return monto * ((x * tem) / (x - 1f));
     }
 
 }

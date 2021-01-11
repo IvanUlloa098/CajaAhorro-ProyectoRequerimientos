@@ -34,7 +34,6 @@ public class TestPagoCuotas {
 		
 		Date date = new Date();
 		this.cuentaAhorros = new CuentaAhorros(1, 12121212, date, 'A', socio);
-		
 		carteraCreditos = new CarteraCreditos(1,'N',0);
 		
 	}
@@ -60,7 +59,7 @@ public class TestPagoCuotas {
 		assertEquals( 1700.0 ,(this.credito.getMonto()-this.pagoCuotas.getMontoPag()), 0.01d);
 	}
 	
-	//El siguiente 
+
 	@Test
 	public void testPagoAtipico() {
 		//Pagar menos de la cuota
