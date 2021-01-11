@@ -11,5 +11,7 @@ public abstract class DAOFactory {
 	}
 	
 	public abstract CajaDAO getCajaDAO();
+	public abstract RolDAO getRolDAO();
+	public abstract UsuarioDAO getUsuarioDAO();
 
 }
