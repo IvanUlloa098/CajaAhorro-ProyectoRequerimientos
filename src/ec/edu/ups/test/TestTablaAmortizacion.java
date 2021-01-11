@@ -29,6 +29,7 @@ public class TestTablaAmortizacion {
 	public void tearDown() throws Exception {
 	}
 
+	//El siguiente metodo calcula el capital de un credito 
 	@Test
 	public void testCalculaCapital() {
 		this.tablaAmorizacion.setPagoTotal(2203.25);
@@ -40,8 +41,7 @@ public class TestTablaAmortizacion {
 		
 	}
 	
-	
-	
+	//El siguiente metodo calcula el interes que genera el prestamo
 	@Test
 	public void testCalculaInteres() {
 		//this.tablaAmorizacion.setSaldo(6000.00);
@@ -52,7 +52,7 @@ public class TestTablaAmortizacion {
 		
 	}
 	
-	
+	//El siguiente metodo calcula el valor total de una cuota a pagar
 	@Test
 	public void testCalculaPagoTotal() {
 		double pagoTotalEsperado = 2203.25;
@@ -61,7 +61,7 @@ public class TestTablaAmortizacion {
 		
 	}
 	
-	
+	//El metodo a continuacion calcula el monto total que adeuda el socio
 	@Test
 	public void testCalculaSaldo() {
 		this.tablaAmorizacion.setCapital(1903.25);
@@ -72,7 +72,7 @@ public class TestTablaAmortizacion {
 		
 	}
 	
-	
+	// El metodo a continuacion simula el pago de un cuota en especifico 
 	@Test
 	public void testCalculaPagoUnaCuota() {
 		int cuota = 3;

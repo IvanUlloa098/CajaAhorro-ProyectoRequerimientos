@@ -34,44 +34,44 @@ public class TestMovimiento {
 		ca = new CuentaAhorros();
 	}
 	
-	
+	//El siguiente metodo realiza un deposito a la cuenta
 	@Test
 	public void testTransaccion(){
 		
 		double inicial = 399.33;
-		String tipoTXN = "Depoto";
-		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		String tipoTXN = "Deposito";
+		boolean resultado = ca.Transacciones(inicial, tipoTXN);
 		System.out.println("Esperado-> "+tipoTXN);
 		System.out.println("Resultado-> "+resultado);
 		assertTrue(tipoTXN, resultado);
 		
 	}
 	
+	//El siguiente metodo realiza un retiro de la cuenta 
 	@Test
 	public void testTransaccion1(){
 		
 		double inicial = 399.33;
 		String tipoTXN = "Retiro";
-		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		boolean resultado = ca.Transacciones(inicial, tipoTXN);
 		System.out.println("Esperado-> "+tipoTXN);
 		System.out.println("Resultado-> "+resultado);
 		assertTrue(tipoTXN, resultado);
 		
 	}
 
+	//El siguiente metodo realiza un transferencia
 	@Test
 	public void testTransaccion2(){
 		
 		double inicial = 399.33;
 		String tipoTXN = "Transferencia";
-		Boolean resultado = ca.Transacciones(inicial, tipoTXN);
+		boolean resultado = ca.Transacciones(inicial, tipoTXN);
 		System.out.println("Esperado-> "+tipoTXN);
 		System.out.println("Resultado-> "+resultado);
 		assertTrue(tipoTXN, resultado);
 		
 	}
-	
-
 	
 }
  

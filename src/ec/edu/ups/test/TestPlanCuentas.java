@@ -29,8 +29,9 @@ public class TestPlanCuentas {
 	public void tearDown(){
 	}
 	
+	//El siguiente metodo se asigna el un plan de cuenta a una cuenta de ahorros que pertenece a un usuario X
 	@Test
-	public void testAgregarSolicitudCredito() {
+	public void testPlanCuentas() {
 		socio = new Socio();
 		
 		socio.setId(1);
@@ -43,9 +44,9 @@ public class TestPlanCuentas {
 		cuentaAhorros.setFechaCre(new Date());
 		cuentaAhorros.setCuentaAct('A');
 		cuentaAhorros.setSocio(socio);
-		
+	
 		confirmacion = agregarPlanCuentas(cuentaAhorros);
-		
+	
 		assertTrue("exito", confirmacion);
 		
 	}

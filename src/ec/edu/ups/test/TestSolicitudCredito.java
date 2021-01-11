@@ -29,6 +29,7 @@ public class TestSolicitudCredito {
 	public void tearDown(){
 	}
 	
+	//El siguiente metodo realiza la simulacion de una solicitud de credito
 	@Test
 	public void testAgregarSolicitudCredito() {
 		socio = new Socio();

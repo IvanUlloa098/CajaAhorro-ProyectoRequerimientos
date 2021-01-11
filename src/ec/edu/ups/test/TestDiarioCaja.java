@@ -29,20 +29,17 @@ public class TestDiarioCaja {
 	public void tearDown(){
 	}
 	
+	//El metodo a continuacion agrega el reporte de caja diario 
 	@Test
 	public void testAgregarDiarioCaja() {
 		caja = new Caja();
 		
 		caja.setId(1);
 		caja.setDireccion("Cuenca");
-		caja.setSaldo((float) 155.36);
+		caja.setSaldo( 155.36);
 		
 		movimientos = new HashSet<Movimiento>();
-		
 		confirmacion = agregarDiarioCaja(caja, movimientos);
-		
-		
-		
 		assertTrue("exito", confirmacion);
 		
 	}

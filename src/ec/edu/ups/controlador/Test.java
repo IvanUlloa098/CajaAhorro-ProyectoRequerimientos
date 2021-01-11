@@ -17,7 +17,7 @@ public class Test {
 		Rol rol = DAOFactory.getFactory().getRolDAO();
 		
 		CajaDAO cajaDao = DAOFactory.getFactory().getCajaDAO();
-		Caja caja= new Caja(0,"Calle Vieja y Elia Liu",400);
+		Caja caja= new Caja(0,"Calle Vieja y Elia Liu",400.50);
 		cajaDao.create(caja);
 
 	}
