@@ -14,6 +14,7 @@
 	<class>ec.edu.ups.gestion.DiarioCaja</class>
 	<class>ec.edu.ups.gestion.Rol</class>
 	<class>ec.edu.ups.gestion.Usuario</class>
+	<class>ec.edu.ups.gestion.Persona</class>
 	<class>ec.edu.ups.socios.CuentaAhorros</class>
 	<class>ec.edu.ups.socios.PlanCuentas</class>
 	<class>ec.edu.ups.socios.Socio</class>

@@ -2,16 +2,36 @@ package ec.edu.ups.gestion;
 
 import java.io.Serializable;
 
-public class Persona implements Serializable{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CDA_Persona")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Persona{
 	
-	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column
 	private String nombre;
+	@Column
 	private String apellido;
+	@Column
 	private String cedula;
+	@Column
 	private String telefono;
+	@Column
 	private String direccion;
+	@Column
 	private String email;
+	
 	
 	
 	public Persona() {

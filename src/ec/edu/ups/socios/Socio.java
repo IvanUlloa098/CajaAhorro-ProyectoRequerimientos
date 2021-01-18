@@ -10,36 +10,32 @@ import ec.edu.ups.gestion.Persona;
 
 @Entity
 @Table(name = "CDA_Socios")
+@PrimaryKeyJoinColumn(name="persona_id")
 public class Socio extends Persona implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	@Id
+	
+	/**@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	@Column(nullable=false)
-	private int id;
+	private int id;**/
+	
 	@Column(nullable=false)
 	private char estado;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "socio")
 	private Set<CuentaAhorros>cuentaAhorros= new HashSet<CuentaAhorros>();
 	
+	
 	public Socio() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Socio(int id, char estado) {
+	public Socio(char estado) {
 		super();
-		this.id = id;
 		this.estado = estado;
 	}
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public char getEstado() {
 		return estado;
 	}

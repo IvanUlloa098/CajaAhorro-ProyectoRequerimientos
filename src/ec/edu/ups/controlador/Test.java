@@ -38,11 +38,13 @@ public class Test {
 		
 		//Creacion de dos usuarios
 		usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
-		usuario = new Usuario(1, "usuario1", "1234", rol1, caja);
-		usuarioDAO.create(usuario);
-		
-		usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
-		usuario = new Usuario(2, "usuario2", "4321", rol2, caja);
+		usuario = new Usuario("usuario1", "1234", rol1, caja);
+		usuario.setNombre("Ivan");
+		usuario.setApellido("Ulloa");
+		usuario.setCedula("9999999999");
+		usuario.setTelefono("0000000000");
+		usuario.setDireccion("Av calle");
+		usuario.setEmail("mail@mail.com");
 		usuarioDAO.create(usuario);
 		
 		

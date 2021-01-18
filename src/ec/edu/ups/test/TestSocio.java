@@ -23,7 +23,7 @@ public class TestSocio extends TestCase {
 	}
 		
 	public void Escenario() {
-		s = new Socio(1, 'a');
+		s = new Socio('a');
 		
 	}
 	
@@ -31,7 +31,7 @@ public class TestSocio extends TestCase {
 	@Test
 	private void socio() {
 		Escenario();
-		se = new Socio(1, 'a');
+		se = new Socio('a');
 		assertEquals(se, s);
 	}
 

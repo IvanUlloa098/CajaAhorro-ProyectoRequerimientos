@@ -22,7 +22,7 @@ public class TestCuentaAhorros {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.socio = new Socio(1, 'A');
+		this.socio = new Socio('A');
 		this.socio.setNombre("Juan");
 		this.socio.setApellido("Paredes");
 		this.socio.setCedula("9999999999");
@@ -30,7 +30,7 @@ public class TestCuentaAhorros {
 		this.socio.setDireccion("Calle Prueba 456");
 		this.socio.setEmail("emailsocio@gmail.com");
 		
-		this.usuario = new Usuario(1, "user1", "1234", new Rol(), new Caja());
+		this.usuario = new Usuario("user1", "1234", new Rol(), new Caja());
 		this.usuario.setNombre("Ivan");
 		this.usuario.setApellido("Ulloa");
 		this.usuario.setCedula("9999999999");
@@ -57,7 +57,7 @@ public class TestCuentaAhorros {
 	public void testCrearCuentadeAhorrosUsuario() {
 		Date date = new Date();
 		
-		this.socio = new Socio(2, 'A');
+		this.socio = new Socio('A');
 		this.socio.setNombre(usuario.getNombre());
 		this.socio.setApellido(usuario.getApellido());
 		this.socio.setCedula(usuario.getCedula());

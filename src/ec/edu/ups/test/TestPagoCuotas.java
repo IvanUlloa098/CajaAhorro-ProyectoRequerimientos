@@ -24,7 +24,7 @@ public class TestPagoCuotas {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.socio = new Socio(1, 'A');
+		this.socio = new Socio('A');
 		this.socio.setNombre("Juan");
 		this.socio.setApellido("Paredes");
 		this.socio.setCedula("9999999999");
