@@ -23,14 +23,15 @@ public class TestSocio extends TestCase {
 	}
 		
 	public void Escenario() {
-		s = new Socio(1, 'a');
+		s = new Socio('a');
 		
 	}
 	
+	//El metodo verifica que no cree un socio repetido
 	@Test
 	private void socio() {
 		Escenario();
-		se = new Socio(1, 'a');
+		se = new Socio('a');
 		assertEquals(se, s);
 	}
 

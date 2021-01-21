@@ -23,6 +23,7 @@ public class TestTipoMovimiento {
 	public void tearDown() throws Exception {
 	}
 
+	//El metodo asigna el tiempo de movimiento que un socio realizo 
 	@Test
 	public void testCrearTipoMovimiento() {
 		

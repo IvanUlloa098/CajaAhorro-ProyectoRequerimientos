@@ -32,6 +32,7 @@ public class TestCarteraCreditos {
 	public void tearDown() throws Exception {
 	}
 
+	//Este metodo esta realizado por crear un credito
 	@Test
 	public void testAgregarCredito() {
 		

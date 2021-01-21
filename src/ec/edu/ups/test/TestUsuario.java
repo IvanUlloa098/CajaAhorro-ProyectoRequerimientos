@@ -19,13 +19,14 @@ public class TestUsuario {
 	@Before
 	public void setUp() throws Exception {
 		this.caja = new Caja(1, "Calle Real 1-23", 1000.0);
-		this.usuario = new Usuario(1, "user1", "1234", new Rol(), this.caja);
+		this.usuario = new Usuario("user1", "1234", new Rol(), this.caja);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
+	// EL siguiente metodo realiza la simulacion de la creacion de un usuario 
 	@Test
 	public void testCrearUsuario() {
 		this.usuario.setNombre("Ivan");
@@ -39,6 +40,7 @@ public class TestUsuario {
 		
 	}
 	
+	//El metodo a continuacion realiza la asignacion de un rol al usuario previamente creado 
 	@Test
 	public void testAsignarRolUsuario() {
 		this.rol = new Rol(1, "U");

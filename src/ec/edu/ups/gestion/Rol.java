@@ -2,6 +2,7 @@ package ec.edu.ups.gestion;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,7 @@ public class Rol implements Serializable{
 	@Column(nullable=false)
 	private String rol;
 	
-	@OneToOne
-	@JoinColumn
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "rol")
 	private Usuario user ;
 	
 	
