@@ -19,6 +19,10 @@ public interface GenericDAO <T, ID>{
 	public T buscarR(String nombre);
 
 	public T Login(String username, String password);
+
+	public T buscarPlanes(String nombre);
+
+	public T buscarSocio(String cedula);
 	
 	
 

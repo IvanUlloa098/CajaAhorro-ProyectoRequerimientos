@@ -67,7 +67,7 @@
                     <div class="collapse navbar-collapse" id="navbars-seo">
                         <ul class="navbar-nav ml-auto">
                             
-                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/">CrearCuentas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearSocioCuentaController">CrearCuentas</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearEmpladoController2">Realizar Transacciones</a></li>
                             <li class="nav-item active"><a class="nav-link" href="index.html">Solicitudes de Creditos</a></li>
                             <li class="nav-item"><a class="nav-link" href="pricing.html">Credito</a></li>
