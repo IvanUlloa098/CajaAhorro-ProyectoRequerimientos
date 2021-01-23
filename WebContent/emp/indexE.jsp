@@ -19,21 +19,21 @@
 <meta name="author" content="">
 
 <!-- Site Icons -->
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="shortcut icon" href="/CajaAhorro-ProyectoRequerimientos/images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/CajaAhorro-ProyectoRequerimientos/images/apple-touch-icon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="/CajaAhorro-ProyectoRequerimientos/css/bootstrap.min.css">
 <!-- Site CSS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/CajaAhorro-ProyectoRequerimientos/style.css">
 <!-- ALL VERSION CSS -->
-<link rel="stylesheet" href="css/versions.css">
+<link rel="stylesheet" href="/CajaAhorro-ProyectoRequerimientos/css/versions.css">
 <!-- Responsive CSS -->
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="/CajaAhorro-ProyectoRequerimientos/css/responsive.css">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/CajaAhorro-ProyectoRequerimientos/css/custom.css">
 
-<script src="js/modernizr.custom.79639.js"></script>
+<script src="/CajaAhorro-ProyectoRequerimientos/js/modernizr.custom.79639.js"></script>
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -58,8 +58,8 @@
         <header class="top-navbar">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/logo-seo.png" alt="" />
+                    <a class="navbar-brand" href="/CajaAhorro-ProyectoRequerimientos/index.html">
+                        <img src="/CajaAhorro-ProyectoRequerimientos/images/logo-seo.png" alt="" />
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-seo" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -68,10 +68,10 @@
                         <ul class="navbar-nav ml-auto">
                             
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearSocioCuentaController">CrearCuentas</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearEmpladoController2">Realizar Transacciones</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Solicitudes de Creditos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pricing.html">Credito</a></li>
-                            <li class="nav-item"><a class="nav-link" href="iniciarSesion.html">Cerrar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTiposController">Realizar Transacciones</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Solicitudes de Creditos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Credito</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/iniciarSesion.html">Cerrar Sesion</a></li>
                         </ul>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
 
                     <div class="col-md-6">
                         <div class="post-media wow fadeIn">
-                            <img src="images/about_01.jpg" alt="" class="img-fluid">
+                            <img src="/CajaAhorro-ProyectoRequerimientos/images/about_01.jpg" alt="" class="img-fluid">
                         </div>
                         <!-- end media -->
                     </div>
@@ -213,7 +213,7 @@
                                 <div class="text-center">
                                     <div class="service-widget">
                                         <div class="post-media wow fadeIn">
-                                            <img src="images/seo_01.png" alt="" class="img-fluid img-rounded">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/seo_01.png" alt="" class="img-fluid img-rounded">
                                         </div>
                                         <h3>Movimientos</h3>
                                         <p>Procesos de transferencia de dinero, para corporaciones o particulares, realizados por bancos como depositos, retiros, transferencias.</p>
@@ -225,7 +225,7 @@
                                 <div class="text-center">
                                     <div class="service-widget">
                                         <div class="post-media wow fadeIn">
-                                            <img src="images/seo_02.png" alt="" class="img-fluid img-rounded">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/seo_02.png" alt="" class="img-fluid img-rounded">
                                         </div>
                                         <h3>Creditos</h3>
                                         <p>Disposicion de fondos que un banco acuerda dar, a cambio de unos intereses que se calculan sobre la cifra efectivamente dispuesta</p>
@@ -237,7 +237,7 @@
                                 <div class="text-center">
                                     <div class="service-widget">
                                         <div class="post-media wow fadeIn">
-                                            <img src="images/seo_03.png" alt="" class="img-fluid img-rounded">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/seo_03.png" alt="" class="img-fluid img-rounded">
                                         </div>
                                         <h3>Reportes</h3>
                                         <p>Informes periodicos de los acontecimientos macroeconómicos o financieros recientes pueden incidir sobre la estabilidad financiera</p>
@@ -249,7 +249,7 @@
                                 <div class="text-center">
                                     <div class="service-widget">
                                         <div class="post-media wow fadeIn">
-                                            <img src="images/seo_04.png" alt="" class="img-fluid img-rounded">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/seo_04.png" alt="" class="img-fluid img-rounded">
                                         </div>
                                         <h3>Planes de Cuentas</h3>
                                         <p>El plan de cuentas o planes bancarios, se refiere a un listado que refleja las cuentas para registrar los hechos contables.</p>
@@ -261,7 +261,7 @@
                                 <div class="text-center">
                                     <div class="service-widget">
                                         <div class="post-media wow fadeIn">
-                                            <img src="images/seo_05.png" alt="" class="img-fluid img-rounded">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/seo_05.png" alt="" class="img-fluid img-rounded">
                                         </div>
                                         <h3>Libro Diario</h3>
                                         <p>Registro contable del sistema financiero en el cual se estructuran todas las operaciones que hagas y que involucren dinero. </p>
@@ -333,7 +333,7 @@
                                 <div class="testi-carousel owl-carousel owl-theme">
                                     <div class="testimonial clearfix">
                                         <div class="testi-meta">
-                                            <img src="images/testi_01.png" alt="" class="img-fluid alignleft">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/testi_01.png" alt="" class="img-fluid alignleft">
                                             <h4>James Fernando <small>- Manager of Racer</small></h4>
                                         </div>
                                         <!-- end testi-meta -->
@@ -346,7 +346,7 @@
 
                                     <div class="testimonial clearfix">
                                         <div class="testi-meta">
-                                            <img src="images/testi_02.png" alt="" class="img-fluid alignleft">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/testi_02.png" alt="" class="img-fluid alignleft">
                                             <h4>Jacques Philips <small>- Designer</small></h4>
                                         </div>
                                         <!-- end testi-meta -->
@@ -359,7 +359,7 @@
 
                                     <div class="testimonial clearfix">
                                         <div class="testi-meta">
-                                            <img src="images/testi_03.png" alt="" class="img-fluid alignleft">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/testi_03.png" alt="" class="img-fluid alignleft">
                                             <h4>Venanda Mercy <small>- Newyork City</small></h4>
                                         </div>
                                         <!-- end testi-meta -->
@@ -371,7 +371,7 @@
                                     <!-- end testimonial -->
                                     <div class="testimonial clearfix">
                                         <div class="testi-meta">
-                                            <img src="images/testi_01.png" alt="" class="img-fluid alignleft">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/testi_01.png" alt="" class="img-fluid alignleft">
                                             <h4>James Fernando <small>- Manager of Racer</small></h4>
                                         </div>
                                         <!-- end testi-meta -->
@@ -384,7 +384,7 @@
 
                                     <div class="testimonial clearfix">
                                         <div class="testi-meta">
-                                            <img src="images/testi_02.png" alt="" class="img-fluid alignleft">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/testi_02.png" alt="" class="img-fluid alignleft">
                                             <h4>Jacques Philips <small>- Designer</small></h4>
                                         </div>
                                         <!-- end testi-meta -->
@@ -397,7 +397,7 @@
 
                                     <div class="testimonial clearfix">
                                         <div class="testi-meta">
-                                            <img src="images/testi_03.png" alt="" class="img-fluid alignleft">
+                                            <img src="/CajaAhorro-ProyectoRequerimientos/images/testi_03.png" alt="" class="img-fluid alignleft">
                                             <h4>Venanda Mercy <small>- Newyork City</small></h4>
                                         </div>
                                         <!-- end testi-meta -->
@@ -422,14 +422,14 @@
                     <div class="container">
                         <div class="row">
                             <div id="logo-carousel" class="owl-carousel">
-                                <div> <img src="images/logo_01.png" alt=""> </div>
-                                <div> <img src="images/logo_02.png" alt=""> </div>
-                                <div> <img src="images/logo_03.png" alt=""> </div>
-                                <div> <img src="images/logo_04.png" alt=""> </div>
-                                <div> <img src="images/logo_05.png" alt=""> </div>
-                                <div> <img src="images/logo_06.png" alt=""> </div>
-                                <div> <img src="images/logo_01.png" alt=""> </div>
-                                <div> <img src="images/logo_02.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_01.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_02.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_03.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_04.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_05.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_06.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_01.png" alt=""> </div>
+                                <div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_02.png" alt=""> </div>
                             </div>
                         </div>
                         <!-- end row -->
@@ -444,7 +444,7 @@
                             <div class="col-lg-4 col-md-6 col-xs-12">
                                 <div class="widget clearfix">
                                     <div class="widget-title">
-                                        <img src="images/logo-light.png" alt="">
+                                        <img src="/CajaAhorro-ProyectoRequerimientos/images/logo-light.png" alt="">
                                     </div>
                                     <p> SEO Mauris pharetra quam ut commodo malesuada. Sed a ornare purus, nec cursus tortor. Integer vehicula felis nec nunc pulvinar efficitur. In et semper odio. Sed laoreet ullamcorper augue, ut mattis metus mattis
                                         quis.
@@ -548,13 +548,13 @@
                 <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
 <!-- ALL JS FILES -->
-<script src="js/all.js"></script>
+<script src="/CajaAhorro-ProyectoRequerimientos/js/all.js"></script>
 <!-- ALL PLUGINS -->
-<script src="js/tippy.all.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="/CajaAhorro-ProyectoRequerimientos/js/tippy.all.min.js"></script>
+<script src="/CajaAhorro-ProyectoRequerimientos/js/custom.js"></script>
 
-<script src="js/jquery.ba-cond.min.js"></script>
-<script src="js/jquery.slitslider.js"></script>
+<script src="/CajaAhorro-ProyectoRequerimientos/js/jquery.ba-cond.min.js"></script>
+<script src="/CajaAhorro-ProyectoRequerimientos/js/jquery.slitslider.js"></script>
 <script type="text/javascript">
     $(function() {
         var Page = (function() {

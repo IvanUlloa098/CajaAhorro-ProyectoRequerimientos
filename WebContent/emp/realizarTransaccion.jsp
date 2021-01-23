@@ -40,6 +40,8 @@
 
 </head>
 <body class="seo_version">
+	<c:set var="tip" scope="request" value="${tipos}" />
+	<c:set var="cajid" scope="session" value="${caja_id}" />
 
     <!-- LOADER -->
 	<div id="preloader">
@@ -95,65 +97,39 @@
 			<div class="container">
 				<div class="row">
 					<div class="section-title text-center">
-						<h3>Cuenta de Ahorros</h3>
+						<h3>Realizar un Depósito</h3>
 						<p>Con la cuenta de ahorros de Savings Bank Seven podras manejar tu dinero de manera facil y segura</p>
 						<p>Ahora manejar tu cuenta de ahorros es mas practico y eficiente. Puedes acceder, realizar pagos, consultas, retiros y transferencias de forma facil y segura </p>
 					</div><!-- end title -->
-					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/CrearSocioCuentaController2" name="contactform">
+					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/RealizarTransaccionController" name="contactform">
                             <fieldset>
                             <fieldset class="row row-fluid">
-                            <legend>Informacion Personal</legend>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre.....">
+                            <legend>Informacion Necesaria</legend>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                                	
+                                    <input type="text" name="cuenta" id="cuenta" class="form-control" placeholder="Numero de Cuenta...">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido.....">
+                                    <input type="number" name="monto" id="monto" class="form-control" placeholder="Monto del Movimiento...">
                                 </div>
-                                <br><BR />
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cedula.....">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono.....">
-                                </div>
-                                <br><BR />
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion.....">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="email" id="email" class="form-control" placeholder="Email.....">
-                                </div>
-                                <br><BR />
-                            </fieldset>
-                            <fieldset class="row row-fluid">
-                            <legend>Informacion Cuenta </legend>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label class="form-control"><input  type="radio" name="estado" value="A"> Activo </label>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                	<label class="form-control"><input  type="radio" name="estado" value="I"> Inactivo</label>
-                                </div>
+                                <br><BR />                               
+                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <SELECT name="plan" class="form-control">
-										 <option value=_"Seleccionar Plan" selected >Seleccionar Plan</option>
-										 <c:forEach var="p" items="${planes}">
-												<option>${p.tipo}</option>
+										 <option value= "Tipo de Movimiento" selected >Seleccione el Tipo de Movimiento</option>
+										 <c:forEach var="t" items="${tip}">
+												 <option value="${t.getId()}">${t.getNombre()}</option>
 									        </c:forEach>
 								     </SELECT>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="saldo" id="saldo" class="form-control" placeholder="Cantidad $.....">
-                                </div>
+                                
                             </fieldset>
-                            <br><BR />
-                            <input class="container" type="submit" id="login" name="login" value="Registrar Cuenta Ahorros" />
+                            
+                            <input class="container" type="submit" id="login" name="login" value="Realizar Movimiento" />
                             <br><BR />
                           </fieldset>      
                         </form>
 				</div>
-</div>
-</div>
-</div>
+
     <div id="support" class="section db">
         <div class="container">
             <div class="row">

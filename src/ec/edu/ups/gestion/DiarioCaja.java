@@ -25,14 +25,15 @@ public class DiarioCaja implements Serializable{
 	@JoinColumn()
 	private Caja caja;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "diarioCaja")
-	private Set<Movimiento> movimiento = new HashSet<Movimiento>();
+	@OneToOne
+	@JoinColumn 
+	Movimiento movimiento;
 	
 	public DiarioCaja() {
 		
 	}
 	
-	public DiarioCaja(Date fecha, Caja caja, Set<Movimiento> movimiento) {
+	public DiarioCaja(Date fecha, Caja caja, Movimiento movimiento) {
 		super();
 		this.fecha = fecha;
 		this.caja = caja;
@@ -59,21 +60,17 @@ public class DiarioCaja implements Serializable{
 	public void setCaja(Caja caja) {
 		this.caja = caja;
 	}
-
-	public Set<Movimiento> getMovimiento() {
-		return movimiento;
-	}
-
-	public void setMovimiento(Set<Movimiento> movimiento) {
-		this.movimiento = movimiento;
-	}
-	
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
+
+	public Movimiento getMovimiento() {
+		return movimiento;
+	}
+
+	public void setMovimiento(Movimiento movimiento) {
+		this.movimiento = movimiento;
+	}
 
 }

@@ -33,8 +33,7 @@ public class IniciarSesionController extends HttpServlet {
     public IniciarSesionController() {
         super();
         usuarioDao= DAOFactory.getFactory().getUsuarioDAO();
-        usuario = new Usuario();
-        
+        usuario = new Usuario();        
         
     }
 
@@ -65,6 +64,8 @@ public class IniciarSesionController extends HttpServlet {
 				
 				session.setAttribute("ID", usuario.getId());
 				session.setAttribute("Nombre", usuario.getNombre());
+				session.setAttribute("caja_id", usuario.getCaja().getId());
+				
 				
 				System.out.println("Datos correctos");
 				if (rol.equals("ADMINISTRADOR")) {
