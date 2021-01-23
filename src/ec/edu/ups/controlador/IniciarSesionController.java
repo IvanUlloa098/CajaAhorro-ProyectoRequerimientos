@@ -34,8 +34,7 @@ public class IniciarSesionController extends HttpServlet {
         super();
         usuarioDao= DAOFactory.getFactory().getUsuarioDAO();
         usuario = new Usuario();
-        caja = new Caja();
-        roles = new Rol();
+        
         
     }
 

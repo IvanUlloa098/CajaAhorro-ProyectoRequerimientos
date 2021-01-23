@@ -47,7 +47,6 @@ public class Test {
 		usuario.setEmail("mail@mail.com");
 		usuarioDAO.create(usuario);
 		
-		
 	}
 
 }

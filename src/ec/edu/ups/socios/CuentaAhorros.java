@@ -21,25 +21,26 @@ public class CuentaAhorros implements Serializable{
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column(nullable=false)
 	private int id;
-	@Column(nullable=false, unique=true)
+	@Column(nullable=false, unique = true)
 	private String numero;
 	@Column(nullable=false)
 	private Date fechaCreacion;
 	@Column(nullable=false)
-	private char estado;
-	@Column(nullable=false)
 	private double saldo;
+	@Column(nullable=false)
+	private char estado;
 	
 	@ManyToOne
 	@JoinColumn
 	private PlanCuentas planesCuentas;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
-	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
-	
 	@ManyToOne
 	@JoinColumn
 	private Socio socio;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
+	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<SolicitudCredito>solicitudCredito= new HashSet<SolicitudCredito>();
@@ -50,28 +51,21 @@ public class CuentaAhorros implements Serializable{
 	@Transient
 	private double inicial;
 	
-	
 	public CuentaAhorros() {
 		
 	}
 	
-	public CuentaAhorros(int id, int numero, Date fechaCreacion, char estado, Socio socio, PlanCuentas planesCuentas) {
+	public CuentaAhorros(int id, String numero, Date fechaCreacion, double saldo, char estado, Socio socio, PlanCuentas planesCuentas) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.fechaCreacion = fechaCreacion;
+		this.saldo=saldo;
 		this.estado = estado;
 		this.socio = socio;
 		this.planesCuentas=planesCuentas;
 	}
-
-	public double getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -81,11 +75,11 @@ public class CuentaAhorros implements Serializable{
 		this.id = id;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -95,6 +89,14 @@ public class CuentaAhorros implements Serializable{
 
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
 	}
 
 	public char getEstado() {

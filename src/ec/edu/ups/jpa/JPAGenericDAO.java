@@ -10,6 +10,8 @@ import javax.persistence.Query;
 import ec.edu.ups.dao.GenericDAO;
 import ec.edu.ups.gestion.Rol;
 import ec.edu.ups.gestion.Usuario;
+import ec.edu.ups.socios.PlanCuentas;
+import ec.edu.ups.socios.Socio;
 
 public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 	private Class<T> persistentClass;
@@ -102,6 +104,23 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 		Usuario user = (Usuario) query.getSingleResult();
 		return (T) user ;		
 	}
+    
+    @Override
+    public T buscarPlanes(String nombre) {
+		String jpql1 = "Select pc FROM PlanCuentas pc WHERE pc.tipo= '"+nombre+ "'";
+		Query query = em.createQuery(jpql1);
+		PlanCuentas planes = (PlanCuentas)query.getSingleResult();
+		return (T) planes ;		
+	}
+    
+    @Override
+    public T buscarSocio(String cedula) {
+    	String jpql1 = "Select s FROM Socio s WHERE s.cedula='" + cedula +"'" ;
+    	Query query = em.createQuery(jpql1);
+		Socio socio = (Socio) query.getSingleResult();
+		return (T) socio ;
+    	
+    }
     
 
 

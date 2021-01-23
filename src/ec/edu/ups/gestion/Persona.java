@@ -23,7 +23,7 @@ public class Persona{
 	private String nombre;
 	@Column(nullable=false)
 	private String apellido;
-	@Column(nullable=false, unique=true)
+	@Column(nullable=false, unique = true)
 	private String cedula;
 	@Column(nullable=false)
 	private String telefono;
@@ -31,6 +31,8 @@ public class Persona{
 	private String direccion;
 	@Column(nullable=false)
 	private String email;
+	
+	
 	
 	public Persona() {
 		super();

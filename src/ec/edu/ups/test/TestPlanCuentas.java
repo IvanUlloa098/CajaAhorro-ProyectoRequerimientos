@@ -40,7 +40,7 @@ public class TestPlanCuentas {
 		cuentaAhorros = new CuentaAhorros();
 		
 		cuentaAhorros.setId(1);
-		cuentaAhorros.setNumero(1);
+		cuentaAhorros.setNumero("1");
 		cuentaAhorros.setFechaCreacion(new Date());
 		cuentaAhorros.setEstado('A');
 		cuentaAhorros.setSocio(socio);
