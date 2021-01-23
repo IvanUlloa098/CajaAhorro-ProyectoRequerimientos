@@ -20,13 +20,17 @@ public class CuentaAhorros implements Serializable{
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column(nullable=false)
-	private int cuentaId;
+	private int id;
 	@Column(nullable=false)
-	private int numeroCta;
+	private int numero;
 	@Column(nullable=false)
-	private Date fechaCre;
+	private Date fechaCreacion;
 	@Column(nullable=false)
-	private char cuentaAct;
+	private char estado;
+	
+	@ManyToOne
+	@JoinColumn
+	private PlanCuentas planesCuentas;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
@@ -35,8 +39,7 @@ public class CuentaAhorros implements Serializable{
 	@JoinColumn
 	private Socio socio;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
-	private Set<PlanCuentas>planCuentas = new HashSet<PlanCuentas>();
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<SolicitudCredito>solicitudCredito= new HashSet<SolicitudCredito>();
@@ -56,38 +59,48 @@ public class CuentaAhorros implements Serializable{
 		
 	}
 	
-	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio) {
+	public CuentaAhorros(int id, int numero, Date fechaCreacion, char estado, Socio socio, PlanCuentas planesCuentas) {
 		super();
-		this.cuentaId = cuentaId;
-		this.numeroCta = numeroCta;
-		this.fechaCre = fechaCre;
-		this.cuentaAct = cuentaAct;
+		this.id = id;
+		this.numero = numero;
+		this.fechaCreacion = fechaCreacion;
+		this.estado = estado;
 		this.socio = socio;
+		this.planesCuentas=planesCuentas;
 	}
 	
-	public int getCuentaId() {
-		return cuentaId;
+	
+
+	public int getId() {
+		return id;
 	}
-	public void setCuentaId(int cuentaId) {
-		this.cuentaId = cuentaId;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getNumeroCta() {
-		return numeroCta;
+
+	public int getNumero() {
+		return numero;
 	}
-	public void setNumeroCta(int numeroCta) {
-		this.numeroCta = numeroCta;
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
-	public Date getFechaCre() {
-		return fechaCre;
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
 	}
-	public void setFechaCre(Date fechaCre) {
-		this.fechaCre = fechaCre;
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
-	public char getCuentaAct() {
-		return cuentaAct;
+
+	public char getEstado() {
+		return estado;
 	}
-	public void setCuentaAct(char cuentaAct) {
-		this.cuentaAct = cuentaAct;
+
+	public void setEstado(char estado) {
+		this.estado = estado;
 	}
 
 	public Set<Movimiento> getMovimiento() {
@@ -106,12 +119,12 @@ public class CuentaAhorros implements Serializable{
 		this.socio = socio;
 	}
 
-	public Set<PlanCuentas> getPlanCuentas() {
-		return planCuentas;
+	public PlanCuentas getPlanesCuentas() {
+		return planesCuentas;
 	}
 
-	public void setPlanCuentas(Set<PlanCuentas> planCuentas) {
-		this.planCuentas = planCuentas;
+	public void setPlanesCuentas(PlanCuentas planesCuentas) {
+		this.planesCuentas = planesCuentas;
 	}
 
 	public Set<SolicitudCredito> getSolicitudCredito() {

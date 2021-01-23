@@ -1,6 +1,9 @@
 package ec.edu.ups.socios;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,22 +19,19 @@ public class PlanCuentas implements Serializable{
 	@Column(nullable=false)
 	private String descrip;
 	
-	@ManyToOne
-	@JoinColumn
-	private CuentaAhorros cuentaA;
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "planesCuentas")
+	private Set<CuentaAhorros>cuentasAhorros = new HashSet<CuentaAhorros>();
 	
 	public PlanCuentas() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public PlanCuentas(int id, String tipo, String descrip, CuentaAhorros cuentaA) {
+	public PlanCuentas(int id, String tipo, String descrip) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
 		this.descrip = descrip;
-		this.cuentaA = cuentaA;
 	}
 
 	public int getId() {
@@ -52,13 +52,13 @@ public class PlanCuentas implements Serializable{
 	public void setDescrip(String descrip) {
 		this.descrip = descrip;
 	}
-	
-	public CuentaAhorros getCuentaA() {
-		return cuentaA;
+
+	public Set<CuentaAhorros> getCuentasAhorros() {
+		return cuentasAhorros;
 	}
 
-	public void setCuentaA(CuentaAhorros cuentaA) {
-		this.cuentaA = cuentaA;
+	public void setCuentasAhorros(Set<CuentaAhorros> cuentasAhorros) {
+		this.cuentasAhorros = cuentasAhorros;
 	}
 
 	public static long getSerialversionuid() {

@@ -39,10 +39,10 @@ public class TestSolicitudCredito {
 		
 		cuentaAhorros = new CuentaAhorros();
 		
-		cuentaAhorros.setCuentaId(1);
-		cuentaAhorros.setNumeroCta(1);
-		cuentaAhorros.setFechaCre(new Date());
-		cuentaAhorros.setCuentaAct('A');
+		cuentaAhorros.setId(1);
+		cuentaAhorros.setNumero(1);
+		cuentaAhorros.setFechaCreacion(new Date());
+		cuentaAhorros.setEstado('A');
 		cuentaAhorros.setSocio(socio);
 		
 		confirmacion = agregarSolicitudCredito(cuentaAhorros);

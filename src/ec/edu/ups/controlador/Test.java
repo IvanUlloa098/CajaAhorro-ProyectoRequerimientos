@@ -33,7 +33,7 @@ public class Test {
 		
 		//Creacion de una caja
 		cajaDao = DAOFactory.getFactory().getCajaDAO();
-		caja= new Caja(0,"Calle Vieja y Elia Liu",400.50);
+		caja= new Caja(0,"Calle Vieja y Elia Liu",900.50);
 		cajaDao.create(caja);
 		
 		//Creacion de dos usuarios
