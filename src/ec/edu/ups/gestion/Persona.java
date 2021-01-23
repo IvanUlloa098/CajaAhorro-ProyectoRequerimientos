@@ -19,20 +19,18 @@ public class Persona{
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column
+	@Column(nullable=false)
 	private String nombre;
-	@Column
+	@Column(nullable=false)
 	private String apellido;
-	@Column
+	@Column(nullable=false, unique=true)
 	private String cedula;
-	@Column
+	@Column(nullable=false)
 	private String telefono;
-	@Column
+	@Column(nullable=false)
 	private String direccion;
-	@Column
+	@Column(nullable=false)
 	private String email;
-	
-	
 	
 	public Persona() {
 		super();

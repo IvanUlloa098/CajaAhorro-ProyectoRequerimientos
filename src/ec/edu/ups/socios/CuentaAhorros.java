@@ -21,12 +21,14 @@ public class CuentaAhorros implements Serializable{
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column(nullable=false)
 	private int id;
-	@Column(nullable=false)
-	private int numero;
+	@Column(nullable=false, unique=true)
+	private String numero;
 	@Column(nullable=false)
 	private Date fechaCreacion;
 	@Column(nullable=false)
 	private char estado;
+	@Column(nullable=false)
+	private double saldo;
 	
 	@ManyToOne
 	@JoinColumn
@@ -39,21 +41,15 @@ public class CuentaAhorros implements Serializable{
 	@JoinColumn
 	private Socio socio;
 	
-	
-	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<SolicitudCredito>solicitudCredito= new HashSet<SolicitudCredito>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<Credito> credito = new HashSet<Credito>();
 	
+	@Transient
 	private double inicial;
 	
-	private double saldo;
-	
-	private Movimiento m;
-	
-	private Caja c;
 	
 	public CuentaAhorros() {
 		
@@ -68,8 +64,14 @@ public class CuentaAhorros implements Serializable{
 		this.socio = socio;
 		this.planesCuentas=planesCuentas;
 	}
-	
-	
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
 
 	public int getId() {
 		return id;
