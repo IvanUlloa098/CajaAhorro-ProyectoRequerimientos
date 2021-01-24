@@ -1,16 +1,24 @@
 package ec.edu.ups.aporte_ahorros;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import ec.edu.ups.dao.CajaDAO;
+import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.DiarioCajaDAO;
 import ec.edu.ups.dao.MovimientoDAO;
+import ec.edu.ups.dao.TipoMovimientoDAO;
+import ec.edu.ups.gestion.Caja;
 import ec.edu.ups.gestion.DiarioCaja;
+import ec.edu.ups.socios.CuentaAhorros;
 
 /**
  * Servlet implementation class RealizarTransaccionController
@@ -21,8 +29,16 @@ public class RealizarTransaccionController extends HttpServlet {
 	
 	private Movimiento movimiento;
 	private DiarioCaja diario;
+	private TipoMovimiento tipo;
+	private CuentaAhorros ca;
+	private Caja caja;
+	
 	private DiarioCajaDAO diarioDAO;
 	private MovimientoDAO movDAO;
+	private TipoMovimientoDAO tipoDAO;
+	private CuentaAhorrosDAO cuentaDAO;
+	private CajaDAO cajaDao;
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,6 +47,9 @@ public class RealizarTransaccionController extends HttpServlet {
         super();
         diarioDAO = DAOFactory.getFactory().getDiarioCajaDAO();
         movDAO = DAOFactory.getFactory().getMovimientoDAO();
+        tipoDAO = DAOFactory.getFactory().getTipoMovimientoDAO();
+        cuentaDAO = DAOFactory.getFactory().getCuentaAhorrosDAO();
+        cajaDao= DAOFactory.getFactory().getCajaDAO();
         
     }
 
@@ -48,18 +67,80 @@ public class RealizarTransaccionController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String url = null;
+		Date date = new Date(); 
 		
 		try {
+			HttpSession  session=request.getSession(true);
+			
 			String monto = request.getParameter("monto");
 			String cuenta = request.getParameter("cuenta");
+			int cid = Integer.valueOf(session.getAttribute("caja_id").toString());
+			int t = Integer.valueOf(request.getParameter("tipo"));
+			Double aux_ca;
+			Double aux_caja;
 			
+			tipo = tipoDAO.read(t);
+			ca = cuentaDAO.find_numero(cuenta);			
+			caja = cajaDao.read(cid);
+			
+			if (tipo.getNombre().equals("DEPOSITO")) {
+						
+								
+				movimiento = new Movimiento(0, date, Double.valueOf(monto), tipo, ca);
+				
+				diario = new DiarioCaja(date, caja, movimiento);
+				
+				ca.addDeposito(Double.valueOf(monto));	
+				
+				caja.setSaldo(caja.getSaldo()+Double.valueOf(monto));
+				
+				movDAO.create(movimiento);
+				diarioDAO.create(diario);
+				cuentaDAO.update(ca);
+				cajaDao.update(caja);
+				
+				url= "/emp/indexE.jsp";
+				
+			} else if (tipo.getNombre().equals("RETIRO")) {
+				
+				aux_ca = ca.getSaldo()-Double.valueOf(monto);
+				aux_caja = caja.getSaldo()-Double.valueOf(monto);
+				
+				if ((aux_ca>0) && (aux_caja>0)) {
+					
+					movimiento = new Movimiento(0, date, Double.valueOf(monto), tipo, ca);
+					
+					diario = new DiarioCaja(date, caja, movimiento);
+					
+					ca.addRetiro(Double.valueOf(monto));	
+					
+					caja.setSaldo(aux_caja);
+					
+					movDAO.create(movimiento);
+					diarioDAO.create(diario);
+					cuentaDAO.update(ca);
+					cajaDao.update(caja);
+					
+					url= "/emp/indexE.jsp";
+					
+				} else {
+					System.out.println("ERROR>>>> CAJA O CUENTA VACIA");
+					ca = null;
+					caja = null;
+					
+					url= "/CargarTiposController";
+				}
+				
+			}
 			
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(">>>WARNING (RealizarTransaccionController): " + e.getMessage());
+			url= "/CargarTiposController";
 		}
 		
-		doGet(request, response);
+		getServletContext().getRequestDispatcher(url).forward(request, response);
+		
 	}
 
 }

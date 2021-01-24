@@ -114,7 +114,7 @@
                                 <br><BR />                               
                                 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <SELECT name="plan" class="form-control">
+                                    <SELECT name="tipo" class="form-control">
 										 <option value= "Tipo de Movimiento" selected >Seleccione el Tipo de Movimiento</option>
 										 <c:forEach var="t" items="${tip}">
 												 <option value="${t.getId()}">${t.getNombre()}</option>
