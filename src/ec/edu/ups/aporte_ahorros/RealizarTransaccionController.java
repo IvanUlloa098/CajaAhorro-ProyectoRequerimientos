@@ -74,6 +74,7 @@ public class RealizarTransaccionController extends HttpServlet {
 			
 			String monto = request.getParameter("monto");
 			String cuenta = request.getParameter("cuenta");
+			String cedula = request.getParameter("cedula");
 			int cid = Integer.valueOf(session.getAttribute("caja_id").toString());
 			int t = Integer.valueOf(request.getParameter("tipo"));
 			Double aux_ca;
@@ -83,7 +84,7 @@ public class RealizarTransaccionController extends HttpServlet {
 			ca = cuentaDAO.find_numero(cuenta);			
 			caja = cajaDao.read(cid);
 			
-			if (tipo.getNombre().equals("DEPOSITO")) {
+			if ((tipo.getNombre().equals("DEPOSITO")) && (ca.getSocio().getCedula().equals(cedula))) {
 						
 								
 				movimiento = new Movimiento(0, date, Double.valueOf(monto), tipo, ca);
@@ -101,7 +102,7 @@ public class RealizarTransaccionController extends HttpServlet {
 				
 				url= "/emp/indexE.jsp";
 				
-			} else if (tipo.getNombre().equals("RETIRO")) {
+			} else if ((tipo.getNombre().equals("RETIRO")) && (ca.getSocio().getCedula().equals(cedula))) {
 				
 				aux_ca = ca.getSaldo()-Double.valueOf(monto);
 				aux_caja = caja.getSaldo()-Double.valueOf(monto);
