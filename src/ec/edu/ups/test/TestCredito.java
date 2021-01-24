@@ -21,7 +21,7 @@ public class TestCredito extends TestCase {
 		s = new Socio();
 		s.setId(1);
 		s.setEstado('A');
-		ca = new CuentaAhorros(1, 23456789, d, 'a', s);
+		//ca = new CuentaAhorros(1, 23456789, d, 'a', s);
 		cc = new CarteraCreditos(1,'a',2);
 		
 		c = new Credito(1, 238.33, 15, 1, 'B', ca, cc);

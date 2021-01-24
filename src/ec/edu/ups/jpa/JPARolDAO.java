@@ -9,5 +9,7 @@ public class JPARolDAO extends JPAGenericDAO<Rol, Integer> implements RolDAO {
 		super(Rol.class);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 }

@@ -48,7 +48,7 @@ public class TestDiarioCaja {
 		diario = new DiarioCaja();
 		diario.setFecha(new Date());
 		diario.setCaja(caja);
-		diario.setMovimiento(movimientos);
+		//diario.setMovimiento(movimientos);
 		
 		return true;
 	}

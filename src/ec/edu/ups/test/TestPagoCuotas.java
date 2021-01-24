@@ -33,7 +33,7 @@ public class TestPagoCuotas {
 		this.socio.setEmail("emailsocio@gmail.com");
 		
 		Date date = new Date();
-		this.cuentaAhorros = new CuentaAhorros(1, 12121212, date, 'A', socio);
+		//this.cuentaAhorros = new CuentaAhorros(1, 12121212, date, 'A', socio);
 		carteraCreditos = new CarteraCreditos(1,'N',0);
 		
 	}

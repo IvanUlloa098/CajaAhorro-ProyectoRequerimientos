@@ -33,7 +33,7 @@ public class Test {
 		
 		//Creacion de una caja
 		cajaDao = DAOFactory.getFactory().getCajaDAO();
-		caja= new Caja(0,"Calle Vieja y Elia Liu",400.50);
+		caja= new Caja(0,"Calle Vieja y Elia Liu",900.50);
 		cajaDao.create(caja);
 		
 		//Creacion de dos usuarios
@@ -47,6 +47,26 @@ public class Test {
 		usuario.setEmail("mail@mail.com");
 		usuarioDAO.create(usuario);
 		
+		/*//Creacion de dos roles para administrador y usuario corriente
+		rolDAO = DAOFactory.getFactory().getRolDAO();
+		rol1 = rolDAO.read(2);
+		
+		
+		//Creacion de una caja
+		cajaDao = DAOFactory.getFactory().getCajaDAO();
+		caja= cajaDao.read(1);
+		//cajaDao.create(caja);
+		
+		//Creacion de dos usuarios
+		usuarioDAO = DAOFactory.getFactory().getUsuarioDAO();
+		usuario = new Usuario("admin", "1234", rol1, caja);
+		usuario.setNombre("Luis");
+		usuario.setApellido("Sanchez");
+		usuario.setCedula("8888888888");
+		usuario.setTelefono("0000000000");
+		usuario.setDireccion("Av calle");
+		usuario.setEmail("admin@mail.com");
+		usuarioDAO.create(usuario);*/
 		
 	}
 

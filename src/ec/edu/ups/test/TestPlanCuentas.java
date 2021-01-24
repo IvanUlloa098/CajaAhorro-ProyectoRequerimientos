@@ -39,10 +39,10 @@ public class TestPlanCuentas {
 		
 		cuentaAhorros = new CuentaAhorros();
 		
-		cuentaAhorros.setCuentaId(1);
-		cuentaAhorros.setNumeroCta(1);
-		cuentaAhorros.setFechaCre(new Date());
-		cuentaAhorros.setCuentaAct('A');
+		cuentaAhorros.setId(1);
+		cuentaAhorros.setNumero("1");
+		cuentaAhorros.setFechaCreacion(new Date());
+		cuentaAhorros.setEstado('A');
 		cuentaAhorros.setSocio(socio);
 	
 		confirmacion = agregarPlanCuentas(cuentaAhorros);
@@ -59,8 +59,6 @@ public class TestPlanCuentas {
 		plan.setId(id);
 		plan.setTipo(tipo);
 		plan.setDescrip(descrip);
-		plan.setCuentaA(cuentaA);
-		
 		return true;
 	}
 	
