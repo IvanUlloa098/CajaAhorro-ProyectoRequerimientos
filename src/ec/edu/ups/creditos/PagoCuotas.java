@@ -14,7 +14,7 @@ public class PagoCuotas implements Serializable {
 	@Column(nullable=false)
 	private int id;
 	@Column(nullable=false)
-	private float montoPag;
+	private double montoPag;
 	@Column(nullable=false)
 	private Date fecha;
 	
@@ -27,12 +27,22 @@ public class PagoCuotas implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public PagoCuotas(int id, float montoPag, Date fecha, Credito credito) {
+	public PagoCuotas(int id, double montoPag, Date fecha, Credito credito) {
 		super();
 		this.id = id;
 		this.montoPag = montoPag;
 		this.fecha = fecha;
 		this.credito = credito;
+	}
+	
+	public boolean verificarCredito() {
+		
+		if(this.credito.getEstado() == 'A' ) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	public int getId() {
@@ -41,10 +51,10 @@ public class PagoCuotas implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public float getMontoPag() {
+	public double getMontoPag() {
 		return montoPag;
 	}
-	public void setMontoPag(float montoPag) {
+	public void setMontoPag(double montoPag) {
 		this.montoPag = montoPag;
 	}
 	public Date getFecha() {

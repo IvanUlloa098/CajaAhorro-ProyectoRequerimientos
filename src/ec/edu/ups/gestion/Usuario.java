@@ -11,51 +11,47 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="CDA_Usuario")
+@PrimaryKeyJoinColumn(name="persona_id")
 public class Usuario extends Persona implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
-	@Id
+	/**@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	private int id;
-	
+	private int id;**/
 	@Column(nullable=false)
 	private String username;
 	
 	@Column(nullable=false)
 	private String password;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToOne
+	@JoinColumn
 	private Rol rol;
 	
 	@ManyToOne
 	@JoinColumn
 	private Caja caja;
-	
+		
 	
 	public Usuario() {
 	
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Usuario(int id, String username, String password, Rol rol ) {
+	public Usuario(String username, String password, Rol rol, Caja caja) {
 		
-		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.rol = rol;
+		this.caja = caja;
 	}
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -81,8 +77,13 @@ public class Usuario extends Persona implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
+
+	public Caja getCaja() {
+		return caja;
+	}
+
+	public void setCaja(Caja caja) {
+		this.caja = caja;
+	}
 
 }

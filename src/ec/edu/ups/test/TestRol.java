@@ -19,13 +19,18 @@ public class TestRol {
 
 	@Before
 	public void paraEjecutarAntes()throws Exception{
+		usuario = new Usuario();
 		
-		
+	}
+	//El siguiente metodo asigna un rol a un usuario
+	@Test
+	public void asignarRolAdmin() {
+		rol= new Rol(1, "ADMINISTRADOR");
 	}
 	
 	@Test
-	public void asignarRol() {
-		
+	public void asignarRolUsuario() {
+		rol= new Rol(2, "USUARIO");
 	}
 	
 	@After

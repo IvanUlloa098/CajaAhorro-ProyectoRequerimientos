@@ -30,6 +30,7 @@ public class CarteraCreditos implements Serializable {
 		this.calificacion = calificacion;
 		this.diasMora = diasMora;
 	}
+	
 	public CarteraCreditos() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -63,6 +64,17 @@ public class CarteraCreditos implements Serializable {
 		return serialVersionUID;
 	}
 
+	
+	public boolean agregarCredito(Credito credito) {
+	
+		this.setId(1);
+		this.setCalificacion((char) 1);
+		this.setDiasMora(4);
+		
+		this.Creditos.add(credito);
+	
+		return true;
+	};
 	
 
 }

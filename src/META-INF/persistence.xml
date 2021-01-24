@@ -14,15 +14,16 @@
 	<class>ec.edu.ups.gestion.DiarioCaja</class>
 	<class>ec.edu.ups.gestion.Rol</class>
 	<class>ec.edu.ups.gestion.Usuario</class>
+	<class>ec.edu.ups.gestion.Persona</class>
 	<class>ec.edu.ups.socios.CuentaAhorros</class>
 	<class>ec.edu.ups.socios.PlanCuentas</class>
 	<class>ec.edu.ups.socios.Socio</class>
 	
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Caja_Ahorros?serverTimezone=UTC"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Caja_Ahorros"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="DFTUrptu9799"/>
+			<property name="javax.persistence.jdbc.password" value="1234"/>
  			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
 		</properties>

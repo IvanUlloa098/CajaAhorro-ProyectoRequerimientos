@@ -1,4 +1,4 @@
-package ec.edu.ups.socios;
+ package ec.edu.ups.socios;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -20,23 +20,27 @@ public class CuentaAhorros implements Serializable{
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	@Column(nullable=false)
-	private int cuentaId;
+	private int id;
+	@Column(nullable=false, unique = true)
+	private String numero;
 	@Column(nullable=false)
-	private int numeroCta;
+	private Date fechaCreacion;
 	@Column(nullable=false)
-	private Date fechaCre;
+	private double saldo;
 	@Column(nullable=false)
-	private char cuentaAct;
+	private char estado;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
-	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
+	@ManyToOne
+	@JoinColumn
+	private PlanCuentas planesCuentas;
 	
 	@ManyToOne
 	@JoinColumn
 	private Socio socio;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
-	private Set<PlanCuentas>planCuentas = new HashSet<PlanCuentas>();
+	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<SolicitudCredito>solicitudCredito= new HashSet<SolicitudCredito>();
@@ -44,50 +48,63 @@ public class CuentaAhorros implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaA")
 	private Set<Credito> credito = new HashSet<Credito>();
 	
+	@Transient
 	private double inicial;
-	
-	private double saldo;
-	
-	private Movimiento m;
-	
-	private Caja c;
 	
 	public CuentaAhorros() {
 		
 	}
 	
-	public CuentaAhorros(int cuentaId, int numeroCta, Date fechaCre, char cuentaAct, Socio socio) {
+	public CuentaAhorros(int id, String numero, Date fechaCreacion, double saldo, char estado, Socio socio, PlanCuentas planesCuentas) {
 		super();
-		this.cuentaId = cuentaId;
-		this.numeroCta = numeroCta;
-		this.fechaCre = fechaCre;
-		this.cuentaAct = cuentaAct;
+		this.id = id;
+		this.numero = numero;
+		this.fechaCreacion = fechaCreacion;
+		this.saldo=saldo;
+		this.estado = estado;
 		this.socio = socio;
+		this.planesCuentas=planesCuentas;
 	}
 	
-	public int getCuentaId() {
-		return cuentaId;
+
+	public int getId() {
+		return id;
 	}
-	public void setCuentaId(int cuentaId) {
-		this.cuentaId = cuentaId;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getNumeroCta() {
-		return numeroCta;
+
+	public String getNumero() {
+		return numero;
 	}
-	public void setNumeroCta(int numeroCta) {
-		this.numeroCta = numeroCta;
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
-	public Date getFechaCre() {
-		return fechaCre;
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
 	}
-	public void setFechaCre(Date fechaCre) {
-		this.fechaCre = fechaCre;
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
-	public char getCuentaAct() {
-		return cuentaAct;
+
+	public double getSaldo() {
+		return saldo;
 	}
-	public void setCuentaAct(char cuentaAct) {
-		this.cuentaAct = cuentaAct;
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public char getEstado() {
+		return estado;
+	}
+
+	public void setEstado(char estado) {
+		this.estado = estado;
 	}
 
 	public Set<Movimiento> getMovimiento() {
@@ -106,12 +123,12 @@ public class CuentaAhorros implements Serializable{
 		this.socio = socio;
 	}
 
-	public Set<PlanCuentas> getPlanCuentas() {
-		return planCuentas;
+	public PlanCuentas getPlanesCuentas() {
+		return planesCuentas;
 	}
 
-	public void setPlanCuentas(Set<PlanCuentas> planCuentas) {
-		this.planCuentas = planCuentas;
+	public void setPlanesCuentas(PlanCuentas planesCuentas) {
+		this.planesCuentas = planesCuentas;
 	}
 
 	public Set<SolicitudCredito> getSolicitudCredito() {

@@ -11,5 +11,18 @@ public abstract class DAOFactory {
 	}
 	
 	public abstract CajaDAO getCajaDAO();
+	public abstract RolDAO getRolDAO();
+	public abstract UsuarioDAO getUsuarioDAO();
+	public abstract DiarioCajaDAO getDiarioCajaDAO();
+	public abstract CuentaAhorrosDAO getCuentaAhorrosDAO();
+	public abstract PlanCuentasDAO getPlanCuentasDAO();
+	public abstract SocioDAO getSocioDAO();
+	public abstract MovimientoDAO getMovimientoDAO();
+	public abstract TipoMovimientoDAO getTipoMovimientoDAO();
+	public abstract CreditoDAO getCreditoDAO();
+	public abstract CarteraCreditosDAO getCarteraCreditosDAO();
+	public abstract PagoCuotasDAO getPagoCuotasDAO();
+	public abstract SolicitudCreditoDAO getSolicitudCreditoDAO();
+	public abstract TablaAmortizacionDAO getTablaAmortizacionDAO();
 
 }

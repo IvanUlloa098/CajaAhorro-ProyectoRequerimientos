@@ -21,10 +21,10 @@ public class TestCredito extends TestCase {
 		s = new Socio();
 		s.setId(1);
 		s.setEstado('A');
-		ca = new CuentaAhorros(1, 23456789, d, 'a', s);
+		//ca = new CuentaAhorros(1, 23456789, d, 'a', s);
 		cc = new CarteraCreditos(1,'a',2);
 		
-		c = new Credito(1, 238.33f, 15, 1, 'B', ca, cc);
+		c = new Credito(1, 238.33, 15, 1, 'B', ca, cc);
 		
 	}
 	
@@ -35,26 +35,26 @@ public class TestCredito extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
-		
+	
+	//Este metodo esta realizado para obtener el monto de una cuota de un credito
 	@Test
 	public void testCalculoCuota() {
-		float esperado = 532.381f;		
-		ce= new Credito(1,238.33f, 15, 1, 'B', ca, cc);
-		float resultado = ce.calcularCuota(12.4f, 12, 6000);
-		assertEquals(esperado, resultado);
+		double esperado = 532.381;		
+		ce= new Credito(1,238.33, 15, 1, 'B', ca, cc);
+		double resultado = ce.calcularCuota(12.4, 12, 6000);
+		assertEquals(esperado, resultado, 1e-2);
 		
 	}
 	
+	//Este metodo esta realizado para obtener el monto de una cuota de un credito
+	//Con la diferencia que este metodo fallara
 	@Test
 	public void testCalculoCuota1() {
-		float esperado = 250.00f;		
+		double esperado = 250.00;		
 		ce= new Credito(1,238.33f, 15, 1, 'B', ca, cc);
-		float resultado = ce.calcularCuota(15, 24, 6000);
-		assertEquals(esperado, resultado);
+		double resultado = ce.calcularCuota(15, 24, 6000);
+		assertEquals(esperado, resultado, 1e-2);
 		
 	}
-	
-	
-	
 
 }

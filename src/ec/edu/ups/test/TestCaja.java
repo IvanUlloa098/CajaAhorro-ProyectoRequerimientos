@@ -20,20 +20,21 @@ public class TestCaja {
 	
 	@Before
 	public void setUp() throws Exception{
-		caja = new Caja(1, "Av Americas y Batan", 400.50f);
+		caja = new Caja(1, "Av Americas y Batan", 400.50);
 		rol = new Rol (1,"Admin");
-		user = new Usuario(1, "dianaTixi", "patito123", rol);
+		user = new Usuario("dianaTixi", "patito123", rol, new Caja());
 	
 	}
+	// Este metodo esta realizado para revisar el saldo de la Caja
 	@Test
 	public void obtenerSaldo(){
-		double valorPrueba= 400.50f;
-		float saldoCaja = caja.getSaldo();
-		double saldo= saldoCaja;
+		double valorPrueba= 400.50;
+		double saldo= caja.getSaldo();
 		assertEquals("Test Control Saldo Caja", valorPrueba, saldo, 0.01d);
 		
 	}
 	
+	//Este metodo esta realizado para asociar un usuario a la caja
 	@Test
 	public void usuarioAdd() {
 		boolean confirmacion= caja.agregarUsuario(user, caja);
@@ -42,6 +43,7 @@ public class TestCaja {
 	
 	@After
 	public void tearDown() throws Exception {
+		
 	}
 
 }
