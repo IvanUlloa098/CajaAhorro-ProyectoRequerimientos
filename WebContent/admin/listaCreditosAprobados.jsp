@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!-- Site Metas -->
-<title>Caja de Ahorros</title>
+<title>Lista Creditos Aprobados</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -68,13 +68,13 @@
                         <div class="collapse navbar-collapse" id="navbars-seo">
                             <ul class="navbar-nav ml-auto">
                                 
-                                <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/admin/index.html">Inicio Administrador</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/admin/index.html">Inicio Administrador</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/admin/crearCaja.jsp">Registar Caja</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearEmpladoController2">Registar Empleados</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Aprobacion Credito</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Perfil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/iniciarSesion.html">Cerrar Sesion</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/ListaCreditosAprobadosController">Lista Aprobacion de Creditos </a></li>
+                                <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/listaCreditosAprobados.jsp">Lista Aprobacion de Creditos </a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,66 +82,33 @@
             </header>
             <!-- End header -->
 
-            <div id="slider" class="sl-slider-wrapper">
-
-                <div class="sl-slider">
-
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-1"></div>
-                            <h2>Savings Bank Seven</h2>
-                            <blockquote>
-                                <p>Etiam felis elit, mollis posuere accumsan ac, dignissim a ligula. Nam ullamcorper ornare tortor sed dapibus. Aliquam ultrices vestibulum sodales. Aenean efficitur massa vel tellus dapibus pellentesque. </p>
-                                <a href="#" class="bttn-new">Started Today</a>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-2"></div>
-                            <h2>Marketing Website</h2>
-                            <blockquote>
-                                <p>Etiam felis elit, mollis posuere accumsan ac, dignissim a ligula. Nam ullamcorper ornare tortor sed dapibus. Aliquam ultrices vestibulum sodales. Aenean efficitur massa vel tellus dapibus pellentesque. </p>
-                                <a href="#" class="bttn-new">Started Today</a>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-3"></div>
-                            <h2>Search engine, Analytics, Traffic</h2>
-                            <blockquote>
-                                <p>Etiam felis elit, mollis posuere accumsan ac, dignissim a ligula. Nam ullamcorper ornare tortor sed dapibus. Aliquam ultrices vestibulum sodales. Aenean efficitur massa vel tellus dapibus pellentesque. </p>
-                                <a href="#" class="bttn-new">Started Today</a>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-4"></div>
-                            <h2>Social Networking</h2>
-                            <blockquote>
-                                <p>Etiam felis elit, mollis posuere accumsan ac, dignissim a ligula. Nam ullamcorper ornare tortor sed dapibus. Aliquam ultrices vestibulum sodales. Aenean efficitur massa vel tellus dapibus pellentesque. </p>
-                                <a href="#" class="bttn-new">Started Today</a>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-                <!-- /sl-slider -->
-
-                <nav id="nav-dots" class="nav-dots">
-                    <span class="nav-dot-current"></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </nav>
-
-            </div>
-            <!-- /slider-wrapper -->
-
+	<c:set var="creditosL" scope="request" value="${creditos}" />
+	
+	
+		<table class="table" id="recto">
+		<tr>
+			<td class="titulo"><strong>Num. de Cuenta </strong></td>
+			<td class="titulo"><strong>Nombre </strong></td>
+			<td class="titulo"><strong>Monto </strong></td>
+			<td class="titulo"><strong>Interes </strong></td>
+			<td class="titulo"><strong>Num. Cuota </strong></td>
+			<td class="titulo"><strong>Estado de Crédito </strong></td>
+			
+		</tr>
+		<c:forEach var="c" items="${creditosL}">
+			<tr>
+				<td>${c.cuentaA.getNumero()}</td>
+				<td>${c.cuentaA.socio.getNombre()}</td>
+				<td>${c.monto}</td>
+				<td>${c.interes}</td>
+				<td>${c.numeroCuota}</td>
+				<td>${c.estado}</td>
+				
+			</tr>
+		</c:forEach>
+	</table>
+	
+	
             <div id="about" class="section wb nopadtop">
                 <div class="container">
                     <div class="row">
