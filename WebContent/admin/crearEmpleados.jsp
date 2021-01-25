@@ -90,17 +90,14 @@
 	<!-- End header -->
 	<!-- end section -->
 
-    <div id="support" class="section wb">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Registrar </h3>
-            </div><!-- end title -->
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="contact_form">
-                        <div id="message"></div>
-                        <form id="contactform02" class="row" method="POST" action="/CajaAhorro-ProyectoRequerimientos/CrearEmpleadoController" name="contactform" >
+    <div id="services" class="section lb">
+        <div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="section-title text-center">
+						<h3>Registar Empleados</h3>
+            		</div><!-- end title -->
+                        <form id="contactform02" class="container" method="POST" action="/CajaAhorro-ProyectoRequerimientos/CrearEmpleadoController" name="contactform" >
                             <fieldset class="row row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre.....">
@@ -108,18 +105,21 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido.....">
                                 </div>
+                                <br><BR />
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cedula.....">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono.....">
                                 </div>
+                                <br><BR />
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion.....">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="email" id="email" class="form-control" placeholder="Email.....">
                                 </div>
+                                <br><BR />
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="username" id="username" class="form-control" placeholder="Username.....">
                                 </div>
@@ -127,7 +127,7 @@
                                     <input type="password" name="password" id="passowrd" class="form-control" placeholder="Password.....">
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <SELECT name="rol">
+                                    <SELECT name="rol" class="form-control">
 										 <option value=_"Seleccionar Rol" selected >Seleccionar Rol</option>
 										 <c:forEach var="r" items="${roles}">
 												<option>${r.rol}</option>
@@ -135,14 +135,15 @@
 								     </SELECT>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <SELECT name="caja">
+                                    <SELECT name="caja" class="form-control" >
 										 <option value=_"Seleccionar Caja" selected >Seleccionar Caja</option>
 										 <c:forEach var="c" items="${cajas}">
 												<option>${c.id}</option>
 									        </c:forEach>
 								     </SELECT>
                                 </div>
-                                <input type="submit" id="login" name="login" value="Registrar Empleado" />
+                                <br><BR />
+                                <input class="container" type="submit" id="login" name="login" value="Registrar Empleado" />
                                 
                             </fieldset>
                         </form>
@@ -150,7 +151,6 @@
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
-    </div><!-- end section -->
 
     <div id="support" class="section db">
         <div class="container">

@@ -71,7 +71,7 @@
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTiposController">Realizar Transacciones</a></li>
                             <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Solicitudes de Creditos</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Credito</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/iniciarSesion.html">Cerrar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Cerrar Sesion</a></li>
                         </ul>
                     </div>
                 </div>
