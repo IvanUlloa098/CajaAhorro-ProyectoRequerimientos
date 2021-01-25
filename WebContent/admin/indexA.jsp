@@ -72,7 +72,7 @@
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearEmpladoController2">Registar Empleados</a></li>
                                 <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Aprobacion Credito</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Perfil</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/iniciarSesion.html">Cerrar Sesion</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Cerrar Sesion</a></li>
                             </ul>
                         </div>
                     </div>

@@ -90,39 +90,32 @@
 	<!-- End header -->
 	<!-- end section -->
 
-    <div id="support" class="section wb">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Iniciar Sesion</h3>
-            </div><!-- end title -->
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="contact_form">
-                        <div id="message"></div>
-                        <form id="contactform2" class="row"  method="GET" action="/CajaAhorro-ProyectoRequerimientos/IniciarSesionController" name="contactform">
+    <div id="services" class="section lb">
+        <div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="section-title text-center">
+                		<h3>Iniciar Sesion</h3>
+            		</div> <!-- end title -->
+                        <form id="contactform2" class="container"  method="GET" action="/CajaAhorro-ProyectoRequerimientos/IniciarSesionController" name="contactform">
                             <fieldset class="row row-fluid">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input type="text" name="username" id="username" class="form-control" placeholder="Username...">
                                 </div>
+                                <br></br>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña......">
                                 </div>
+                                <br></br>
                                 <div class="text-center img-st">
-									<input type="submit" id="login" name="login" value="Iniciar Sesion" />
+									<input class="form-control"type="submit" id="login" name="login" value="Iniciar Sesion" />
 								</div>
                             </fieldset>
                         </form>
                     </div>
                 </div><!-- end col -->
-				<div class="col-md-6">
-					<div class="map-box">
-						<div id="custom-places" class="small-map"></div>
-					</div>
-				</div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
-    </div><!-- end section -->
 
     <div id="support" class="section db">
         <div class="container">

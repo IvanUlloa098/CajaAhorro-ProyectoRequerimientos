@@ -90,38 +90,31 @@
 	<!-- End header -->
 	<!-- end section -->
 
-    <div id="support" class="section wb">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Registrar Caja</h3>
-            </div><!-- end title -->
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="contact_form">
-                        <div id="message"></div>
-                        <form id="contactform01" class="row"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/CajaController" name="contactform">
+    <div id="services" class="section lb">
+        <div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="section-title text-center">
+                		<h3>Registrar Caja</h3>
+            		</div> <!-- end title -->
+                        <form id="contactform01" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/CajaController" name="contactform">
                             <fieldset class="row row-fluid">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="direccion">
+                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion">
                                 </div>
+                                <br></br>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input type="text" name="saldo" id="saldo" class="form-control" placeholder="Saldo">
                                 </div>
-                                  <input type="submit" id="login" name="login" value="Registrar Caja" />
+                                <br></br>
+                                  <input class="form-control" type="submit" id="login" name="login" value="Registrar Caja" />
                                 
                             </fieldset>
                         </form>
                     </div>
                 </div><!-- end col -->
-				<div class="col-md-6">
-					<div class="map-box">
-						<div id="custom-places" class="small-map"></div>
-					</div>
-				</div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
-    </div><!-- end section -->
 
     <div id="support" class="section db">
         <div class="container">

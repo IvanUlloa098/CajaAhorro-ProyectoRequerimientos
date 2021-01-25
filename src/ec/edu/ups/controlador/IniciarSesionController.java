@@ -1,6 +1,8 @@
 package ec.edu.ups.controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,8 +67,6 @@ public class IniciarSesionController extends HttpServlet {
 				session.setAttribute("ID", usuario.getId());
 				session.setAttribute("Nombre", usuario.getNombre());
 				session.setAttribute("caja_id", usuario.getCaja().getId());
-				
-				
 				System.out.println("Datos correctos");
 				if (rol.equals("ADMINISTRADOR")) {
 					System.out.println("Es Admin");
@@ -75,8 +75,13 @@ public class IniciarSesionController extends HttpServlet {
 					System.out.println("Es empleado");
 					url= "/emp/indexE.jsp";
 				}	
+			}else {
+				url= "/sesion.jsp";
 			}
+			
 			request.setAttribute("usuario", usuario);
+			getServletContext().getRequestDispatcher(url).forward(request, response);
+			
 			/*
 			try {
 				usuario=usuarioDao.Sesion(V1, V2);
@@ -109,10 +114,13 @@ public class IniciarSesionController extends HttpServlet {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Error al ingresar");
+			PrintWriter pw=response.getWriter();
+			response.setContentType("text/html");  
+			response.sendRedirect("/CajaAhorro-ProyectoRequerimientos/sesion.jsp");
+			pw.close(); 
 		}
-
-		getServletContext().getRequestDispatcher(url).forward(request, response);
-	
+		
 	}
 	
 	/**
