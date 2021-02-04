@@ -69,6 +69,16 @@ public class Movimiento implements Serializable{
 		this.tipoM = tipoM;
 	}
 
+	public Movimiento(int id, Date fecha, double monto, TipoMovimiento tipoM, CuentaAhorros cuentaA) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.monto = monto;
+		this.tipoM = tipoM;
+		this.cuentaA = cuentaA;
+	}
+
+
 	public int getId() {
 		return id;
 	}

@@ -40,8 +40,7 @@
 
 </head>
 <body class="seo_version">
-	<c:set var="tip" scope="request" value="${tipos}" />
-	<c:set var="cajid" scope="session" value="${caja_id}" />
+	
 
     <!-- LOADER -->
 	<div id="preloader">
@@ -97,11 +96,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="section-title text-center">
-						<h3>Realizar un Depósito</h3>
+						<h3>Solicitar Credito</h3>
 						<p>Con la cuenta de ahorros de Savings Bank Seven podras manejar tu dinero de manera facil y segura</p>
 						<p>Ahora manejar tu cuenta de ahorros es mas practico y eficiente. Puedes acceder, realizar pagos, consultas, retiros y transferencias de forma facil y segura </p>
 					</div><!-- end title -->
-					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/RealizarTransaccionController" name="contactform">
+					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/SolicitudCreditoController" name="contactform">
                             <fieldset>
                             <fieldset class="row row-fluid">
                             <legend>Informacion Necesaria</legend>
@@ -110,23 +109,23 @@
                                 </div>                             
                                 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="monto" id="monto" class="form-control" placeholder="Monto del Movimiento...">
-                                </div>
+                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula del propietario...">
+                                </div>                                
                                 <br><BR />       
                                 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula del propietario...">
+                                    <input type="number" name="monto" id="monto" class="form-control" placeholder="Monto...">
                                 </div>
-                                <br><BR />                           
                                 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <SELECT name="tipo" class="form-control">
-										 <option value= "Tipo de Movimiento" selected >Seleccione el Tipo de Movimiento</option>
-										 <c:forEach var="t" items="${tip}">
-												 <option value="${t.getId()}">${t.getNombre()}</option>
-									        </c:forEach>
-								     </SELECT>
+                                    <input type="number" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion...">
                                 </div>
+                                <br><BR /> 
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="cuotas" id="cuotas" class="form-control" placeholder="Cuotas...">
+                                </div>
+                                <br><BR />                                       
                                 
                             </fieldset>
                             

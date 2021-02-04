@@ -69,7 +69,8 @@
                             
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearSocioCuentaController">CrearCuentas</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTiposController">Realizar Transacciones</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Solicitudes de Creditos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTransferenciasController">Realizar Transferencias</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/solicitarCredito.jsp">Solicitud de Credito</a></li>                            
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Credito</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Cerrar Sesion</a></li>
                         </ul>
