@@ -1,4 +1,4 @@
-package ec.edu.ups.aporte_ahorros;
+package ec.edu.ups.controlador;
 
 import java.io.IOException;
 import java.util.Date;
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ec.edu.ups.aporte_ahorros.Movimiento;
+import ec.edu.ups.aporte_ahorros.TipoMovimiento;
 import ec.edu.ups.dao.CajaDAO;
 import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;

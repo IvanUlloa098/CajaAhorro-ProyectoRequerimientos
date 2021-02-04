@@ -29,6 +29,11 @@ public class SolicitudCredito implements Serializable {
 	@Column(nullable=false)
 	private String observacion;
 	
+	@Column(nullable=false)
+	private Double monto;
+	
+	private int cuotas;
+	
 	@ManyToOne
 	@JoinColumn
 	private CuentaAhorros cuentaA;
@@ -45,6 +50,24 @@ public class SolicitudCredito implements Serializable {
 		this.fecha = fecha;
 		this.observacion = observacion;
 		this.cuentaA = cuentaA;
+	}
+	
+	public SolicitudCredito(char estado, Date fecha, Double monto, String observacion, CuentaAhorros cuentaA, int cuotas) {
+		super();
+		this.estado = estado;
+		this.fecha = fecha;
+		this.monto = monto;
+		this.observacion = observacion;
+		this.cuentaA = cuentaA;
+		this.cuotas = cuotas;
+	}
+	
+	public Double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(Double monto) {
+		this.monto = monto;
 	}
 
 	public int getId() {
@@ -83,9 +106,13 @@ public class SolicitudCredito implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
-	
 
+	public int getCuotas() {
+		return cuotas;
+	}
+
+	public void setCuotas(int cuotas) {
+		this.cuotas = cuotas;
+	}
+	
 }

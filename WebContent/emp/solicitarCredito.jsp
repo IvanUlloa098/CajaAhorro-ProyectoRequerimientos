@@ -40,6 +40,7 @@
 
 </head>
 <body class="seo_version">
+	
 
     <!-- LOADER -->
 	<div id="preloader">
@@ -95,41 +96,43 @@
 			<div class="container">
 				<div class="row">
 					<div class="section-title text-center">
-						<h3>Aprobar Crédito</h3>
+						<h3>Solicitar Credito</h3>
 						<p>Con la cuenta de ahorros de Savings Bank Seven podras manejar tu dinero de manera facil y segura</p>
 						<p>Ahora manejar tu cuenta de ahorros es mas practico y eficiente. Puedes acceder, realizar pagos, consultas, retiros y transferencias de forma facil y segura </p>
 					</div><!-- end title -->
-					
-					<c:set var="solicitudes" scope="request" value="${solicitudes}" />
-					
-					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/AceptarSolicitudController" name="contactform">
-					
-						<table class="table" id="recto">
-							<tr>
-								<td class="titulo"><strong>Num. de Cuenta </strong></td>
-								<td class="titulo"><strong>C.I. del propietario </strong></td>
-								<td class="titulo"><strong>Monto </strong></td>
-								<td class="titulo"><strong>Observacion </strong></td>
-								<td class="titulo"><strong>Estado </strong></td>
-								
-							</tr>
-							<c:forEach var="s" items="${solicitudes}">
-								<tr>
-									<td>${s.cuentaA.getNumero()}</td>
-									<td>${s.cuentaA.socio.getCedula()}</td>
-									<td>${s.monto}</td>
-									<td>${s.observacion}</td>
-									<td>${s.estado}</td>
-									
-									<td><input type="submit" name="modificar_${s.id}" id="recto" value="Aceptar"></input></td>
-	  								<td><input type= "submit" name="eliminar_${s.id}" id="recto" value="Denegar"></input></td>
-									
-								</tr>
-							</c:forEach>
-						</table>	
-					
-					</form>		
-					
+					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/SolicitudCreditoController" name="contactform">
+                            <fieldset>
+                            <fieldset class="row row-fluid">
+                            <legend>Informacion Necesaria</legend>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                                	
+                                    <input type="text" name="cuenta" id="cuenta" class="form-control" placeholder="Numero de Cuenta...">
+                                </div>                             
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula del propietario...">
+                                </div>                                
+                                <br><BR />       
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="monto" id="monto" class="form-control" placeholder="Monto...">
+                                </div>
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion...">
+                                </div>
+                                <br><BR /> 
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="cuotas" id="cuotas" class="form-control" placeholder="Cuotas...">
+                                </div>
+                                <br><BR />                                       
+                                
+                            </fieldset>
+                            
+                            <input class="container" type="submit" id="login" name="login" value="Realizar Movimiento" />
+                            <br><BR />
+                          </fieldset>      
+                        </form>
 				</div>
 
     <div id="support" class="section db">
