@@ -107,14 +107,20 @@
                             <legend>Informacion Necesaria</legend>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                                	
                                     <input type="text" name="cuenta" id="cuenta" class="form-control" placeholder="Numero de Cuenta...">
-                                </div>
+                                </div>                             
+                                
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <input type="number" name="monto" id="monto" class="form-control" placeholder="Monto del Movimiento...">
                                 </div>
-                                <br><BR />                               
+                                <br><BR />       
                                 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <SELECT name="plan" class="form-control">
+                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula del propietario...">
+                                </div>
+                                <br><BR />                           
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <SELECT name="tipo" class="form-control">
 										 <option value= "Tipo de Movimiento" selected >Seleccione el Tipo de Movimiento</option>
 										 <c:forEach var="t" items="${tip}">
 												 <option value="${t.getId()}">${t.getNombre()}</option>

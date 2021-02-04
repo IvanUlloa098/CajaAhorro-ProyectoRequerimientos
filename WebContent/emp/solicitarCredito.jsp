@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
  
      <!-- Site Metas -->
-    <title>Crear Caja</title>  
+    <title>Registar CuentaAhorros</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -40,6 +40,7 @@
 
 </head>
 <body class="seo_version">
+	
 
     <!-- LOADER -->
 	<div id="preloader">
@@ -95,39 +96,57 @@
 			<div class="container">
 				<div class="row">
 					<div class="section-title text-center">
-                		<h3>Registrar Caja</h3>
-            		</div> <!-- end title -->
-                        <form id="contactform01" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/CajaController" name="contactform">
+						<h3>Solicitar Credito</h3>
+						<p>Con la cuenta de ahorros de Savings Bank Seven podras manejar tu dinero de manera facil y segura</p>
+						<p>Ahora manejar tu cuenta de ahorros es mas practico y eficiente. Puedes acceder, realizar pagos, consultas, retiros y transferencias de forma facil y segura </p>
+					</div><!-- end title -->
+					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/SolicitudCreditoController" name="contactform">
+                            <fieldset>
                             <fieldset class="row row-fluid">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion">
+                            <legend>Informacion Necesaria</legend>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">                                	
+                                    <input type="text" name="cuenta" id="cuenta" class="form-control" placeholder="Numero de Cuenta...">
+                                </div>                             
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula del propietario...">
+                                </div>                                
+                                <br><BR />       
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="monto" id="monto" class="form-control" placeholder="Monto...">
                                 </div>
-                                <br></br>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" name="saldo" id="saldo" class="form-control" placeholder="Saldo">
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion...">
                                 </div>
-                                <br></br>
-                                  <input class="form-control" type="submit" id="login" name="login" value="Registrar Caja" />
+                                <br><BR /> 
+                                
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" name="cuotas" id="cuotas" class="form-control" placeholder="Cuotas...">
+                                </div>
+                                <br><BR />                                       
                                 
                             </fieldset>
+                            
+                            <input class="container" type="submit" id="login" name="login" value="Realizar Movimiento" />
+                            <br><BR />
+                          </fieldset>      
                         </form>
-                    </div>
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
+				</div>
 
     <div id="support" class="section db">
         <div class="container">
             <div class="row">
                 <div id="logo-carousel" class="owl-carousel">
-					<div> <img src="images/logo_01.png" alt=""> </div>
-					<div> <img src="images/logo_02.png" alt=""> </div>
-					<div> <img src="images/logo_03.png" alt=""> </div>
-					<div> <img src="images/logo_04.png" alt=""> </div>
-					<div> <img src="images/logo_05.png" alt=""> </div>
-					<div> <img src="images/logo_06.png" alt=""> </div>
-					<div> <img src="images/logo_01.png" alt=""> </div>
-					<div> <img src="images/logo_02.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_01.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_02.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_03.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_04.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_05.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_06.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_01.png" alt=""> </div>
+					<div> <img src="/CajaAhorro-ProyectoRequerimientos/images/logo_02.png" alt=""> </div>
 				</div>
             </div><!-- end row -->
         </div><!-- end container -->

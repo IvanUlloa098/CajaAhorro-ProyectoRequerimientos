@@ -19,6 +19,7 @@ public class TipoMovimiento implements Serializable{
 	@Column(nullable=false)
 	private boolean suma;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoM")
 	private Set<Movimiento>movimiento = new HashSet<Movimiento>();
 	

@@ -45,7 +45,9 @@ public class CrearSocioCuentaController2 extends HttpServlet {
         socioDao= DAOFactory.getFactory().getSocioDAO();
         planesCuentaDao= DAOFactory.getFactory().getPlanCuentasDAO();
         cuentaDao= DAOFactory.getFactory().getCuentaAhorrosDAO();
+        persona = new Persona(); 
         socio = new Socio();
+        planes = new PlanCuentas();
         cuenta = new CuentaAhorros();
     }
 
@@ -78,55 +80,67 @@ public class CrearSocioCuentaController2 extends HttpServlet {
 			String nombrePlan = request.getParameter("plan");
 			String saldo = request.getParameter("saldo");
 			System.out.println("|"+nombre+"|"+"|"+apellido+"|"+"|"+cedula+"|"+"|"+estadoC+"|"+"|"+nombrePlan+"|"+"|"+saldo+"|");
-			
-			//Creacion del Socio
-			socio = new Socio(estadoSocio);
+			try {
+				//Creacion del Socio
+			socio = new Socio();
 			socio.setApellido(apellido);
 			socio.setNombre(nombre);
 			socio.setCedula(cedula);
 			socio.setTelefono(telefono);
 			socio.setDireccion(direccion);
 			socio.setEmail(email);
+			socio.setEstado(estadoSocio);
 			socioDao.create(socio);
-			System.out.println("El Id del Socio NUevo es: "+socio .getId());
+			System.out.println("El Id del Socio Nuevo es: "+socio.getCedula()+ " ID: "+socio.getId());
+			System.out.println("--------------------------------------------------------------------");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
-			//Busqueda de Plan de Cuentas 
-			planes=planesCuentaDao.buscarPlanes(nombrePlan); 
-			System.out.println("El plan es: "+ planes.getDescrip());
-			
-			//Buscar Socio para Agregar a la Cuenta 
-			Socio socio2 = socioDao.buscarSocio(cedula);
-			System.out.println("Cedula de la busqueda: "+socio2.getCedula());
-			
-			//Creacion de la Cuenta
-			//Fecha
-			java.util.Date d = new java.util.Date();  
-			SimpleDateFormat plantilla = new SimpleDateFormat("dd/MM/yyyy H:mm");
-			String tiempo = plantilla.format(d);
-			java.sql.Date date2 = new java.sql.Date(d.getTime());
-			System.out.println("Fecha actual: "+ date2);
-			
-			estadoCuenta = estadoC.charAt(0);
-			System.out.println("Estado Cuenta:" +estadoCuenta);
-			
-			double cantidad = Double.parseDouble(saldo);
-			numero1 = (int) (10000 + Math.random() * 90000);
-			numero2 = (int) (10000 + Math.random() * 90000);
-			
-			String n1= Integer.toString(numero1);
-			String n2= Integer.toString(numero2);
-			
-			String numeroCuenta = n1+n2;
-			System.out.println("Numero Cuenta es : "+numeroCuenta);
-			
-			cuenta.setEstado(estadoCuenta);
-			cuenta.setFechaCreacion(date2);
-			cuenta.setNumero(numeroCuenta);
-			cuenta.setPlanesCuentas(planes);
-			cuenta.setSocio(socio2);
-			cuenta.setSaldo(cantidad);
-			cuentaDao.create(cuenta);
-			url= "/emp/indexE.jsp";	
+			try {
+				//Busqueda de Plan de Cuentas 
+				planes=planesCuentaDao.buscarPlanes(nombrePlan); 
+				System.out.println("El plan es: "+ planes.getDescrip());
+				
+				//Buscar Socio para Agregar a la Cuenta 
+				Socio socio2 = new Socio();
+				socio2 = socioDao.buscarSocio(request.getParameter("cedula"));
+				System.out.println("Cedula2 de la busqueda: "+socio2.getId());
+				
+				//Creacion de la Cuenta
+				//Fecha
+				java.util.Date d = new java.util.Date();  
+				SimpleDateFormat plantilla = new SimpleDateFormat("dd/MM/yyyy H:mm");
+				String tiempo = plantilla.format(d);
+				java.sql.Date date2 = new java.sql.Date(d.getTime());
+				System.out.println("Fecha actual: "+ date2);
+				
+				estadoCuenta = estadoC.charAt(0);
+				double cantidad = Double.parseDouble(saldo);
+				
+				numero1 = (int) (10000 + Math.random() * 90000);
+				numero2 = (int) (10000 + Math.random() * 90000);
+				
+				String n1= Integer.toString(numero1);
+				String n2= Integer.toString(numero2);
+				
+				String numeroCuenta = n1+n2;
+				System.out.println("Numero Cuenta es : "+numeroCuenta);
+				
+				cuenta = new CuentaAhorros();
+				cuenta.setEstado(estadoCuenta);
+				cuenta.setFechaCreacion(date2);
+				cuenta.setNumero(numeroCuenta);
+				cuenta.setPlanesCuentas(planes);
+				cuenta.setSocio(socio2);
+				cuenta.setSaldo(cantidad);
+				cuentaDao.create(cuenta);
+				System.out.println("-------------------------------------");
+				url= "/emp/indexE.jsp";	
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,6 +1,7 @@
 package ec.edu.ups.creditos;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +26,9 @@ public class Credito implements Serializable {
 	private int numeroCuota;
 	@Column(nullable=false)
 	private char estado;
+	
+	private Date fecha;
+	
 	
 	@ManyToOne
 	@JoinColumn
@@ -54,6 +58,18 @@ public class Credito implements Serializable {
 		this.interes = interes;
 		this.numeroCuota = numeroCuota;
 		this.estado = estado;
+		this.cuentaA = cuentaA;
+		this.carteraC = carteraC;
+	}
+	
+	public Credito(double monto, int interes, int numeroCuota, char estado, Date fecha, CuentaAhorros cuentaA,
+			CarteraCreditos carteraC) {
+		super();
+		this.monto = monto;
+		this.interes = interes;
+		this.numeroCuota = numeroCuota;
+		this.estado = estado;
+		this.fecha = fecha;
 		this.cuentaA = cuentaA;
 		this.carteraC = carteraC;
 	}
@@ -126,6 +142,14 @@ public class Credito implements Serializable {
 		return serialVersionUID;
 	}
 	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
 	private double calcularTEM(double tea, int dias) {
         return (double) (Math.pow(1f + (tea / 100f), dias / 360f) - 1f) * 100f;
     }
