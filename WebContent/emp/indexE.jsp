@@ -73,6 +73,7 @@
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/solicitarCredito.jsp">Solicitud de Credito</a></li>                            
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Credito</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Cerrar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/buscarSocio.jsp">Buscar Socio</a></li>
                         </ul>
                     </div>
                 </div>

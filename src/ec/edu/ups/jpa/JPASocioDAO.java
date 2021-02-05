@@ -9,5 +9,13 @@ public class JPASocioDAO  extends JPAGenericDAO<Socio, Integer> implements Socio
 		super(Socio.class);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Socio findCedula(String cedula) {
+		
+		String jpql = "SELECT s FROM Socio s WHERE s.cedula = "+cedula;
+		Socio s = null;
+		s = em.createQuery(jpql, Socio.class).getSingleResult();
+		return s;
+	}
 
 }
