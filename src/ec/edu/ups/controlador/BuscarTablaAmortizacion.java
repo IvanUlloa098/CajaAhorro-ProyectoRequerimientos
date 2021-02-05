@@ -54,7 +54,8 @@ public class BuscarTablaAmortizacion extends HttpServlet {
         tablaDAO= DAOFactory.getFactory().getTablaAmortizacionDAO();
         creditoDAO= DAOFactory.getFactory().getCreditoDAO();
         cuentaAhorrosDAO= DAOFactory.getFactory().getCuentaAhorrosDAO();
-        
+        socioDAO = DAOFactory.getFactory().getSocioDAO();
+        socio = new Socio(); 
     }
 
 	/**
@@ -64,11 +65,14 @@ public class BuscarTablaAmortizacion extends HttpServlet {
 			throws ServletException, IOException {
 		String url=null;
 		String numCuenta= request.getParameter("cuenta");
-		String cedula1 = request.getParameter("cedula");
+		String cedula = request.getParameter("cedula");
 		System.out.println("Numero Cuenta es: ");
 				try {
-					System.out.println("Numero Cuenta es: "+numCuenta);
-					
+					System.out.println("Numero Cuenta es: "+numCuenta + " La cedula es:" +cedula);
+					//Buscar Datos Persona
+					Socio socio2 = new Socio();
+					socio2 = socioDAO.buscarSocio(request.getParameter("cedula"));
+					System.out.println("Datos del Socio: " + socio2.getNombre() +" " +socio2.getApellido() +" |" + socio2.getCedula());
 					
 					CuentaAhorros cuenta = new CuentaAhorros();
 					cuenta = cuentaAhorrosDAO.buscarCuenta(numCuenta);
@@ -76,7 +80,7 @@ public class BuscarTablaAmortizacion extends HttpServlet {
 					
 					credito= new Credito();
 					credito = creditoDAO.Creditos(numCuenta);
-					
+					System.out.println("ID Credito");
 					int idCred= credito.getId();
 					System.out.println("ID Credito"+ idCred);
 					
@@ -85,12 +89,16 @@ public class BuscarTablaAmortizacion extends HttpServlet {
 					
 					listaTabla = tablaDAO.listaT(idCred);
 					System.out.println("Tamano de la lista: "+ listaTabla.size());
+					
+					request.setAttribute("socio2", socio2);
 					request.setAttribute("listaTabla", listaTabla);
-					url = "/emp/listaAmortizaciones.jsp";
+					url = "/emp/listaAmortizaciones.jsp"; 
+					
 					
 				} catch (Exception e) {
+					e.printStackTrace();
 					System.out.println("Error Lista Tabla de Amortizacion: " + e);
-					//url = "/JSPs/error.jsp";
+					url = "/emp/indexE.jsp";
 				}
 				getServletContext().getRequestDispatcher(url).forward(request, response);	
 				

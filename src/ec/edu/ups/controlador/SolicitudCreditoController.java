@@ -75,6 +75,8 @@ public class SolicitudCreditoController extends HttpServlet {
 			solicitud = new SolicitudCredito('E', date, Double.valueOf(monto), descripcion, ca, Integer.valueOf(cuotas));
 			
 			solicitudDAO.create(solicitud);
+			
+			solicitud = new SolicitudCredito();
 			System.out.println(">>>>>> SOLICITUD EN ESPERA");
 			url= "/emp/indexE.jsp";
 			

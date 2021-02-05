@@ -101,7 +101,7 @@
 						<p>Con la cuenta de ahorros de Savings Bank Seven podras manejar tu dinero de manera facil y segura</p>
 						<p>Ahora manejar tu cuenta de ahorros es mas practico y eficiente. Puedes acceder, realizar pagos, consultas, retiros y transferencias de forma facil y segura </p>
 					</div><!-- end title -->
-					<form id="contactform04" class="container"  method="POST" action="/CajaAhorro-ProyectoRequerimientos/PagoCuotasController" name="contactform">
+					<form id="contactform04" class="container"  method="GET" action="/CajaAhorro-ProyectoRequerimientos/PagoCuotasController" name="contactform">
                             <fieldset>
                             <fieldset class="row row-fluid">
                             <legend>Informacion Necesaria</legend>
