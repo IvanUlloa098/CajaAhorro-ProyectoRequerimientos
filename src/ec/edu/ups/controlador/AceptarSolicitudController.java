@@ -22,9 +22,11 @@ import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.creditos.TablaAmortizacion;
 import ec.edu.ups.dao.CarteraCreditosDAO;
 import ec.edu.ups.dao.CreditoDAO;
+import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.SolicitudCreditoDAO;
 import ec.edu.ups.dao.TablaAmortizacionDAO;
+import ec.edu.ups.socios.CuentaAhorros;
 
 /**
  * Servlet implementation class AceptarSolicitudController
@@ -37,11 +39,13 @@ public class AceptarSolicitudController extends HttpServlet {
 	private Credito credito;
 	private CarteraCreditos cartera; 
 	private TablaAmortizacion tabla;
+	private CuentaAhorros ca;
 	
 	private SolicitudCreditoDAO solicitudDAO;
 	private CreditoDAO creditoDAO;
 	private CarteraCreditosDAO carteraDAO;
 	private TablaAmortizacionDAO tablaDAO;
+	private CuentaAhorrosDAO cuentaDAO;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,6 +56,7 @@ public class AceptarSolicitudController extends HttpServlet {
         creditoDAO = DAOFactory.getFactory().getCreditoDAO();
         carteraDAO = DAOFactory.getFactory().getCarteraCreditosDAO();
         tablaDAO= DAOFactory.getFactory().getTablaAmortizacionDAO();
+        cuentaDAO = DAOFactory.getFactory().getCuentaAhorrosDAO();
     }
 
 	/**
@@ -88,10 +93,14 @@ public class AceptarSolicitudController extends HttpServlet {
 				
 				cartera = new CarteraCreditos(0, 'A', 0);
 				
-				credito = new Credito((Double) monto_real, 10, solicitud.getCuotas(), 'A', fecha,  solicitud.getCuentaA(), cartera);
+				credito = new Credito((Double) monto_real, interes, solicitud.getCuotas(), 'A', fecha,  solicitud.getCuentaA(), cartera);
+				
+				ca = credito.getCuentaA();
+				ca.setSaldo(ca.getSaldo()+monto_real);
 				
 				carteraDAO.create(cartera);
 				creditoDAO.create(credito);
+				cuentaDAO.update(ca);
 				
 				//Crear Tabla de Amortizacion 
 				int tasa =interes/100;
