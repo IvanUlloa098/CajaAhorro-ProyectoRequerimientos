@@ -133,63 +133,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
-	
-            <div id="about" class="section wb nopadtop">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 m40">
-                            <div class="message-box">
-                                <h4>SBS Company</h4>
-                                <h2>Savings Bank Seven</h2>
-                                <p>Es una entidad de credito plena, con libertad y equiparacion operativa completa al resto de las que integran el sistema financiero ecuatoriano. Estan constituidas bajo la forma juridica de fundaciones de naturaleza privada,
-                                    con finalidad social y actuacion bajo criterios de mercado y revierten un importante porcentaje de los beneficios obtenidos a la sociedad a través de su Obra Social. </p>
-
-                                <p>Las Cajas de Ahorros se caracterizan en la canalizacion del ahorro popular y en la financiacion de las familias y de las peque�as y medianas empresas. Tienen una fuerte raiz local y una densa red de oficinas de ambito regional.
-                                    Cajas de Ahorros se mueven en todas sus acciones por un espiritu regenerador, reformista, de asociacion, de innovacion, cooperacion, vinculacion con el ambito territorial y por los valores principales de solidaridad,
-                                    cohesion social, responsabilidad social corporativa, independencia, participacion y eficiencia. </p>
-
-                            </div>
-                            <!-- end messagebox -->
-                        </div>
-                        <!-- end col -->
-
-                        <div class="col-md-6">
-                            <div class="post-media wow fadeIn">
-                                <img src="/CajaAhorro-ProyectoRequerimientos/images/about_01.jpg" alt="" class="img-fluid">
-                            </div>
-                            <!-- end media -->
-                        </div>
-                        <!-- end col -->
-
-                    </div>
-                    <!-- end row -->
-
-                    <div class="row vission-and-mission">
-                        <div class="col-md-12">
-                            <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" href="#tab_a" data-toggle="tab">Mision</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#tab_b" data-toggle="tab">Vision</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="tab_a">
-                                    <div class="box-inner-m">
-                                        <p>Hacer banca desde el ser humano y para el ser humano, trascendiendo hacia una instituacion centrada en las personas, fomentando el habito del ahorro y ofreciendo a nuestros clientes una amplia variedad de productos
-                                            y servicios financieros, optimizando nuestros niveles de rentabilidad y liquidez, cumpliendo con los mas altos estandares de calidad de servicio, con el respaldo de nuestro equipo de trabajo altamente motivado
-                                            y capacitado, sin dejar a un lado nuestro compromiso con el desarrollo sostenible de la comunidad y el medio ambiente
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab_b">
-                                    <div class="box-inner-m">
-                                        <p>Ser reconocido como la mejor entidad financiera, a nivel nacional, para hacer realidad los anhelos de la Familia ayudando a crear riquezas económicas y sociales, evitando la exclusión y generando trama social. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <hr class="hr1">
 
 
