@@ -200,8 +200,7 @@ public class TablaAmortizacion implements Serializable{
 		System.out.println("Pago total  " +  obtenerPagoTotal);
 		System.out.println("saldo  "  +obtenerSaldo);
 		}
-		
-		
+
 		return obtenerSaldo;
 	}
 	

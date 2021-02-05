@@ -109,6 +109,7 @@
 								<td class="titulo"><strong>Num. de Cuenta </strong></td>
 								<td class="titulo"><strong>C.I. del propietario </strong></td>
 								<td class="titulo"><strong>Monto </strong></td>
+								<td class="titulo"><strong>Cuotas </strong></td>
 								<td class="titulo"><strong>Observacion </strong></td>
 								<td class="titulo"><strong>Estado </strong></td>
 								
@@ -118,8 +119,10 @@
 									<td>${s.cuentaA.getNumero()}</td>
 									<td>${s.cuentaA.socio.getCedula()}</td>
 									<td>${s.monto}</td>
+									<td>${s.cuotas}</td>
 									<td>${s.observacion}</td>
 									<td>${s.estado}</td>
+									
 									
 									<td><input type="submit" name="modificar_${s.id}" id="recto" value="Aceptar"></input></td>
 	  								<td><input type= "submit" name="eliminar_${s.id}" id="recto" value="Denegar"></input></td>

@@ -23,6 +23,8 @@ public interface GenericDAO <T, ID>{
 	public T buscarPlanes(String nombre);
 
 	public T buscarSocio(String cedula);
+
+	public T buscarSolicitud(int id);
 	
 	
 

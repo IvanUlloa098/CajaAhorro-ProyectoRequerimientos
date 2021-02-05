@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import javax.persistence.Query;
 
+import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.dao.GenericDAO;
 import ec.edu.ups.gestion.Rol;
 import ec.edu.ups.gestion.Usuario;
@@ -120,6 +121,14 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 		Socio socio = (Socio) query.getSingleResult();
 		return (T) socio ;
     	
+    }
+    
+    @Override
+    public T buscarSolicitud(int id) {
+    	String jpql1 = "Select soli FROM SolicitudCredito soli WHERE soli.id=" + id ;
+    	Query query = em.createQuery(jpql1);
+    	SolicitudCredito solicitud = (SolicitudCredito) query.getSingleResult();
+    	return (T) solicitud;
     }
     
 
