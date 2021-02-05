@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +81,26 @@
                 </nav>
             </header>
             <!-- End header -->
-
+    <c:set var="socio2" scope="request" value="${socio2}" />			
+    <div class="row vission-and-mission">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills nav-justified"  id="myTab" role="tablist" >
+                        <li class="nav-item" >Nombre: ${socio2.nombre}</li>
+                        <li class="nav-item">Apellido: ${socio2.apellido}</li>
+                    </ul>
+                    <ul class="nav nav-pills nav-justified"  id="myTab" role="tablist" >
+                        <li class="nav-item">Cedula:${socio2.cedula}</li>
+                        <li class="nav-item">Telefono: ${socio2.telefono}</li>
+                    </ul>
+                    
+                    <ul class="nav nav-pills nav-justified"  id="myTab" role="tablist" >
+                        <li class="nav-item" >Direccion: ${socio2.direccion}</li>
+                        <li class="nav-item">Email: ${socio2.email}</li>
+                    </ul>
+                    
+                </div>
+    </div>
+	
 	<c:set var="listaTablaL" scope="request" value="${listaTabla}" />
 	
 	
@@ -96,6 +115,7 @@
 			<td class="titulo"><strong>PagoTotal </strong></td>
 			<td class="titulo"><strong>Saldo </strong></td>
 			<td class="titulo"><strong>Estado </strong></td>
+			
 			
 		</tr>
 		<c:forEach var="t" items="${listaTablaL}">

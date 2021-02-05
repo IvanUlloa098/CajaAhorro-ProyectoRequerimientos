@@ -34,7 +34,7 @@ public class Usuario extends Persona implements Serializable {
 	@JoinColumn
 	private Rol rol;
 	
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn
 	private Caja caja;
 		
