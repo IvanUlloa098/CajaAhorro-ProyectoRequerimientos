@@ -100,7 +100,7 @@ public class AceptarSolicitudController extends HttpServlet {
 				
 				solicitudDAO.update(solicitud);
 				interes=10;
-				monto_real = solicitud.getMonto() - (solicitud.getMonto() * 0.1);
+				monto_real = solicitud.getMonto();
 				
 				cartera = new CarteraCreditos(0, 'A', 0);
 				
