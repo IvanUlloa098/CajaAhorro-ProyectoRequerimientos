@@ -118,7 +118,7 @@
                                 </div>
                                 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="number" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion...">
+                                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripcion...">
                                 </div>
                                 <br><BR /> 
                                 

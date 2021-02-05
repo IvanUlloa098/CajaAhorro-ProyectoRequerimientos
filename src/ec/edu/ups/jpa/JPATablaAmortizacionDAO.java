@@ -9,5 +9,7 @@ public class JPATablaAmortizacionDAO extends JPAGenericDAO<TablaAmortizacion, In
 		super(TablaAmortizacion.class);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 }
