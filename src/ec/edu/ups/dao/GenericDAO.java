@@ -2,6 +2,8 @@ package ec.edu.ups.dao;
 
 import java.util.List;
 
+import ec.edu.ups.creditos.TablaAmortizacion;
+
 public interface GenericDAO <T, ID>{
 	
 	public void create(T entity);
@@ -32,6 +34,8 @@ public interface GenericDAO <T, ID>{
 
 
 	public T Tabla(int nume, int idC);
+
+	public List<TablaAmortizacion> listaT(int idCred);
 	
 	
 

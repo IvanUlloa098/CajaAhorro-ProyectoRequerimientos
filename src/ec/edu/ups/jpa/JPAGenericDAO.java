@@ -134,6 +134,7 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
     	return (T) solicitud;
     }
     
+    
 
     @Override
     public T buscarCuenta(String numeroC) {
@@ -159,5 +160,14 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
     	return (T) tablaA;
     }
     
+    @Override
+	public List<TablaAmortizacion> listaT (int idCred){
+		String jpql1 = "Select tabla FROM TablaAmortizacion tabla WHERE tabla.credito.id=" +idCred ;
+    	List<TablaAmortizacion> amortizaciones = em.createQuery(jpql1).getResultList();
+		return amortizaciones;	
+	}
+    
+    
+
 
 }
