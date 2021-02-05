@@ -90,36 +90,50 @@ public class PagoCuotasController extends HttpServlet {
 			credito = creditoDAO.Creditos(cuenta);
 			System.out.println("Credito ID" +credito.getId());
 			
-			//Agregar a la tabla pagocuota
-			PagoCuotas pago = new PagoCuotas();
-			pago .setId(0);
-			pago.setMontoPag(Double.parseDouble(monto));
-			pago.setFecha(new Date());
-			pago.setCredito(credito);
-			
-			pagoDAO.create(pago);
-			
-			
-			//Moficamos el estado y saldo
 			Credito credt= new Credito();
 			credt = creditoDAO.Creditos(cuenta); 
 		
 			int idCred=credt.getId();
-			System.out.println("Credito: "+idCred);
+			// Variable del numero de cuotas que se busca en Credito
+			int NroCuota= credito.getNumeroCuota();
+			System.out.println("Credito: "+idCred +" NroCuota: "+ NroCuota);
+			
+			//Variable Numero Cuota que Ingresa el Cliente
 			int nCuota = Integer.parseInt(cuota);
+			
 			TablaAmortizacion tablaAmort = new TablaAmortizacion();
 			tablaAmort= tablaDAO.Tabla(nCuota, idCred);
 			
 			int idCredTabla = tablaAmort.getCredito().getId();
 			System.out.println("Id Credito: "+ idCred +"| Id TablaAmortizacion Credito"+ idCredTabla);
-			if (tablaAmort.getCredito().getId()==credito.getId()) {
+			
+			if (tablaAmort.getCredito().getId()==credito.getId() & tablaAmort.getEstado().equals("P")) {
+				//Agregar a la tabla pagocuota
+				PagoCuotas pago = new PagoCuotas();
+				pago .setId(0);
+				pago.setMontoPag(Double.parseDouble(monto));
+				pago.setFecha(new Date());
+				pago.setCredito(credito);
+				
+				pagoDAO.create(pago);
+				
 				tablaAmort.setEstado("C");
 				double total = tablaAmort.getSaldo();
 				double cantidad = Double.parseDouble(monto);
 				//tablaAmort.setSaldo(total- cantidad);
 				tablaDAO.update(tablaAmort);
-			} 
-			url = "/emp/indexE.jsp";
+				if (nCuota==NroCuota) {
+					System.out.println("Cambio de Estado en Credito");
+					System.out.println(">>>>>>>>Cambiando...");
+					
+					credt.setEstado('T');
+					creditoDAO.update(credt);
+				}
+				url = "/emp/indexE.jsp";
+			}else {
+				url = "/emp/PagarCuota.jsp";
+				}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
