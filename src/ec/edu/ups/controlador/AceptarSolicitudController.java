@@ -2,7 +2,6 @@ package ec.edu.ups.controlador;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.ServletException;
@@ -16,8 +15,10 @@ import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.dao.CarteraCreditosDAO;
 import ec.edu.ups.dao.CreditoDAO;
+import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.SolicitudCreditoDAO;
+import ec.edu.ups.socios.CuentaAhorros;
 
 /**
  * Servlet implementation class AceptarSolicitudController
@@ -29,11 +30,12 @@ public class AceptarSolicitudController extends HttpServlet {
 	private SolicitudCredito solicitud;
 	private Credito credito;
 	private CarteraCreditos cartera; 
+	private CuentaAhorros cuenta;
 	
 	private SolicitudCreditoDAO solicitudDAO;
 	private CreditoDAO creditoDAO;
 	private CarteraCreditosDAO carteraDAO;
-	
+	private CuentaAhorrosDAO cuentaDAO;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,6 +44,7 @@ public class AceptarSolicitudController extends HttpServlet {
         solicitudDAO = DAOFactory.getFactory().getSolicitudCreditoDAO();
         creditoDAO = DAOFactory.getFactory().getCreditoDAO();
         carteraDAO = DAOFactory.getFactory().getCarteraCreditosDAO();
+        cuentaDAO = DAOFactory.getFactory().getCuentaAhorrosDAO();
     }
 
 	/**
@@ -76,12 +79,15 @@ public class AceptarSolicitudController extends HttpServlet {
 				interes=10;
 				monto_real = solicitud.getMonto() - (solicitud.getMonto() * 0.1);
 				
-				cartera = new CarteraCreditos(0, 'A', 0);
-				
+				cartera = new CarteraCreditos(0, 'A', 0);				
 				credito = new Credito((Double) monto_real, 10, solicitud.getCuotas(), 'A', fecha,  solicitud.getCuentaA(), cartera);
 				
 				carteraDAO.create(cartera);
 				creditoDAO.create(credito);
+				
+				cuenta = solicitud.getCuentaA();
+				cuenta.setSaldo(cuenta.getSaldo()+monto_real);
+				cuentaDAO.update(cuenta);
 				
 				System.out.println(">>>>>>>>>>>>>  UPDATE RESPONSE FROM /AceptarSolicitudController");
 				url= "/admin/indexA.jsp";
