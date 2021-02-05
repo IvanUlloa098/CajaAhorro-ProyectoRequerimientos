@@ -1,8 +1,11 @@
 package ec.edu.ups.controlador;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.persistence.internal.databaseaccess.InOutputParameterForCallableStatement;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import ec.edu.ups.creditos.CarteraCreditos;
 import ec.edu.ups.creditos.Credito;
@@ -76,6 +85,7 @@ public class AceptarSolicitudController extends HttpServlet {
 		Double monto_real;
 		Date fecha = new Date();
 		int interes;
+		List<TablaAmortizacion> aux = new ArrayList<TablaAmortizacion>();
 		
 		Optional<String> s = request.getParameterMap().keySet().stream().filter(e->e.contains("modificar_")).findFirst();
 		Optional<String> s1 = request.getParameterMap().keySet().stream().filter(e->e.contains("eliminar_")).findFirst();
@@ -140,15 +150,23 @@ public class AceptarSolicitudController extends HttpServlet {
                     tabla.setSaldo(total);
 					tabla.setTasa(interes);
 					tabla.setCredito(credito);
+					
+					aux.add(tabla);
+					
 					tablaDAO.create(tabla);
 					System.out.println("Fila Agregada");
 					if (i==1) {
 						z++;
 					}
+					
+					
 				}
 				
 				System.out.println(">>>>>>>>>>>>>  UPDATE RESPONSE FROM /AceptarSolicitudController");
 				url= "/admin/indexA.jsp";
+				
+				this.createPDF(credito, aux);
+				
 			} else {
 				
 				solicitud = solicitudDAO.read(Integer.parseInt(s1.get().split("_")[1]));
@@ -166,6 +184,65 @@ public class AceptarSolicitudController extends HttpServlet {
 		}
 		
 		getServletContext().getRequestDispatcher(url).forward(request, response);
+	}
+	
+	private void createPDF(Credito c, List<TablaAmortizacion> a) {
+		
+		
+		try {
+			Document documento = new Document();
+			FileOutputStream ficheroPdf = new FileOutputStream("MiCredito.pdf");
+			PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
+			
+			documento.open();
+			
+			documento.add(new Paragraph("*****************TABLA DE AMORTIZACION*****************"));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 NUMERO DE CUENTA: "+c.getCuentaA().getNumero()));
+			documento.add(new Paragraph("*	 NUMERO DE CEDULA: "+c.getCuentaA().getSocio().getCedula()));
+			documento.add(new Paragraph("*	 MONTO SOLICITADO: "+c.getMonto()));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph(" "));
+			
+			PdfPTable tabla = new PdfPTable(8);
+			
+			tabla.addCell("CUOTA");
+			tabla.addCell("FECHA VENCIMIENTO");
+			tabla.addCell("TASA");
+			tabla.addCell("CAPITAL");
+			tabla.addCell("INTERES");
+			tabla.addCell("PAGO TOTAL");
+			tabla.addCell("SALDO");
+			tabla.addCell("ESTADO");
+			
+			for (TablaAmortizacion t: a) {
+				
+				tabla.addCell(t.getNumCuota()+"");
+				tabla.addCell(t.getFechaVenc()+"");
+				tabla.addCell(t.getTasa()+"");
+				tabla.addCell(t.getCapital()+"");
+				tabla.addCell(t.getInteres()+"");
+				tabla.addCell(t.getPagoTotal()+"");
+				tabla.addCell(t.getSaldo()+"");
+				tabla.addCell(t.getEstado()+"");
+				
+			}
+			
+			documento.add(tabla);
+						
+			documento.close();
+			
+			System.out.println(">>>>>>>>> PDF CREADO");
+			
+		} catch (FileNotFoundException e) {
+			System.out.println(">>>>>>>>> ERROR (RealizarTransaccionController)");
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			System.out.println(">>>>>>>>> ERROR (RealizarTransaccionController)");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
  
 }

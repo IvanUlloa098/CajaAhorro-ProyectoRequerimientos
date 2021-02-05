@@ -87,6 +87,7 @@ public class SolicitudCreditoController extends HttpServlet {
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 		
 	}
+	
 	private void createPDF(CuentaAhorros c, SolicitudCredito s) {
 		
 		
