@@ -70,7 +70,8 @@
                                 
                                 <li class="nav-item active"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/admin/index.html">Inicio Administrador</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/admin/crearCaja.jsp">Registar Caja</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearEmpladoController2">Registar Empleados</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearEmpladoController2">Registar Empleado</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/admin/EditarSocioDatos.jsp">Editar Empleado</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarSolicitudesController">Aprobar Credito</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Perfil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/iniciarSesion.html">Cerrar Sesion</a></li>
