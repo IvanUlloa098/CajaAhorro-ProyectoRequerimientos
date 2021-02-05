@@ -82,27 +82,33 @@
             </header>
             <!-- End header -->
 
-	<c:set var="creditosL" scope="request" value="${creditos}" />
+	<c:set var="listaTablaL" scope="request" value="${listaTabla}" />
 	
 	
 		<table class="table" id="recto">
 		<tr>
-			<td class="titulo"><strong>Num. de Cuenta </strong></td>
-			<td class="titulo"><strong>Nombre </strong></td>
-			<td class="titulo"><strong>Monto </strong></td>
+			<td class="titulo"><strong>ID </strong></td>
+			<td class="titulo"><strong>Nro.Cuota </strong></td>
+			<td class="titulo"><strong>FechaV </strong></td>
+			<td class="titulo"><strong>Tasa </strong></td>
+			<td class="titulo"><strong>Capital </strong></td>
 			<td class="titulo"><strong>Interes </strong></td>
-			<td class="titulo"><strong>Num. Cuota </strong></td>
-			<td class="titulo"><strong>Estado de Crédito </strong></td>
+			<td class="titulo"><strong>PagoTotal </strong></td>
+			<td class="titulo"><strong>Saldo </strong></td>
+			<td class="titulo"><strong>Estado </strong></td>
 			
 		</tr>
-		<c:forEach var="c" items="${creditosL}">
+		<c:forEach var="t" items="${listaTablaL}">
 			<tr>
-				<td>${c.cuentaA.getNumero()}</td>
-				<td>${c.cuentaA.socio.getNombre()}</td>
-				<td>${c.monto}</td>
+				<td>${t.id}</td>
+				<td>${t.numCuota}</td>
+				<td>${t.fechaVenc}</td>
+				<td>${t.tasa}</td>
+				<td>${t.capital}</td>
 				<td>${c.interes}</td>
-				<td>${c.numeroCuota}</td>
-				<td>${c.estado}</td>
+				<td>${t.pagoTotal}</td>
+				<td>${t.saldo}</td>
+				<td>${t.estado}</td>
 				
 			</tr>
 		</c:forEach>
@@ -198,7 +204,7 @@
                                                 <img src="/CajaAhorro-ProyectoRequerimientos/images/seo_02.png" alt="" class="img-fluid img-rounded">
                                             </div>
                                             <h3>Creditos</h3>
-                                            <p>DisposiciÃ³n de fondos que un banco acuerda dar, a cambio de unos intereses que se calculan sobre la cifra efectivamente dispuesta</p>
+                                            <p>Disposicion de fondos que un banco acuerda dar, a cambio de unos intereses que se calculan sobre la cifra efectivamente dispuesta</p>
                                         </div>
                                         <!-- end service -->
                                     </div>
