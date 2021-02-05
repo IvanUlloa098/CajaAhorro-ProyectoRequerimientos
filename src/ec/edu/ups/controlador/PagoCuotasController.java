@@ -1,5 +1,7 @@
 package ec.edu.ups.controlador;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,10 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.aporte_ahorros.TipoMovimiento;
 import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.PagoCuotas;
+import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.creditos.TablaAmortizacion;
 import ec.edu.ups.dao.CajaDAO;
 import ec.edu.ups.dao.CreditoDAO;
@@ -129,7 +137,11 @@ public class PagoCuotasController extends HttpServlet {
 					credt.setEstado('T');
 					creditoDAO.update(credt);
 				}
+				
 				url = "/emp/indexE.jsp";
+				
+				this.createPDF(credt, pago, cuota, monto);
+				
 			}else {
 				url = "/emp/PagarCuota.jsp";
 				}
@@ -142,6 +154,45 @@ public class PagoCuotasController extends HttpServlet {
 		}
 		
 		getServletContext().getRequestDispatcher(url).forward(request, response);
+	}
+	
+	private void createPDF(Credito c, PagoCuotas p, String n, String m) {
+		
+		
+		try {
+			Document documento = new Document();
+			FileOutputStream ficheroPdf = new FileOutputStream("pago_cuota.pdf");
+			PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
+			
+			documento.open();
+			
+			documento.add(new Paragraph("***********SU SOLICITUD HA SIDO REALIZADA CON EXITO***********"));
+			documento.add(new Paragraph("**********************************¡GRACIAS!*************************************"));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 NOMBRE DEL PROPIETARIO: "+c.getCuentaA().getSocio().getNombre().toUpperCase() + " "+c.getCuentaA().getSocio().getApellido().toUpperCase()));
+			documento.add(new Paragraph("*	 NUMERO DE CUENTA: "+c.getCuentaA().getNumero()));
+			documento.add(new Paragraph("*	 NUMERO DE CEDULA: "+c.getCuentaA().getSocio().getCedula()));
+			documento.add(new Paragraph("*	 MONTO SOLICITADO: "+c.getMonto()));
+			documento.add(new Paragraph("*	 CUOTA: "+n));
+			documento.add(new Paragraph("*	 PAGO: "+m));
+			
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*******************************************************************************"));
+						
+			documento.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println(">>>>>>>>> ERROR (RealizarTransaccionController)");
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			System.out.println(">>>>>>>>> ERROR (RealizarTransaccionController)");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 
 }

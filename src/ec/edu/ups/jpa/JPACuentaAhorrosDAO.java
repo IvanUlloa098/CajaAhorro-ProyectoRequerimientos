@@ -16,16 +16,11 @@ public class JPACuentaAhorrosDAO extends JPAGenericDAO<CuentaAhorros, Integer> i
 	}
 	
 	public CuentaAhorros find_numero(String cuenta) {
-		try {
-			String jpql = "SELECT c FROM CuentaAhorros c WHERE c.numero = '"+ cuenta + "'";
-			CuentaAhorros ca = null;
-			ca = em.createQuery(jpql, CuentaAhorros.class).getSingleResult();
-			
-			return ca;
-			
-		} catch (Exception e) {
-			return null;
-		}
+		String jpql = "SELECT c FROM CuentaAhorros c WHERE c.numero = '"+ cuenta + "'";
+		CuentaAhorros ca = null;
+		ca = em.createQuery(jpql, CuentaAhorros.class).getSingleResult();
+		
+		return ca;
 		
 	}
 	

@@ -3,8 +3,6 @@ package ec.edu.ups.controlador;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,8 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.eclipse.persistence.internal.databaseaccess.InOutputParameterForCallableStatement;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -43,7 +39,9 @@ import ec.edu.ups.socios.CuentaAhorros;
 @WebServlet("/AceptarSolicitudController")
 public class AceptarSolicitudController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
+	private static Double TASA_CREDITO = 0.01;
+	
 	private SolicitudCredito solicitud;
 	private Credito credito;
 	private CarteraCreditos cartera; 
@@ -86,6 +84,7 @@ public class AceptarSolicitudController extends HttpServlet {
 		Double monto_real;
 		Date fecha = new Date();
 		int interes;
+		
 		List<TablaAmortizacion> aux = new ArrayList<TablaAmortizacion>();
 		
 		Optional<String> s = request.getParameterMap().keySet().stream().filter(e->e.contains("modificar_")).findFirst();
@@ -99,12 +98,12 @@ public class AceptarSolicitudController extends HttpServlet {
 				solicitud.setEstado('A');
 				
 				solicitudDAO.update(solicitud);
-				interes=10;
+				interes= (int) (TASA_CREDITO*100);
 				monto_real = solicitud.getMonto();
 				
 				cartera = new CarteraCreditos(0, 'A', 0);
 				
-				credito = new Credito((Double) monto_real, 10, solicitud.getCuotas(), 'A', fecha,  solicitud.getCuentaA(), cartera);
+				credito = new Credito((Double) monto_real, interes, solicitud.getCuotas(), 'A', fecha,  solicitud.getCuentaA(), cartera);
 				
 				carteraDAO.create(cartera);
 				creditoDAO.create(credito);
@@ -118,13 +117,13 @@ public class AceptarSolicitudController extends HttpServlet {
 				cuenta.setSaldo(saldoA+montoR);
 				cuentaAhorrosDAO.update(cuenta);
 				
-				//Crear Tabla de Amortizacion 
+				//Crear Tabla de Amortizacion
 				int tasa =10;
 				int numeroCuotas = solicitud.getCuotas();
 				double total= solicitud.getMonto();
-				double capital= total/ numeroCuotas;
+				Double capital= total/ numeroCuotas;
 				
-				double valorI = (((double)(total/numeroCuotas))*((double)(tasa/100)));
+				Double valorI = (Double) ((total/numeroCuotas)*(TASA_CREDITO));
 				double pagoCoutas= capital+valorI;
 				
 				
@@ -161,6 +160,7 @@ public class AceptarSolicitudController extends HttpServlet {
 					
 					tablaDAO.create(tabla);
 					System.out.println("Fila Agregada");
+					
 					if (i==1) {
 						z++;
 					}
@@ -204,6 +204,7 @@ public class AceptarSolicitudController extends HttpServlet {
 			
 			documento.add(new Paragraph("*****************TABLA DE AMORTIZACION*****************"));
 			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 NOMBRE DEL PROPIETARIO: "+c.getCuentaA().getSocio().getNombre().toUpperCase() + " "+c.getCuentaA().getSocio().getApellido().toUpperCase()));
 			documento.add(new Paragraph("*	 NUMERO DE CUENTA: "+c.getCuentaA().getNumero()));
 			documento.add(new Paragraph("*	 NUMERO DE CEDULA: "+c.getCuentaA().getSocio().getCedula()));
 			documento.add(new Paragraph("*	 MONTO SOLICITADO: "+c.getMonto()));

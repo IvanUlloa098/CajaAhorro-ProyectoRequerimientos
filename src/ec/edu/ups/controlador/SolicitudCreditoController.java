@@ -17,8 +17,10 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.dao.CajaDAO;
+import ec.edu.ups.dao.CreditoDAO;
 import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.SolicitudCreditoDAO;
@@ -33,7 +35,9 @@ public class SolicitudCreditoController extends HttpServlet {
      
 	private CuentaAhorros ca;
 	private SolicitudCredito solicitud;
+	private Credito credito;
 	
+	private CreditoDAO creditoDAO;
 	private CuentaAhorrosDAO cuentaDAO;
 	private SolicitudCreditoDAO solicitudDAO;
     /**
@@ -43,6 +47,7 @@ public class SolicitudCreditoController extends HttpServlet {
         super();
         cuentaDAO = DAOFactory.getFactory().getCuentaAhorrosDAO();
         solicitudDAO = DAOFactory.getFactory().getSolicitudCreditoDAO();
+        creditoDAO = DAOFactory.getFactory().getCreditoDAO();
     }
 
 	/**
@@ -57,35 +62,55 @@ public class SolicitudCreditoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String url = null;
 		Date date = new Date();
+		boolean cent = false;
+		
+		String monto = request.getParameter("monto");
+		String cuenta = request.getParameter("cuenta");
+		String cedula = request.getParameter("cedula");
+		String descripcion = request.getParameter("descripcion");
+		String cuotas = request.getParameter("cuotas");
 		
 		try {
 			
-			HttpSession  session=request.getSession(true);
+			credito = creditoDAO.creditoCedula(cuenta);
 			
-			String monto = request.getParameter("monto");
-			String cuenta = request.getParameter("cuenta");
-			String cedula = request.getParameter("cedula");
-			String descripcion = request.getParameter("descripcion");
-			String cuotas = request.getParameter("cuotas");
-			
-			ca = cuentaDAO.find_numero(cuenta);
-			
-			solicitud = new SolicitudCredito('E', date, Double.valueOf(monto), descripcion, ca, Integer.valueOf(cuotas));
-			
-			solicitudDAO.create(solicitud);
-			
-			solicitud = new SolicitudCredito();
-			System.out.println(">>>>>> SOLICITUD EN ESPERA");
-			url= "/emp/indexE.jsp";
-			
-			this.createPDF(ca, solicitud);
+			cent = true;			
 			
 		} catch (Exception e) {
-			url= "/emp/solicitarCredito.jsp";
+			cent = false;						
 		}
 		
+		if (cent == false) {
+			System.out.println(">>>>>>>>>>>>");
+			try {
+				
+				HttpSession  session=request.getSession(true);
+				
+				ca = cuentaDAO.find_numero(cuenta);
+				
+				solicitud = new SolicitudCredito('E', date, Double.valueOf(monto), descripcion, ca, Integer.valueOf(cuotas));
+				
+				solicitudDAO.create(solicitud);
+				
+				solicitud = new SolicitudCredito();
+				System.out.println(">>>>>> SOLICITUD EN ESPERA");
+				url= "/emp/indexE.jsp";
+				
+				this.createPDF(ca, solicitud);
+				
+			} catch (Exception e) {
+				System.out.println(">>>>>>>>>>>> ERROR SolicitudCreditoController in " + e.getMessage());
+				url= "/emp/solicitarCredito.jsp";
+			}
+			
+		} else {
+			System.out.println(">>>>>>>>>>>> CREDITO PENDIENTE ");
+			url= "/emp/solicitarCredito.jsp";
+		}	
+				
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 		
 	}
@@ -103,6 +128,7 @@ public class SolicitudCreditoController extends HttpServlet {
 			documento.add(new Paragraph("***********SU SOLICITUD HA SIDO REALIZADA CON EXITO***********"));
 			documento.add(new Paragraph("**********************************¡GRACIAS!*************************************"));
 			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 NOMBRE DEL PROPIETARIO: "+c.getSocio().getNombre().toUpperCase() + " "+c.getSocio().getApellido().toUpperCase()));
 			documento.add(new Paragraph("*	 NUMERO DE CUENTA: "+c.getNumero()));
 			documento.add(new Paragraph("*	 NUMERO DE CEDULA: "+c.getSocio().getCedula()));
 			documento.add(new Paragraph("*	 MONTO SOLICITADO: "+s.getMonto()));

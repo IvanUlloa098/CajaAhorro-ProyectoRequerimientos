@@ -144,9 +144,10 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
     	return (T) cuenta;
     }
     
+    //CAMBIO REALIZADO
     @Override
     public T Creditos(String numeroC) {
-    	String jpql1 = "Select credt FROM Credito credt WHERE credt.cuentaA.numero='" + numeroC+"'" ;
+    	String jpql1 = "Select credt FROM Credito credt WHERE credt.cuentaA.numero='" + numeroC+"' AND credt.estado='A'" ;
     	Query query = em.createQuery(jpql1);
     	Credito credit = (Credito) query.getSingleResult();
     	return (T) credit;

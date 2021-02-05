@@ -175,6 +175,7 @@ public class RealizarTransaccionController extends HttpServlet {
 			documento.add(new Paragraph("**********SU TRANSACCION HA SIDO REALIZADA CON EXITO**********"));
 			documento.add(new Paragraph("**********************************¡GRACIAS!*************************************"));
 			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 NOMBRE DEL PROPIETARIO: "+c.getSocio().getNombre().toUpperCase() + " "+c.getSocio().getApellido().toUpperCase()));
 			documento.add(new Paragraph("*	 NUMERO DE CUENTA: "+c.getNumero()));
 			documento.add(new Paragraph("*	 NUMERO DE CEDULA: "+c.getSocio().getCedula()));
 			documento.add(new Paragraph("*	 MOVIMIENTO REALIZADO: "+m.getTipoM().getNombre()));

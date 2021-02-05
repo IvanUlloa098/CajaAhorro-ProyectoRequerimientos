@@ -129,7 +129,7 @@
                                 
                             </fieldset>
                             
-                            <input class="container" type="submit" id="login" name="login" value="Realizar Movimiento" />
+                            <input class="container" type="submit" id="login" name="login" value="Solicitar Credito" />
                             <br><BR />
                           </fieldset>      
                         </form>
