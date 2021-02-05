@@ -22,9 +22,11 @@ import ec.edu.ups.creditos.SolicitudCredito;
 import ec.edu.ups.creditos.TablaAmortizacion;
 import ec.edu.ups.dao.CarteraCreditosDAO;
 import ec.edu.ups.dao.CreditoDAO;
+import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.SolicitudCreditoDAO;
 import ec.edu.ups.dao.TablaAmortizacionDAO;
+import ec.edu.ups.socios.CuentaAhorros;
 
 /**
  * Servlet implementation class AceptarSolicitudController
@@ -37,11 +39,14 @@ public class AceptarSolicitudController extends HttpServlet {
 	private Credito credito;
 	private CarteraCreditos cartera; 
 	private TablaAmortizacion tabla;
+	private CuentaAhorros cuenta;
 	
 	private SolicitudCreditoDAO solicitudDAO;
 	private CreditoDAO creditoDAO;
 	private CarteraCreditosDAO carteraDAO;
 	private TablaAmortizacionDAO tablaDAO;
+	private CuentaAhorrosDAO cuentaAhorrosDAO;
+	
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,6 +57,7 @@ public class AceptarSolicitudController extends HttpServlet {
         creditoDAO = DAOFactory.getFactory().getCreditoDAO();
         carteraDAO = DAOFactory.getFactory().getCarteraCreditosDAO();
         tablaDAO= DAOFactory.getFactory().getTablaAmortizacionDAO();
+        cuentaAhorrosDAO = DAOFactory.getFactory().getCuentaAhorrosDAO();
     }
 
 	/**
@@ -93,19 +99,28 @@ public class AceptarSolicitudController extends HttpServlet {
 				carteraDAO.create(cartera);
 				creditoDAO.create(credito);
 				
+				//Update Cuenta de Ahorros
+				cuenta = new CuentaAhorros();
+				cuenta = credito.getCuentaA();
+				System.out.println("Cuenta Obtenida: " + cuenta.getNumero());
+				double saldoA= cuenta.getSaldo();
+				double montoR= solicitud.getMonto();
+				cuenta.setSaldo(saldoA+montoR);
+				cuentaAhorrosDAO.update(cuenta);
+				
 				//Crear Tabla de Amortizacion 
-				int tasa =interes/100;
+				int tasa =10;
 				int numeroCuotas = solicitud.getCuotas();
 				double total= solicitud.getMonto();
-				double obtenerTasa = (double) interes/100;
-				double obtenerPagoTotal = (double) (total*obtenerTasa)/( 1-Math.pow((1+obtenerTasa), -numeroCuotas)); 
 				double capital= total/ numeroCuotas;
-				//double interes1= tasa*total;
-				double obtenerInteres = (double) (total*obtenerTasa);
-				int idCre= credito.getId();
-				System.out.println("Numero Cuotas: "+ numeroCuotas +" -- Tota:  " + total+"El Credito es:" + idCre);
 				
-				System.out.println("|"+ numeroCuotas+"|"+ total+ "|"+obtenerPagoTotal +"|"+ capital+"|"+ obtenerInteres+"|"+interes);
+				double valorI = (((double)(total/numeroCuotas))*((double)(tasa/100)));
+				double pagoCoutas= capital+valorI;
+				
+				
+				int idCre= credito.getId();
+				System.out.println("Numero Cuotas: "+ numeroCuotas +" -- Tota:  " + total+"El Credito es: " + idCre);
+				System.out.println("|"+ numeroCuotas+"|"+ total+ "|"+capital +"|"+ valorI+"|"+ pagoCoutas+"|"+tasa);
 				/*solicitud.getCuentaA();
 				System.out.println("Numero ");
 				*/
@@ -124,12 +139,12 @@ public class AceptarSolicitudController extends HttpServlet {
 					tabla.setCapital(capital);
 					tabla.setEstado("P");
 					tabla.setFechaVenc(fecha);
-					tabla.setInteres(obtenerInteres);
+					tabla.setInteres(valorI);
 					tabla.setNumCuota(i);
-					tabla.setPagoTotal(obtenerPagoTotal);
-					total = total-(obtenerPagoTotal*(z));
+					tabla.setPagoTotal(pagoCoutas);
+					total = total-(capital*(z));
                     tabla.setSaldo(total);
-					tabla.setTasa(interes);
+					tabla.setTasa(tasa);
 					tabla.setCredito(credito);
 					tablaDAO.create(tabla);
 					System.out.println("Fila Agregada");

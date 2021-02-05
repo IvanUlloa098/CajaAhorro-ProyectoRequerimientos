@@ -76,7 +76,7 @@ public class BuscarTablaAmortizacion extends HttpServlet {
 					
 					credito= new Credito();
 					credito = creditoDAO.Creditos(numCuenta);
-					
+					System.out.println("ID Credito");
 					int idCred= credito.getId();
 					System.out.println("ID Credito"+ idCred);
 					
@@ -89,8 +89,9 @@ public class BuscarTablaAmortizacion extends HttpServlet {
 					url = "/emp/listaAmortizaciones.jsp";
 					
 				} catch (Exception e) {
+					e.printStackTrace();
 					System.out.println("Error Lista Tabla de Amortizacion: " + e);
-					//url = "/JSPs/error.jsp";
+					url = "/emp/indexE.jsp";
 				}
 				getServletContext().getRequestDispatcher(url).forward(request, response);	
 				
