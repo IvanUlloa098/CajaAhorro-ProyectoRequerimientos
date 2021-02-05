@@ -67,14 +67,16 @@
                     <div class="collapse navbar-collapse" id="navbars-seo">
                         <ul class="navbar-nav ml-auto">
                             
-                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearSocioCuentaController">CrearCuentas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CrearSocioCuentaController">Crear Cuenta de Ahorros</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/EliminarSocioCuenta.jsp">Eliminar Cuenta de ahorros</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTiposController">Realizar Transacciones</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTransferenciasController">Realizar Transferencias</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/solicitarCredito.jsp">Solicitud de Credito</a></li>                            
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/solicitarCredito.jsp">Solicitud de Credito</a></li> 
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Credito</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/PagarCuota.jsp">PagarCuota</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/buscarTablaAmortizacion.jsp">Tabla Amortizacion</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Cerrar Sesion</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/buscarSocio.jsp">Buscar Socio</a></li>
                         </ul>
                     </div>
                 </div>

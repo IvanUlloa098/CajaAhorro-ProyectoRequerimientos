@@ -1,5 +1,7 @@
 package ec.edu.ups.controlador;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import ec.edu.ups.aporte_ahorros.Movimiento;
 import ec.edu.ups.aporte_ahorros.TipoMovimiento;
@@ -107,6 +114,9 @@ public class TransferenciaController extends HttpServlet {
 				mov1.setTipoM(t);
 				movimientoDao.create(mov1);
 				mensaje = "Transaccion realizada correctamente";
+				
+				this.createPDF(cuentaA1, cuentaA2, monto);
+				
 			}else {
 				mensaje = "Saldo insuficiente";
 			}
@@ -117,6 +127,43 @@ public class TransferenciaController extends HttpServlet {
 		}
 		request.setAttribute("mensaje", mensaje);
 		getServletContext().getRequestDispatcher(url).forward(request, response);
+	}
+	
+	private void createPDF(CuentaAhorros c, CuentaAhorros c2, Double m) {
+		
+		
+		try {
+			Document documento = new Document();
+			FileOutputStream ficheroPdf = new FileOutputStream("transferencia.pdf");
+			PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
+			
+			documento.open();
+			
+			documento.add(new Paragraph("**********SU TRANSACCION HA SIDO REALIZADA CON EXITO**********"));
+			documento.add(new Paragraph("**********************************¡GRACIAS!*************************************"));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 NUMERO DE CUENTA EMISORA: "+c.getNumero()));
+			documento.add(new Paragraph("*	 NUMERO DE CUENTA REMITENTE: "+c2.getNumero()));
+			documento.add(new Paragraph("*	 NUMERO DE CEDULA: "+c.getSocio().getCedula()));
+			documento.add(new Paragraph("*	 MOVIMIENTO REALIZADO: TRANSFERENCIA"));
+			documento.add(new Paragraph("*	 MONTO: "+m));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("*	 "));
+			documento.add(new Paragraph("********************************************************************************"));
+						
+			documento.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println(">>>>>>>>> ERROR (RealizarTransaccionController)");
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			System.out.println(">>>>>>>>> ERROR (RealizarTransaccionController)");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 	
 	/**
