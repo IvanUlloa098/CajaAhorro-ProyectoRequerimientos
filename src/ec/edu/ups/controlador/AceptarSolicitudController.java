@@ -109,8 +109,9 @@ public class AceptarSolicitudController extends HttpServlet {
 				/*solicitud.getCuentaA();
 				System.out.println("Numero ");
 				*/
-				
+				int z = 0;
 				for (int i = 1; i < numeroCuotas+1 ; i++) {
+					
 					Calendar cal = Calendar.getInstance();
 					cal.setTime(fecha);
 					cal.add(Calendar.MONTH, 1);
@@ -126,11 +127,14 @@ public class AceptarSolicitudController extends HttpServlet {
 					tabla.setInteres(obtenerInteres);
 					tabla.setNumCuota(i);
 					tabla.setPagoTotal(obtenerPagoTotal);
-					tabla.setSaldo(total);
+					tabla.setSaldo(total-(obtenerPagoTotal*(z)));
 					tabla.setTasa(interes);
 					tabla.setCredito(credito);
 					tablaDAO.create(tabla);
 					System.out.println("Fila Agregada");
+					if (i==1) {
+						z++;
+					}
 				}
 				
 				System.out.println(">>>>>>>>>>>>>  UPDATE RESPONSE FROM /AceptarSolicitudController");
