@@ -46,7 +46,7 @@ public class CargarDatosSocioController extends HttpServlet {
 		
 		try {
 			
-			socio = socioDAO.findCedula(cedula);
+			socio = socioDAO.buscarCedula(cedula);
 			
 			request.setAttribute("socio", socio);
 			
