@@ -72,6 +72,7 @@
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/CargarTransferenciasController">Realizar Transferencias</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/solicitarCredito.jsp">Solicitud de Credito</a></li>                            
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/pricing.html">Credito</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/emp/PagarCuota.jsp">PagarCuota</a></li>
                             <li class="nav-item"><a class="nav-link" href="/CajaAhorro-ProyectoRequerimientos/index.html">Cerrar Sesion</a></li>
                         </ul>
                     </div>

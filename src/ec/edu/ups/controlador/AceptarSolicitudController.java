@@ -127,7 +127,8 @@ public class AceptarSolicitudController extends HttpServlet {
 					tabla.setInteres(obtenerInteres);
 					tabla.setNumCuota(i);
 					tabla.setPagoTotal(obtenerPagoTotal);
-					tabla.setSaldo(total-(obtenerPagoTotal*(z)));
+					total = total-(obtenerPagoTotal*(z));
+                    tabla.setSaldo(total);
 					tabla.setTasa(interes);
 					tabla.setCredito(credito);
 					tablaDAO.create(tabla);
@@ -157,5 +158,5 @@ public class AceptarSolicitudController extends HttpServlet {
 		
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
-
+ 
 }

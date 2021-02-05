@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +19,7 @@ import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.PagoCuotas;
 import ec.edu.ups.creditos.TablaAmortizacion;
 import ec.edu.ups.dao.CajaDAO;
+import ec.edu.ups.dao.CreditoDAO;
 import ec.edu.ups.dao.CuentaAhorrosDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.DiarioCajaDAO;
@@ -49,6 +51,7 @@ public class PagoCuotasController extends HttpServlet {
 	private CajaDAO cajaDao;
 	private PagoCuotasDAO pagoDAO;
 	private TablaAmortizacionDAO tablaDAO;
+	private CreditoDAO creditoDAO;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -62,6 +65,7 @@ public class PagoCuotasController extends HttpServlet {
         cajaDao= DAOFactory.getFactory().getCajaDAO();
         pagoDAO = DAOFactory.getFactory().getPagoCuotasDAO();
         tablaDAO = DAOFactory.getFactory().getTablaAmortizacionDAO();
+        creditoDAO= DAOFactory.getFactory().getCreditoDAO();
     }
 
 	/**
@@ -86,11 +90,13 @@ public class PagoCuotasController extends HttpServlet {
 			
 			CuentaAhorros cueAh = new CuentaAhorros();
 			Credito credito = new Credito();
+			List<Credito> cred = null;
 			
 			for (int i = 0; i < listcuentas.size(); i++) {
 				if (listcuentas.get(i).getNumero().equals(cuenta)) {
 					cueAh = listcuentas.get(i);
-					credito = (Credito) cueAh.getCredito();
+					cred =  new ArrayList<>(cueAh.getCredito());
+					credito= cred.get(0);
 				}
 			}
 			
@@ -116,19 +122,38 @@ public class PagoCuotasController extends HttpServlet {
 			}
 			
 			//Moficamos el estado y saldo
+			Credito credt= new Credito();
+			credt = creditoDAO.Creditos(cuenta); 
+		
+			int idCred=credt.getId();
+			System.out.println("Credito: "+idCred);
+			int nCuota = Integer.parseInt(cuota);
+			TablaAmortizacion tablaAmort = new TablaAmortizacion();
+			tablaAmort= tablaDAO.Tabla(nCuota, idCred);
 			
-			for (int i = 0; i < aux_tabla.size(); i++) {
+			int idCredTabla = tablaAmort.getCredito().getId();
+			System.out.println("Id Credito: "+ idCred +"| Id TablaAmortizacion Credito"+ idCredTabla);
+			if (tablaAmort.getCredito().getId()==credito.getId()) {
+				tablaAmort.setEstado("C");
+				double total = tablaAmort.getSaldo();
+				double cantidad = Double.parseDouble(monto);
+				tablaAmort.setSaldo(total- cantidad);
+				tablaDAO.update(tablaAmort);
+			} 
+			/*for (int i = 0; i < aux_tabla.size(); i++) {
 				if (aux_tabla.get(i).getNumCuota()==Integer.parseInt(cuota)) {
 					t = aux_tabla.get(i);
-				}
+					
+				}System.out.println("Entro---------------" + Integer.parseInt(cuota) );
+				System.out.println("Cuota Aux Table ---------------" + aux_tabla.get(i).getNumCuota());
 			}
 			
 			t.setEstado("C");
 			Double aa = t.getSaldo();
 			t.setSaldo(aa-Double.parseDouble(monto));
 			
-			tablaDAO.update(t);
-				
+			tablaDAO.update(t);*/
+		
 			url = "/emp/indexE.jsp";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -145,7 +170,6 @@ public class PagoCuotasController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		
 		doGet(request, response);
 	}

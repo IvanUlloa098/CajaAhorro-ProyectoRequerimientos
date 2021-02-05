@@ -7,10 +7,13 @@ import javax.persistence.Persistence;
 
 import javax.persistence.Query;
 
+import ec.edu.ups.creditos.Credito;
 import ec.edu.ups.creditos.SolicitudCredito;
+import ec.edu.ups.creditos.TablaAmortizacion;
 import ec.edu.ups.dao.GenericDAO;
 import ec.edu.ups.gestion.Rol;
 import ec.edu.ups.gestion.Usuario;
+import ec.edu.ups.socios.CuentaAhorros;
 import ec.edu.ups.socios.PlanCuentas;
 import ec.edu.ups.socios.Socio;
 
@@ -132,5 +135,29 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
     }
     
 
+    @Override
+    public T buscarCuenta(String numeroC) {
+    	String jpql1 = "Select cta FROM CuentaAhorros cta WHERE cta.numero='" + numeroC+"'" ;
+    	Query query = em.createQuery(jpql1);
+    	CuentaAhorros cuenta = (CuentaAhorros) query.getSingleResult();
+    	return (T) cuenta;
+    }
+    
+    @Override
+    public T Creditos(String numeroC) {
+    	String jpql1 = "Select credt FROM Credito credt WHERE credt.cuentaA.numero='" + numeroC+"'" ;
+    	Query query = em.createQuery(jpql1);
+    	Credito credit = (Credito) query.getSingleResult();
+    	return (T) credit;
+    }
+    
+    @Override
+    public T Tabla(int nume, int idC) {
+    	String jpql1 = "Select tabla FROM TablaAmortizacion tabla WHERE tabla.numCuota=" +nume + " AND  tabla.credito.id=" +idC ;
+    	Query query = em.createQuery(jpql1);
+    	TablaAmortizacion tablaA = (TablaAmortizacion) query.getSingleResult();
+    	return (T) tablaA;
+    }
+    
 
 }
